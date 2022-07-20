@@ -1,4 +1,4 @@
-package com.tech.gndo1;
+package com.tech.gndo1.board.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
