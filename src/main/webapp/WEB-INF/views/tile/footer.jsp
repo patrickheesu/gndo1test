@@ -34,7 +34,7 @@
 </style>
 <body>
 <hr />
-   <a href=""><img class="logo" src="resources/image/로고1.png" alt="" width="150" height="140" ></a>
+   <a href=""><img class="logo" src="resources/img/tileimg/로고1.png" alt="" width="150" height="140" ></a>
     <table class="ftable">
         <tr>
             <th><a href="">예약하기</a></th>

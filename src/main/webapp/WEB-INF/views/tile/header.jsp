@@ -34,7 +34,7 @@
 <body>
  <table class="ttable">
         <tr>
-            <td colspan="10"><a href=""><img class="logo" src="resources/image/로고1.png" alt="" width="150" height="150"></a></td>
+            <td colspan="10"><a href=""><img class="logo" src="resources/img/tileimg/로고1.png" alt="" width="150" height="150"></a></td>
 		
             <td><a href="">예약</a></td>
             <td><a href="">게시판</a></td>
