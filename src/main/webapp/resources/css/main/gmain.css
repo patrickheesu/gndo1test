@@ -1,0 +1,172 @@
+ html,body{
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        #wrap{
+            text-align: center;
+            margin: auto;
+        }
+        #logo{
+            float: left;
+            margin-right: 600px;
+            position: relative;
+            left: 15px;
+            bottom: 20px;
+        }
+        ul{
+            list-style: none;
+        }
+        #login{
+            float: right;
+            padding-right: 20px;
+        }
+        nav#top_menu ul li{
+            float: left;
+            margin: 40px 60px 0 0;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        #login a:hover{
+            color: #F23005;
+        }
+        h2{
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        #main_img{
+            width: 100%;
+            position: relative;
+            margin-left: -15px;
+        }
+        #search,.form-control{
+            float: left;
+        }
+        #search{
+            display: flex;
+            
+        }
+        #search2, #adult, #child{
+            flex: 1;
+
+        }
+        #adult, #child{
+            margin-right: 10px;
+        }
+        #checkin{
+            margin-left: 240px;
+            margin-right: 20px;
+        }
+        #checkout{
+            margin-right: 20px;
+        }
+        #search2{
+            clear:both;
+            float: right;
+            margin-left: 10px;
+        }
+        #inout{
+            clear:both;
+        }
+        #lou{
+            flex: 1;
+            margin-top: 4px ;
+            margin-left: 4px;
+        }
+        .form-control{
+            float: left;
+            margin-top: 2px ;
+        }
+        #recom_table tr{
+            text-align: center;
+        }
+        hr{
+            width: 1130px;
+            text-align: center;
+        }
+        #submenu{
+            clear:both;
+            height: 150px;
+            text-align: center;
+            position: relative;
+            top: 30px;
+            bottom: 30px;
+            margin: 30 0 0 30;
+        }
+        #submenu_icon{
+        padding-top: 10px;
+        }
+        #recommend{
+        	width: 100%;
+        	height: 300px;
+        }
+        #recom_table{
+        position: relative;
+        margin: auto;
+        padding:80px 0 30px 0; 
+        }
+        
+        #saleimg img{
+            margin: 50px 0 50px 0;
+        }
+        #front{
+            margin: 30px 0 0 30px;
+        }
+
+        
+        #sale{
+            margin: 30px 0 0 15px;
+
+        }
+        #remap{
+            margin: 100px 0 0 30px;
+        }
+       #remap{
+        background-color: #fff9f5;
+        width: 100%;
+        height: 850px;
+        position: relative;
+        margin:auto;
+        margin-left: -15px;
+
+       }
+       #recom_table th, td{
+        padding: 5px;
+        text-align: left;
+    	}
+    	#coment_img{
+    		margin : 20px 30px 0 20px; 
+    	}
+    	.recom_board{
+    		background-color: #fffff;
+    		background-size: 300px 250px ;
+    		float: right;
+    	}
+		.container {
+		  position: relative;
+		  max-width: 200px; /* Maximum width */
+		  margin: 0 auto; /* Center it */
+		}
+		
+		.container .content {
+		  position: absolute; /* Position the background text */
+		  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+		  background: rgb(0, 0, 0); /* Fallback color */
+		  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+		  color: #f1f1f1; /* Grey text */
+		  width: 200px; /* Full width */
+		  padding: 20px; /* Some padding */
+		}
+		
+	
+        .clear{
+            clear:both;
+        }
