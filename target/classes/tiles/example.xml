@@ -5,37 +5,24 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-  <definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+  <definition name="baseLayout" template="/WEB-INF/views/tile/layout.jsp">
     <put-attribute name="title" value="" />
-    <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-    <put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+    <put-attribute name="header" value="/WEB-INF/views/tile/header.jsp" />
     <put-attribute name="body" value="" />
-    <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/tile/footer.jsp" />
   </definition>
   
   <definition name="main" extends="baseLayout">
   	<put-attribute name="title" value="메인페이지"/>
-  	<put-attribute name="body" value="/WEB-INF/views/center.jsp"/>
+  	<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
   </definition>
-  
-  <definition name="main2" extends="baseLayout">
-  	<put-attribute name="title" value="메인페이지"/>
-  	<put-attribute name="body" value="/WEB-INF/views/center2.jsp"/>
+  <definition name="review_list" extends="baseLayout">
+  	<put-attribute name="title" value="리뷰페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/board/review.jsp"/>
   </definition>
+
   
-  <!-- =-=-=-=-=-=-=-=-= -->
-  
-  <definition name="secondLayout" template="/WEB-INF/views/common/layout2.jsp">
-    <put-attribute name="title" value="" />
-    <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-    <put-attribute name="body" value="" />
-    <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-  </definition>
-  
-  <definition name="main3" extends="secondLayout">
-  	<put-attribute name="title" value="메인페이지2222"/>
-  	<put-attribute name="body" value="/WEB-INF/views/center2.jsp"/>
-  </definition>
+ 
   
 </tiles-definitions>
 
