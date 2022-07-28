@@ -42,10 +42,10 @@
             <td><a href="">Q&A</a></td>
             <c:choose>
 				<c:when test="${mem_num ne null }">		
-                	<div class="login"><a href="">내정보</a> | <a href="">로그아웃</a></div>
+                	<div class="login"><a href="">내정보</a> | <a href="logout">로그아웃</a></div>
                 </c:when>
                 <c:when test="${cpy_num ne null }">
-                	<div class="login"><a href="">내정보</a> | <a href="">로그아웃</a></div>
+                	<div class="login"><a href="">내정보</a> | <a href="logout">로그아웃</a></div>
                 </c:when>
                 <c:otherwise>
                 	<div class="login"><a href="login">로그인</a> | <a href="join">회원가입</a></div>
