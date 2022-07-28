@@ -9,27 +9,31 @@
     <script src="./script/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="resources/css/main/gmain.css">
     <link rel="stylesheet" href="resources/css/main/style.css">
+    <link rel="stylesheet" href="resources/css/main/recom.css">
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <script>
-        $(function(){
-           $('#datepicker1, #datepicker2').datepicker({
-           });
-        });
-    </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
+$(function(){
+    $('#datepicker1, #datepicker2').datepicker({
+    });
+ });
+</script>
+
 </head>
 <body>
    
     <script>
         //슬라이더 이미지
-        slides[slideIndex-1].style.display = "block";  
+        slider[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
         setTimeout(showSlides, 2000); // Change image every 2 seconds
 
@@ -51,7 +55,8 @@
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
             setTimeout(showSlides, 2000); // Change image every 2 seconds
-
+            autoplay: {
+        	    delay: 3000}
         }
 
 
@@ -105,9 +110,7 @@
 
         resultElement.innerText = number;
         }
-
-
-         // 클릭 카운트
+        // 클릭 카운트
         // 결과 출력
         function count1(type)  {
         // 결과를 표시할 element
@@ -123,18 +126,14 @@
             number = parseInt(number) - 1;
             if (number<0)
                 number=0;
-            
         }
-        
         // 결과 출력
         resultElement.innerText = number;
         }
 
      </script>
-    
- 
         <div class="clear"></div>
-        <div id="wrap">
+        <div id="wrap">			
             <div class="slider">
                 <input type="radio" name="slide" id="slide1" checked>
                 <input type="radio" name="slide" id="slide2">
@@ -158,15 +157,13 @@
         	<script src="slide.js"></script>
             </div>
         </div>
-
         <div class="clear"></div>
-
         <div id="search">
             <div id="checkin">
-            <button class="btn btn-outline-secondary" type="button">체크인  <input type="text" id="datepicker1"></button>
+            <button class="btn btn-outline-secondary" type="button">체크인 <input type="text" id="datepicker1"></button>
             </div>
             <div id="checkout">
-            <button class="btn btn-outline-secondary" type="button">체크아웃  <input type="text" id="datepicker2"></button>
+            <button class="btn btn-outline-secondary" type="button">체크아웃 <input type="text" id="datepicker2"></button>
              </div>
         <div id="adult">
             <input type='button'onclick='count("plus1")' value='+'/>
@@ -183,17 +180,17 @@
         <input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons" style="width: 600px; height: 40px;">
         </div>
         <a href="#"><img id="lou" src="resources/img/main/loupe.png" style="width: 30px; height: 30px;" alt=""></a>
-
+		<button type="button" class="detail_search" disabled>상세검색</button>
         </div>
 
         <div id="submenu">
   <!-- 아이콘 이미지 삽입 -->
 	  		<div id="submenu_icon">
-		        <a href=""><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href=""><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href=""><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
-		        <a href=""><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href=""><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="resources/hotel/htList.jsp"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="resources/motel/mtList.jsp"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="resources/pension/psList.jsp"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
+		        <a href="resources/guestHouse/ghList.jsp"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="resources/camping/cpList.jsp"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
 	        </div>
         </div>
       
@@ -203,66 +200,110 @@
             <h2>연령별 예약 추천</h2>
             <table id="recom_table">
                 <tr>
-                    <td>사진</td>
-                    <td>호텔명</td>
-                    <td>평점</td>
-                    <td>가격</td>
+					<div class="main_rclist" style="width: 17rem;">
+					<a href="#">
+					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
+					  <div class="card-body">
+					  <h5 class="card-title">컨피네스 오션 스위트</h5>
+					    <p class="card-text">~ 132,000월 부터</p>
+					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+						</div>
+						</a>
+					</div>
                 </tr>
                 <tr>
-                    <td>사진</td>
-                    <td>호텔명</td>
-                    <td>평점</td>
-                    <td>가격</td>
+                    <div class="main_rclist" style="width: 17rem;">
+					<a href="#">
+					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
+					  <div class="card-body">
+					  <h5 class="card-title">컨피네스 오션 스위트</h5>
+					    <p class="card-text">~ 132,000월 부터</p>
+					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+						</div>
+						</a>
+					</div>
                 </tr>
                 <tr>
-                    <td>사진</td>
-                    <td>호텔명</td>
-                    <td>평점</td>
-                    <td>가격</td>
+                    <div class="main_rclist" style="width: 17rem;">
+					<a href="#">
+					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
+					  <div class="card-body">
+					  <h5 class="card-title">컨피네스 오션 스위트</h5>
+					    <p class="card-text">~ 132,000월 부터</p>
+					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+						</div>
+						</a>
+					</div>
+                </tr>
+               <tr>
+                    <div class="main_rclist" style="width: 17rem;">
+					<a href="#">
+					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
+					  <div class="card-body">
+					  <h5 class="card-title">컨피네스 오션 스위트</h5>
+					    <p class="card-text">~ 132,000월 부터</p>
+					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+						</div>
+						</a>
+					</div>
                 </tr>
             </table>
         </div>
-
         <div id="sale">
             <h2 style="margin-bottom: 30px;">오늘의 특가!</h2>
                 <div id="saleimg">   <!-- 특가 배너 이미지 -->
-                    <a href=""><img src="resources/img/main/banner1.png" alt="sale1"></a>
-                    <a href=""><img src="resources/img/main/banner2.png" alt="sale2"></a>
-                    <a href=""><img src="resources/img/main/banner3.png" alt="sale3"></a>
-                    <a href=""><img src="resources/img/main/banner4.png" alt="sale4"></a>
-                    <a href=""><img src="resources/img/main/banner5.png" alt="sale5"></a>
+                    <a href="#"><img src="resources/img/main/banner1.png" alt="sale1"></a>
+                    <a href="#"><img src="resources/img/main/banner2.png" alt="sale2"></a>
+                    <a href="#"><img src="resources/img/main/banner3.png" alt="sale3"></a>
+                    <a href="#"><img src="resources/img/main/banner4.png" alt="sale4"></a>
+                    <a href="#"><img src="resources/img/main/banner5.png" alt="sale5"></a>
                 </div>
         </div>
-
+	</div>
         <div id="remap">
+        <div id="remap_sub">
             <h2>권역별 추천 숙박</h2>
         <div id="remapcom">
             <div id="coment">
                 <div id="coment_img" style="position: relative; float: left;">
                     <img src="resources/img/main/map_main.png" id="image">
             </div>
-            <div id="coment2">
+         </div>
+    </div>
+                <div id="coment2">
                 <button onclick="changeimg(1)">주문진권</button>
                 <button onclick="changeimg(2)">대관령권</button>
                 <button onclick="changeimg(3)">시내권</button>
                 <button onclick="changeimg(4)">경포권</button>
                 <button onclick="changeimg(5)">정동진·옥계권</button>
             </div>
-        </div>
-        </div>
-        <div class="recom_board">
-			<div class="container">
-			  <img src="resources/img/main/banner1.png" alt="Notebook">
-			  <div class="content">
-			    <h1>정동진 썬크루즈 호텔</h1>
-			    <p>~139,000원</p>
-			  </div>
-			</div>
+        
+		<div class="section">
+		<input type="radio" name="slide1" id="slide01" checked>
+		<input type="radio" name="slide1" id="slide02">
+		<input type="radio" name="slide1" id="slide03">
+	<div class="slidewrap">
+		<ul class="slidelist">
+			<li>
+				<a><img src="resources/img/main/slide01.jpg"></a>
+			</li>
+			<li>
+				<a><img src="resources/img/main/banner1.png"></a>
+			</li>
+			<li>
+				<a><img src="resources/img/main/slide03.jpg"></a>
+			</li>
+		</ul>
+		<div class="bullets">
+              <label for="slide01">&nbsp;</label>
+              <label for="slide02">&nbsp;</label>
+              <label for="slide03">&nbsp;</label>
+       </div>
 
-        </div>
-
-         </div>
-    </div>
+	</div>
+	</div>
+	</div>
+</div>
     <script>
         function changeimg(n){
             document.getElementById("image").src="resources/img/main/map_"+n+".png";
