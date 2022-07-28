@@ -8,5 +8,5 @@ import org.springframework.stereotype.Controller;
 public class BoardController {
 	
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 }

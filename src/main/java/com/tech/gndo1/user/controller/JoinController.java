@@ -1,15 +1,19 @@
 package com.tech.gndo1.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tech.gndo1.user.dao.UIDao;
+
 @Controller
 public class JoinController {
 	
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 	
 	@RequestMapping("/join")
 	public String join() {
@@ -34,6 +38,25 @@ public class JoinController {
 	public String joinCompany() {
 		return "login/joinCompany";
 	}
+	
+	@RequestMapping("/joinCpy")
+	   public String joinCpy(HttpServletRequest request) {
+			System.out.println("emfdjdha");
+	      String cpy_id = request.getParameter("cpy_id");
+	      String cpy_pwd = request.getParameter("cpy_pwd");
+	      String cpy_name = request.getParameter("cpy_name");
+	      String cpy_cpnum = request.getParameter("cpy_cpnum");
+	      String cpy_tel = request.getParameter("cpy_tel");
+	      String cpy_resid1 = request.getParameter("cpy_resid1");
+	      String cpy_resid2 = request.getParameter("cpy_resid2");
+	      String cpy_email = request.getParameter("cpy_email");
+	      int cpy_typecode = Integer.parseInt(request.getParameter("cpy_typecode"));
+	      String cpy_resid = cpy_resid1 + "-" + cpy_resid2;
+	      UIDao dao = sqlSession.getMapper(UIDao.class);
+	      dao.insertCompany(cpy_id,cpy_pwd,cpy_name,cpy_cpnum,cpy_tel,cpy_resid,cpy_email,cpy_typecode);
+	      
+	      return "login/joinEnd";
+	   }
 	
 	@RequestMapping("/joinCompanyInsert")
 	public String joinCompanyInsert() {
