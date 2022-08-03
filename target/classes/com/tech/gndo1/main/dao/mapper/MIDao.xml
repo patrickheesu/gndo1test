@@ -4,5 +4,61 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tech.gndo1.main.dao.MIDao">
+ 
+<resultMap type="com.tech.gndo1.cptype.dto.Accommodation_imgDto" id="accommodation_img">
+	<result property="acci_num" column="ACCI_NUM"/>
+	<result property="acc_num" column="ACC_NUM"/>
+	<result property="acci_img" column="ACCI_IMG"/>
+	<result property="acci_afterimg" column="ACCI_AFTERIMG"/>
+</resultMap>
+
+<resultMap type="com.tech.gndo1.roomtype.dto.RoomTypeDto" id="roomtype">
+	<result property="rt_num" column="RT_NUM"/>
+	<result property="acc_num" column="ACC_NUM"/>
+	<result property="rt_rmname" column="RT_RMNAME" />
+	<result property="rt_rmcount" column="RT_RMCOUNT"/>
+	<result property="rt_rpeople" column="RT_RPEOPLE"/>
+	<result property="rt_price" column="RT_PRICE"/>
+	<result property="rt_info" column="RT_INFO"/>
+	<result property="rt_in" column="RT_IN"/>
+	<result property="rt_out" column="RT_OUT"/>
+</resultMap>
+
+<resultMap type="com.tech.gndo1.cptype.dto.Accommodation_infoDto" id="accommodation_info">
+	<result property="acc_num" column="ACC_NUM"/>
+	<result property="cpy_num" column="CPY_NUM"/>
+	<result property="acc_location" column="ACC_LOCATION"/>
+	<result property="acc_map" column="ACC_MAP"/>
+	<result property="acc_la" column="ACC_LA"/>
+	<result property="acc_lo" column="ACC_LO"/>
+	<result property="acc_tel" column="ACC_TEL"/>
+	<result property="acc_info" column="ACC_INFO"/>
+	<result property="acc_serkeyword" column="ACC_SERKEYWORD"/>
+	<result property="acc_name" column="ACC_NAME"/>
+	<result property="acc_detailmap" column="ACC_DETAILMAP"/>
+	<collection property="ai" resultMap="accommodation_img"/>
+	<collection property="r" resultMap="roomtype"/>
+</resultMap>
+
+
+
+
+
+
+<select id="search_list" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto" resultMap="accommodation_info">
+SELECT DISTINCT(A.ACC_NAME), FIRST_VALUE(I.ACCI_AFTERIMG) OVER(PARTITION BY A.ACC_NAME) ACCI_AFTERIMG ,MIN(R.RT_PRICE) RT_PRICE, A.ACC_NUM  
+FROM ACCOMMODATION_INFO A, ACCOMMODATION_IMG I, ROOMTYPE R 
+WHERE A.ACC_NUM=R.ACC_NUM AND I.ACC_NUM=A.ACC_NUM AND (A.ACC_NAME LIKE '%' || #{param1} || '%' OR A.ACC_SERKEYWORD LIKE '%' || #{param1} || '%')
+GROUP BY A.ACC_NUM, A.ACC_NAME, I.ACCI_AFTERIMG
+</select>
+
+
+
+
+
+
+
+
+
 
 </mapper>

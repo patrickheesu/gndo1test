@@ -8,9 +8,10 @@
 <meta charset="UTF-8">
 
 <style>
+
 html,body{
-	margin: 0px;
-	padding: 0px;
+   margin: 0px;
+   padding: 0px;
 }
 #container{
    width: 100%;
@@ -26,26 +27,34 @@ html,body{
    background-color: white;
 
 }
+/* #sidebar-left{ */
+/*    width: 15%; */
+/*    height: 700px; */
+/*    padding: 5px; */
+/*    margin-right: 5px; */
+/*    margin-bottom: 5px; */
+/*    float: left; */
+/*    background-color: yellow; */
+/*    border: 0px solid #bcbcbc; */
+/*    font-size: 10px; */
+/* } */
 #content{
    width: 100%;
    padding: 5px;
    margin-right: 5px;
 /*    float: left; */
    border: 0px solid #bcbcbc;
-   clear: both;
 }
 #footer{
-	clear: both;
-	
+   clear: both;
    padding: 0px;
-   border: 0px solid #bcbcbc;
-   background-color: lightblue;
    height: 250px;
-/*       position: absolute;    */
-/*      bottom: 0;   */
-/*     width: 100%; */ 
-
-} 
+/*    position: absolute;
+   width: 100%;
+   bottom: 0; */
+   border: 0px solid #bcbcbc;
+   /* background-color: #f2f2f2; */
+}
 </style>
 
 <title>
