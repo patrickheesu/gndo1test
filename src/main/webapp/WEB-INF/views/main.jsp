@@ -190,7 +190,7 @@ $(function(){
         <div id="submenu">
   <!-- 아이콘 이미지 삽입 -->
 	  		<div id="submenu_icon">
-		        <a href="resources/hotel/htList.jsp"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="htList"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
 		        <a href="resources/motel/mtList.jsp"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
 		        <a href="resources/pension/psList.jsp"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
 		        <a href="resources/guestHouse/ghList.jsp"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
