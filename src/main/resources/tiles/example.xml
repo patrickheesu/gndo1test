@@ -16,6 +16,12 @@
   	<put-attribute name="title" value="메인페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
   </definition>
+  <definition name="totList" extends="baseLayout">
+  	<put-attribute name="title" value="메인페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/totList.jsp"/>
+  </definition>  
+  
+  
   <definition name="review_list" extends="baseLayout">
   	<put-attribute name="title" value="리뷰페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/board/review.jsp"/>

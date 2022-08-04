@@ -159,6 +159,7 @@ $(function(){
         </div>
         <div class="clear"></div>
         <div id="search">
+       
             <div id="checkin">
             <button class="btn btn-outline-secondary" type="button">체크인 <input type="text" id="datepicker1"></button>
             </div>
@@ -175,12 +176,15 @@ $(function(){
             <input type='button'onclick='count1("minus2")'value='-'/>
             아동<div id='result2'>0</div>
         </div>
-        
+        <form action="totList" method="post">
         <div id="search2">
-        <input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons" style="width: 600px; height: 40px;">
+        
+        <input type="text" name="sk" class="form-control" placeholder="키워드를 입력하세요." aria-label="Example text with two button addons" style="width: 300px; height: 40px;">
+
+        <input type="submit" value="검색"  />
         </div>
-        <a href="#"><img id="lou" src="resources/img/main/loupe.png" style="width: 30px; height: 30px;" alt=""></a>
-		<button type="button" class="detail_search" disabled>상세검색</button>
+        </form>
+
         </div>
 
         <div id="submenu">
