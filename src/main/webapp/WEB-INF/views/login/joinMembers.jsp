@@ -22,7 +22,7 @@
 </head>
 <body>
     <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3><br>
-    <!-- <form action="" id="joinForm"> -->
+    <form action="joinMembersInsert" id="joinForm" name="form">
         <ul>
             <li>
                 <ul class="customer">
@@ -77,22 +77,27 @@
             </li>
             <li>
                 <ul>
-                    <li class="agree">이용약관 동의(필수)   <input type="checkbox" value="가입하기" name="chk" ></li>
+                    <li class="agree">이용약관 동의(필수)   <input type="checkbox" value="가입하기" name="chk" onClick="agreeCheck(this.form);"></li>
                    
                 </ul>
             </li>
-            <li><a href="joinMembersInsert"><button class="button" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">가입하기</button></a></li>
+            <li><input type="submit" value="가입하기" class="button" name="button" disabled/></li>
         </ul>
-    <!-- </form> -->
+    </form>
     <script>
-        function OnMouseIn(elem){
-            elem.style.border="2px solid blue";
-            elem.style.color="blue";
-        }
-        function OnMouseOut(elem){
-            elem.style.border="";
-            elem.style.color="";
-        }
+    function agreeCheck(ac) {
+		if (ac.button.disabled==true){
+		    ac.button.disabled=false;
+		    ac.button.style.border="2px solid blue";
+		    ac.button.style.color="blue";
+			
+		} else {
+			
+		    ac.button.disabled=true;
+		    ac.button.style.border="";
+		    ac.button.style.color="";
+		}
+	}
 
     </script>
     

@@ -13,13 +13,14 @@ public class CompanyDto {
 	private String cpy_email;
 	private int cpy_typecode;
 	private Timestamp cpy_cratedate;
+	private String cpy_logkey;
 	
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CompanyDto(int cpy_num, String cpy_id, String cpy_pwd, String cpy_name, String cpy_cpnum, String cpy_tel,
-			String cpy_resid, String cpy_email, int cpy_typecode, Timestamp cpy_cratedate) {
+			String cpy_resid, String cpy_email, int cpy_typecode, Timestamp cpy_cratedate, String cpy_logkey) {
 		super();
 		this.cpy_num = cpy_num;
 		this.cpy_id = cpy_id;
@@ -31,6 +32,7 @@ public class CompanyDto {
 		this.cpy_email = cpy_email;
 		this.cpy_typecode = cpy_typecode;
 		this.cpy_cratedate = cpy_cratedate;
+		this.cpy_logkey = cpy_logkey;
 	}
 
 	public int getCpy_num() {
@@ -112,6 +114,15 @@ public class CompanyDto {
 	public void setCpy_cratedate(Timestamp cpy_cratedate) {
 		this.cpy_cratedate = cpy_cratedate;
 	}
+
+	public String getCpy_logkey() {
+		return cpy_logkey;
+	}
+
+	public void setCpy_logkey(String cpy_logkey) {
+		this.cpy_logkey = cpy_logkey;
+	}
+	
 	
 	
 }

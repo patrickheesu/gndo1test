@@ -14,13 +14,14 @@ public class MembersDto {
 	private String mem_addr;
 	private String mem_email;
 	private Timestamp mem_createdate;
+	private String mem_logkey;
 	
 	public MembersDto() {
 		// TODO Auto-generated constructor stub
 	}
 	public MembersDto(int mem_num, String mem_id, String mem_pwd, String mem_nickname, String mem_name,
 			String mem_gender, Timestamp mem_birth, String mem_phonenum, String mem_addr, String mem_email,
-			Timestamp mem_createdate) {
+			Timestamp mem_createdate, String mem_logkey) {
 		super();
 		this.mem_num = mem_num;
 		this.mem_id = mem_id;
@@ -33,6 +34,7 @@ public class MembersDto {
 		this.mem_addr = mem_addr;
 		this.mem_email = mem_email;
 		this.mem_createdate = mem_createdate;
+		this.mem_logkey = mem_logkey;
 	}
 	public int getMem_num() {
 		return mem_num;
@@ -100,6 +102,13 @@ public class MembersDto {
 	public void setMem_createdate(Timestamp mem_createdate) {
 		this.mem_createdate = mem_createdate;
 	}
+	public String getMem_logkey() {
+		return mem_logkey;
+	}
+	public void setMem_logkey(String mem_logkey) {
+		this.mem_logkey = mem_logkey;
+	}
+	
 	
 	
 }

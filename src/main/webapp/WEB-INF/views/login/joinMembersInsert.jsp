@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,121 +25,73 @@
     <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3><br>
 
 
-    <form name="join" action="joinEnd" method="post">
+    <form name="join" action="joinMem" method="post">
         <table class="join">
             <tr>
                 <td>아이디</td>
-                <td><input type="text" name="userId" placeholder="아이디 입력"></td>
+                <td><input type="text" name="mem_id" id="id" placeholder="8자 이상"></td>
+				<td>
+					<input type="button" class="checkId_bt" value="중복 확인" onclick="duplicateCheck();" />
+					<span id="check_id" class="check_id">*중복 확인 필수</span>
+				</td>
             </tr>
             <tr>
                 <td>비밀번호</td>
-                <td><input type="password" name="userPass1" placeholder="************"></td>
+				<td><input type="password" name="mem_pwd" id="pwd1" placeholder="영문,숫자,특수문자를 포함" onkeyup="passwordCheck1();"></td>
+				<td><span id="check_pwd" class="check_pwd">*비밀번호는 10자 이상</span></td>
             </tr>
             <tr>
                 <td>비밀번호 확인</td>
-                <td><input type="password" name="userPass2" placeholder="************"></td>
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td><input type="text" name="userName" placeholder="이름 입력"></td>
-            </tr>
-            <tr>
-                <td>생년월일</td>
-                <td><input class="date" type="date">
-                <!-- <select name="year" id="">
-                    <option value="">----선택----</option>
-                    <option value="">2003년</option>
-                    <option value="">2002년</option>
-                    <option value="">2001년</option>
-                    <option value="">2000년</option>
-                    <option value="">1999년</option>
-                    <option value="">1998년</option>
-                    <option value="">1997년</option>
-                    <option value="">1996년</option>
-                    <option value="">1995년</option>
-                    <option value="">1994년</option>
-                    <option value="">1993년</option>
-                    <option value="">1992년</option>
-                    <option value="">1991년</option>
-                    <option value="">1990년</option>
-                    <option value="">1989년</option>
-                    <option value="">1988년</option>
-                    <option value="">1987년</option>
-                    <option value="">1986년</option>
-                    <option value="">1985년</option>
-                    <option value="">1984년</option>
-                </select>
-                <select name="month" id="">
-                    <option value="">--선택--</option>
-                    <option value="">1월</option><option value="">2월</option>
-                    <option value="">3월</option><option value="">4월</option>
-                    <option value="">5월</option><option value="">6월</option>
-                    <option value="">7월</option><option value="">8월</option>
-                    <option value="">9월</option><option value="">10월</option>
-                    <option value="">11월</option><option value="">12월</option>
-                    
-                </select>
-                <select name="day" id="">
-                    <option value="">--선택--</option>
-                    <option value="">1일</option><option value="">2일</option>
-                    <option value="">3일</option><option value="">4일</option>
-                    <option value="">5일</option><option value="">6일</option>
-                    <option value="">7일</option><option value="">8일</option>
-                    <option value="">9일</option><option value="">10일</option>
-                    <option value="">11일</option><option value="">12일</option>
-                    <option value="">13일</option><option value="">14일</option>
-                    <option value="">15일</option><option value="">16일</option>
-                    <option value="">17일</option><option value="">18일</option>
-                    <option value="">19일</option><option value="">20일</option>
-                    <option value="">21일</option><option value="">22일</option>
-                    <option value="">23일</option><option value="">24일</option>
-                    <option value="">25일</option><option value="">26일</option>
-                    <option value="">27일</option><option value="">28일</option>
-                    <option value="">29일</option><option value="">30일</option>
-                    <option value="">31일</option>
-                </select> -->
-                </td>
+                <td><input type="password" id="pwd2" placeholder="************"></td>
             </tr>
             <tr>
                 <td>닉네임</td>
-                <td><input type="text" name="userNick" placeholder="닉네임 입력"></td>
+                <td><input type="text" name="mem_nickname" placeholder="닉네임 입력"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="mem_name" placeholder="이름 입력"></td>
             </tr>
             <tr>
                 <td>성별</td>
                 <td>
-                <select name="gender" id="gender" class="gender">
-                    <option value="">------선택------</option>
+                <select name="mem_gender" id="gender" class="gender">
                     <option value="man">남자</option>
                     <option value="woman">여자</option>
                 </select>
                 </td>
             </tr>
             <tr>
-                <td>핸드폰 번호</td>
-                <td>
-                    <input type="text" name="userPhone" placeholder="010********">
+                <td>생년월일</td>
+                <td><input class="date" type="date" name="mem_birth">
                 </td>
             </tr>
             <tr>
-                <td>이메일</td>
+                <td>핸드폰 번호</td>
                 <td>
-                    <input type="email" name="userEmail" placeholder="email@gmail.com">
+                    <input type="text" name="mem_phonenum" placeholder="010********">
                 </td>
             </tr>
             <tr>
                 <td>주소</td>
                 <td>
                     <input type="text" name="zipcode" id="zipcode" placeholder="우편주소 검색" onclick="findAddr()" readonly><br>
-                    <input type="text" name="address1" id="address1" readonly placeholder="주소"><br>
-                    <input type="text" name="address2" id="address2" placeholder="상세주소 입력">
+                    <input type="text" name="mem_addr1" id="address1" readonly placeholder="주소"><br>
+                    <input type="text" name="mem_addr2" id="address2" placeholder="상세주소 입력">
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="email" name="mem_email" placeholder="email@gmail.com">
                 </td>
             </tr>
         </table>
-        <!-- <input class="join2" type="submit" value="가입하기"> -->
+        <input class="join2" type="submit" value="가입하기">
     </form>
-        <a href="joinEnd"><button class="button" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">가입하기</button></a>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
 function findAddr(){
     new daum.Postcode({
         oncomplete: function(data) {
@@ -154,13 +109,35 @@ function findAddr(){
         }
     }).open();
 }
-function OnMouseIn(elem){
-    elem.style.border="2px solid blue";
-    elem.style.color="blue";
-}
-function OnMouseOut(elem){
-    elem.style.border="";
-    elem.style.color="";
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>
+
+function duplicateCheck() { // 아이디 검사 함수
+	
+	var lengthId = document.getElementById('id').value;
+	var memberId = $('#id').val();
+	var data = {memberId : memberId}
+	
+	if (lengthId.length < 8) {
+		$("#check_id").html("아이디는 8자 이상이여야 합니다");
+		$("#check_id").css('color' , 'red'); 
+	} else {
+		$.ajax({
+		    type : 'post' ,
+	   	    url : '<%=path%>/join/duplicateCheck',
+			data : data,
+			dataType : 'text',
+			success : function(result) {
+				if (result == 'true') {
+					$("#check_id").html("사용 가능한 아이디 입니다");
+					$("#check_id").css('color', 'green');
+				} else {
+					$("#check_id").html("중복된 아이디 입니다");
+					$("#check_id").css('color', 'red');
+				}
+			}
+		});
+	}
 }
 </script>
     
