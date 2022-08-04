@@ -6,10 +6,11 @@ import com.tech.gndo1.mb.dto.MembersDto;
 public interface UIDao {
 
 	public int check_mem(String memberId);
-
 	public int check_cpy(String memberId);
 
-	public int login_checkm(String id, String pass);
+	public MembersDto login_checkmpwd(String check_id);
+	public CompanyDto login_checkcpwd(String check_id);
+	
 
 	public int login_checkc(String id, String pass);
 
@@ -18,5 +19,8 @@ public interface UIDao {
 	public CompanyDto company(String id);
 	
 	public void insertCompany(String cpy_id, String cpy_pwd, String cpy_name, String cpy_cpnum, String cpy_tel,
-	         String cpy_resid, String cpy_email, int cpy_typecode);
+	         String cpy_resid, String cpy_email, int cpy_typecode, String cpy_logkey);
+	public void insertMembers(String mem_id, String mem_pwd, String mem_nickname, String mem_name, String mem_gender,
+			String mem_birth, String mem_phonenum, String mem_addr, String mem_email, String logkey);
+
 }

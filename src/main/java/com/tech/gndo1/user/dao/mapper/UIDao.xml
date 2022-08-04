@@ -5,21 +5,20 @@
 
 <mapper namespace="com.tech.gndo1.user.dao.UIDao">
 
-	<!--중복검사-->
+	<!--중복검사, 로그인유효성 검사(id)-->
 	<select id="check_mem" resultType="Integer">
 		SELECT COUNT(MEM_ID) COUNT FROM MEMBERS WHERE MEM_ID=#{param1}
 	</select>
 	<select id="check_cpy" resultType="Integer">
 		SELECT COUNT(CPY_ID) COUNT FROM COMPANY WHERE CPY_ID=#{param1}
 	</select>
-	<!--로그인 유효성 검사-->
-	<select id="login_checkm" resultType="Integer">
-		SELECT COUNT(MEM_ID) FROM MEMBERS WHERE MEM_ID=#{param1} 
-		AND MEM_PWD=#{param2}
+	
+	<!--로그인 유효성 검사(pwd)-->
+	<select id="login_checkmpwd" resultType="com.tech.gndo1.mb.dto.MembersDto">
+		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_ID=#{param1}
 	</select>
-	<select id="login_checkc" resultType="Integer">
-		SELECT COUNT(CPY_ID) FROM COMPANY WHERE CPY_ID=#{param1} 
-		AND CPY_PWD=#{param2}
+	<select id="login_checkcpwd" resultType="com.tech.gndo1.cp.dto.CompanyDto">
+		SELECT CPY_PWD, CPY_LOGKEY FROM COMPANY WHERE CPY_ID=#{param1}
 	</select>
 	<!--로그인 시 회원정보 불러오기-->
 	<select id="members" resultType="com.tech.gndo1.mb.dto.MembersDto">
@@ -28,8 +27,11 @@
 	<select id="company" resultType="com.tech.gndo1.cp.dto.CompanyDto">
 		SELECT * FROM COMPANY WHERE CPY_ID=#{param1}	
 	</select>
-	<!--사업자 회원가입  -->
+	<!-- 회원가입  -->
 	<insert id="insertCompany">
-      INSERT INTO COMPANY VALUES(COMPANY_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},SYSDATE)
+      INSERT INTO COMPANY VALUES(COMPANY_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},SYSDATE,#{param9})
+   </insert>
+   <insert id="insertMembers">
+      INSERT INTO MEMBERS VALUES(MEMBERS_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},SYSDATE,#{param10})
    </insert>
 </mapper>
