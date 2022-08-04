@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="../resources/css/login.css">
 </head>
 <body>
-    <h3><img class="a" src="../resources/img/강릉도원 로고.png" alt=""></h3>
+    <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3>
     <form action="loginProc" method="post" onsubmit="return login_check();">
     <table class="b">
         <tr>

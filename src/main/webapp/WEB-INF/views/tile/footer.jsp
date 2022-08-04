@@ -9,26 +9,24 @@
 <title>Insert title here</title>
 </head>
 <style>
-	body{
-        
-        
-    }
+
     .logo{
-     	margin: 10px 500px 0 20px;
+   		 float:left;
+    /*     margin: 10px 500px 0 20px; */
     }
-	.ftable{
-		border-spacing: 10px;
+   .ftable tr td{
+      	border-spacing: 10px;
         text-align: center;
         position: relative;
         left: 250px;
-        bottom: 140px;
+      /*   bottom: 130px; */
         margin-left: 300px;
-	}
-	.ftable tr a{
-		text-decoration: none;
-		color: #333;
-	}
-	td{
+   }
+   .ftable tr a{
+      text-decoration: none;
+      color: #333;
+   }
+    .ftable tr td{
         width: 160px;
 }
 </style>

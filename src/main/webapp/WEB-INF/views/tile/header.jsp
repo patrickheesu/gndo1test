@@ -40,17 +40,17 @@
             <td><a href="">게시판</a></td>
             <td><a href="">리뷰</a></td>
             <td><a href="">Q&A</a></td>
-            <c:choose>
-				<c:when test="${mem_num ne null }">		
-                	<div class="login"><a href="">내정보</a> | <a href="logout">로그아웃.</a></div>
+		<c:choose>
+            <c:when test="${mem_num ne null }">      
+                   <div class="login"><a href="mbPage">내정보</a> | <a href="logout">로그아웃.</a></div>
                 </c:when>
                 <c:when test="${cpy_num ne null }">
-                	<div class="login"><a href="">내정보</a> | <a href="logout">로그아웃</a></div>
+                   <div class="login"><a href="cpPage">내정보</a> | <a href="logout">로그아웃</a></div>
                 </c:when>
                 <c:otherwise>
-                	<div class="login"><a href="login">로그인</a> | <a href="join">회원가입</a></div>
+                   <div class="login"><a href="login">로그인</a> | <a href="join">회원가입</a></div>
                 </c:otherwise>
-			</c:choose>
+         </c:choose>
         </tr>
     </table>
 <hr / style="width: 1130px;
