@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+#top {
+
+    height: 100px;
+    background-color: rgb(65, 111, 160);
+}
+
+section{
+    height: 1190px;
+    border: solid 1px red;
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+
+}
+
+#contentbox {
+    width: 1320px;
+    height: 1800px;
+    border: solid 1px blue;
+    margin: 0 auto;
+
+}
+
+
+#logoimage {
+    float: left;
+    width: 100px;
+    margin: 0 0 0 25px;
+}
+
+#select {
+    float: left;
+    display: flex;
+    text-align: center;
+    margin: 20px 20px 0 0;
+    width: 1000px;
+}
+
+#selectimage {
+    width: 50px;
+    
+}
+
+#mainmenu {
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
+
+#mainmenu li {
+
+    float: left;
+    margin: 20px 50px 0 200px;
+
+}
+ /* 여기부터 슬라이드 */
+.slider {
+    display: inline-block;
+    width: 700px;
+    height: 530px;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+
+.slider input[type=radio] {
+    display: none;
+}
+
+ul.imgs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.imgs li {
+    position: absolute;
+    left: 640px;
+    transition-delay: 1s;
+    /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
+
+    padding: 0;
+    margin: 0;
+}
+
+.bullets {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 2;
+}
+
+.bullets label {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* 현재 선택된 불릿 배경 흰색으로 구분 표시 */
+.slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1) {
+    background-color: #fff;
+}
+
+.slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2) {
+    background-color: #fff;
+}
+
+.slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3) {
+    background-color: #fff;
+}
+
+.slider input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4) {
+    background-color: #fff;
+}
+
+.slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1) {
+    left: 0;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2) {
+    left: 0;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3) {
+    left: 0;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4) {
+    left: 0;
+    transition: 0.5s;
+    z-index: 1;
+
+}
+
+.leftinfo {
+    display: inline-block;
+    width: 500px;
+    margin-top: 70px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.rating{
+    
+    font-size: 25px;
+}
+
+.star-rating {
+    width: 304px;
+}
+
+.star-rating,
+.star-rating span {
+    display: inline-block;
+    height: 55px;
+    overflow: hidden;
+    background: url(../img/star.png)no-repeat;
+}
+
+.star-rating span {
+    background-position: left bottom;
+    line-height: 0;
+    vertical-align: top;
+}
+
+body {
+    color: #555;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+.main {
+    min-width: 320px;
+    max-width: 800px;
+    padding: 50px;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+
+/*라디오버튼 숨김*/
+input {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 10px 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+}
+
+label:hover {
+    color: #2e9cdf;
+    cursor: pointer;
+}
+
+/*input 클릭시, label 스타일*/
+input:checked+label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2e9cdf;
+    border-bottom: 1px solid #ffffff;
+}
+
+#tab1:checked~#content1,
+#tab2:checked~#content2,
+#tab3:checked~#content3,
+#tab4:checked~#content4,
+#tab5:checked~#content5 {
+    display: block;
+}
+
+.housename{
+font-size: 40px;
+font-weight: bold;
+}
+#content1{
+    border: 3px solid rgb(247, 8, 8);
+   
+}
+#content2{
+    border: 3px solid rgba(0, 254, 114, 0.459);
+}
+#content3{
+    border: 3px solid rgb(196, 3, 151);
+}
+#content4{
+    border: 3px solid rgb(247, 135, 8);
+}
+#content5{
+    border: 3px solid rgb(59, 162, 33);
+}
+
+

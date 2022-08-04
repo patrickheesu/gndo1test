@@ -4,5 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tech.gndo1.pay.dao.PIDao">
-
+	<select id="reservesel" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto">
+		SELECT * FROM ROOMTYPE WHERE RT_NUM=#{param1}
+	</select>
+	<select id="memsel" resultType="com.tech.gndo1.mb.dto.MembersDto">
+		SELECT * FROM MEMBERS WHERE MEM_NUM=#{param1}
+	
+	</select>
 </mapper>

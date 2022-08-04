@@ -26,10 +26,26 @@
   	<put-attribute name="title" value="리뷰페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/board/review.jsp"/>
   </definition>
-
-  
- 
-  
+	<definition name="mypage/company/cpPage" extends="baseLayout">
+  	<put-attribute name="title" value="사업자페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/company/cpPage.jsp"/>
+  </definition>
+  <definition name="payment/reserve" extends="baseLayout">
+  	<put-attribute name="title" value="예약페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/payment/reserve.jsp"/>
+  </definition>
+ <definition name="hotel/htList" extends="baseLayout">
+  	<put-attribute name="title" value="호텔페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/hotel/htList.jsp"/>
+  </definition>
+<definition name="hotel/htDetail" extends="baseLayout">
+  	<put-attribute name="title" value="호텔상세페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/hotel/htDetail.jsp"/>
+  </definition>
+  <definition name="mypage/members/mbPage" extends="baseLayout">
+  	<put-attribute name="title" value="소비자페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/members/mbPage.jsp"/>
+  </definition>
 </tiles-definitions>
 
 

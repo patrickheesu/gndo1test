@@ -4,5 +4,44 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tech.gndo1.cptype.dao.CIDao">
-
+	<insert id="cpInsert">
+		INSERT INTO ACCOMMODATION_INFO(ACC_NUM,ACC_TEL,ACC_INFO,ACC_SERKEYWORD,ACC_MAP,ACC_NAME,ACC_LOCATION,ACC_LA,ACC_LO,CPY_NUM,ACC_DETAILMAP)
+		 VALUES(ACCOMMODATION_INFO_SEQ.NEXTVAL,#{param2},#{param3},#{param4},#{param5},#{param1},#{param6},#{param7},#{param8},#{param9},#{param10})
+	</insert>
+	<insert id="cpimginsert">
+		INSERT INTO ACCOMMODATION_IMG(ACCI_NUM,ACC_NUM,ACCI_IMG,ACCI_AFTERIMG)
+		VALUES(ACCOMMODATION_IMG_SEQ.NEXTVAL,#{param2},#{param1},#{param3})
+	</insert>
+<!-- 	<select id="accinfo" resultType="com.tech.gndo1.cptype.dto.CpTypeDto"> -->
+<!-- 		SELECT * FROM ACCOMMODATION_INFO -->
+<!-- 	</select> -->
+	<select id="selacc_num" resultType="Integer">
+		SELECT MAX(ACC_NUM) FROM ACCOMMODATION_INFO  <!--WHERE CPY_NUM (param값) -->
+	</select>
+	<insert id="rtInsert">
+		INSERT INTO ROOMTYPE(RT_NUM,RT_RMNAME,
+		RT_RMCOUNT,RT_RPEOPLE,RT_PRICE,RT_INFO,RT_IN,RT_OUT,ACC_NUM)
+		 VALUES(ROOMTYPE_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+	</insert>
+	<insert id="rtimginsert">
+		INSERT INTO ROOMTYPE_IMG(RTI_NUM,RTI_IMG,RT_NUM,RTI_AFTERIMG)
+		 VALUES(ROOMTYPE_IMG_SEQ.NEXTVAL,#{param1},#{param2},#{param3})
+	</insert>
+	<select id="selrt_num" resultType="Integer">
+		SELECT MAX(RT_NUM) FROM ROOMTYPE
+	</select>
+	<select id="accsel" resultType="Integer">
+		SELECT ACC_NUM FROM ACCOMMODATION_INFO WHERE CPY_NUM=#{param1}
+	</select>
+	<select id="cptype" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto">
+		SELECT * FROM ACCOMMODATION_INFO WHERE ACC_NUM=#{param1}
+	</select>
+	<select id="htsel" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto">
+		SELECT * FROM ROOMTYPE
+	</select>
+<!-- 	<select id="rlist" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto"> -->
+<!-- 		SELECT RT_NUM,ACC_NUM,RT_RMNAME,RT_RMCOUNT, -->
+<!-- 		RT_RPEOPLE,RT_PRICE,RT_INFO,RT_IN,RT_OUT -->
+<!-- 		 FROM ROOMTYPE -->
+<!-- 	</select> -->
 </mapper>
