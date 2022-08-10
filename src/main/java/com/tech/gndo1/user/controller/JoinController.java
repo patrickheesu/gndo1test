@@ -5,7 +5,10 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
+import java.util.Random;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -13,12 +16,17 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tech.gndo1.user.dao.UIDao;
 
@@ -28,6 +36,7 @@ public class JoinController {
 	@Autowired
 	private SqlSession sqlSession;
 	private String logkey = "";
+	private JavaMailSenderImpl mailSender;
 	
 	@RequestMapping("/join")
 	public String join() {
@@ -102,17 +111,22 @@ public class JoinController {
 	
 	@RequestMapping("/joinMem")
 	public String joinMem(HttpServletRequest request) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+		System.out.println("소비자 회원가입 완료!");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String mem_id = request.getParameter("mem_id");
-	    String mem_pwd = request.getParameter("mem_pwd");
-	    String mem_nickname = request.getParameter("mem_nickname");
-	    String mem_name = request.getParameter("mem_name");
-	    String mem_gender = request.getParameter("mem_gender");
-	    String mem_birth = request.getParameter("mem_birth");
-	    String mem_phonenum = request.getParameter("mem_phonenum");
-	    String mem_addr1 = request.getParameter("mem_addr1");
-	    String mem_addr2 = request.getParameter("mem_addr2");
-	    String mem_email = request.getParameter("mem_email");
-	    String mem_addr = mem_addr1 + " " + mem_addr2;
+		String mem_pwd = request.getParameter("mem_pwd");
+		String mem_name = request.getParameter("mem_name");
+		String to_mem_birth = request.getParameter("to_mem_birth");
+		Date mem_birth = df.parse(to_mem_birth);
+		System.out.println(mem_birth);
+		String mem_nickname = request.getParameter("mem_nickname");
+		String mem_gender = request.getParameter("mem_gender");
+		String mem_phonenum = request.getParameter("mem_phonenum");
+		String mem_email = request.getParameter("mem_email");
+		String mem_addr1 = request.getParameter("mem_addr1");
+		String mem_addr2 = request.getParameter("mem_addr2");
+		String mem_addr3 = request.getParameter("mem_addr3");
+		String mem_addr = mem_addr1 + " " + mem_addr2 + " " + mem_addr3;
 	      
 	    //암호화 처리
 	    //단방향 암호화
@@ -139,6 +153,35 @@ public class JoinController {
 	    dao.insertMembers(mem_id, mem_pwd, mem_nickname, mem_name, mem_gender, mem_birth, mem_phonenum, mem_addr, mem_email , logkey);
 	      
 	    return "login/joinEnd";
+	}
+	@ResponseBody
+	@RequestMapping(value = "/join/emailAuth", method = RequestMethod.POST)
+	public String emailAuth(String email) {
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111;
+		System.out.println("키 생성");
+//		이메일 보내기
+		String setFrom = "hayate5@naver.com";
+		String toMail = email;
+		String title = "회원가입 인증 이메일 입니다.";
+		String content = 
+				"홈페이지를 방문해주셔서 감사합니다." +
+				"<br><br>" +
+				"인증 번호는 " + checkNum + "입니다." +
+				"<br>" +
+				"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+	        MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+	        helper.setFrom(setFrom);
+	        helper.setTo(toMail);
+	        helper.setSubject(title);
+	        helper.setText(content,true);
+	        mailSender.send(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Integer.toString(checkNum);
 	}
 	
 }
