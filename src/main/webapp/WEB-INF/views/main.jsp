@@ -200,59 +200,30 @@ $(function(){
       
 
         <div id="front">
+        
+        <c:if test="${adto ne null }">
         <div id="recommend">
-            <h2>연령별 예약 추천</h2>
+            <h2>${age }대 HOT 5 숙소 !</h2>
             <table id="recom_table">
-                <tr>
-					<div class="main_rclist" style="width: 17rem;">
-					<a href="#">
-					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
-					  <div class="card-body">
-					  <h5 class="card-title">컨피네스 오션 스위트</h5>
-					    <p class="card-text">~ 132,000월 부터</p>
-					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
-						</div>
-						</a>
-					</div>
-                </tr>
-                <tr>
-                    <div class="main_rclist" style="width: 17rem;">
-					<a href="#">
-					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
-					  <div class="card-body">
-					  <h5 class="card-title">컨피네스 오션 스위트</h5>
-					    <p class="card-text">~ 132,000월 부터</p>
-					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
-						</div>
-						</a>
-					</div>
-                </tr>
-                <tr>
-                    <div class="main_rclist" style="width: 17rem;">
-					<a href="#">
-					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
-					  <div class="card-body">
-					  <h5 class="card-title">컨피네스 오션 스위트</h5>
-					    <p class="card-text">~ 132,000월 부터</p>
-					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
-						</div>
-						</a>
-					</div>
-                </tr>
-               <tr>
-                    <div class="main_rclist" style="width: 17rem;">
-					<a href="#">
-					  <img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="...">
-					  <div class="card-body">
-					  <h5 class="card-title">컨피네스 오션 스위트</h5>
-					    <p class="card-text">~ 132,000월 부터</p>
-					    <p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
-						</div>
-						</a>
-					</div>
-                </tr>
+            	
+            			<c:forEach items="${adto }" var="adto">
+            				<tr>
+								<div class="main_rclist" style="width: 17rem;">
+									<a href="#">
+					  					<img src="resources/upload/${adto.ai.acci_afterimg}" class="card-img-top" alt="${adto.ai.acci_afterimg}">
+					  					<div class="card-body">
+					  						<h5 class="card-title">${adto.acc_name }</h5>
+					    					<p class="card-text">${adto.r.rt_price }</p>
+					    					<p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+										</div>
+									</a>
+								</div>
+                			</tr>
+            			</c:forEach>
             </table>
         </div>
+        </c:if>
+        
         <div id="sale">
             <h2 style="margin-bottom: 30px;">오늘의 특가!</h2>
                 <div id="saleimg">   <!-- 특가 배너 이미지 -->

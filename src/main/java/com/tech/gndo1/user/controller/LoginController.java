@@ -22,7 +22,7 @@ public class LoginController {
 		return "login/login";
 	}
 	@RequestMapping("/loginProc")
-	public String loginProc(HttpServletRequest request, HttpSession session) {
+	public String loginProc(HttpServletRequest request) {
 		
 		String id = request.getParameter("id");
 		String sort = request.getParameter("sort"); 
@@ -32,14 +32,14 @@ public class LoginController {
 		if (sort.equals("members")) {
 			MembersDto mdto = dao.members(id);
 			
-			session = request.getSession();
+			HttpSession session = request.getSession();
 			session.setAttribute("mem_num", mdto.getMem_num());
 			session.setAttribute("mem_nickname", mdto.getMem_nickname());
 			
 		} else {
 			CompanyDto cdto = dao.company(id);
 			
-			session = request.getSession();
+			HttpSession session = request.getSession();
 			session.setAttribute("cpy_num", cdto.getCpy_num());
 			session.setAttribute("cpy_name", cdto.getCpy_name());
 		}
@@ -48,9 +48,9 @@ public class LoginController {
 		return "redirect:./";
 	}
 	@RequestMapping("/logout")
-	public String logout(HttpSession session, HttpServletRequest request) {
+	public String logout(HttpServletRequest request) {
 		
-		session = request.getSession();
+		HttpSession session = request.getSession();
 		session.invalidate();
 
 		return "redirect:./";
