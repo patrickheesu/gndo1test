@@ -16,6 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,21 @@ public class UserRestController {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	@PostMapping(value = "/join/duplicateCheck2" , produces = "application/json; charset=UTF-8" )
+	public String duplicateCheck2(String memberNk) throws Exception {
+		
+		UIDao dao = sqlSession.getMapper(UIDao.class);
+		
+		int count_nk = dao.check_nk(memberNk);
+		
+		String rt = "";  // return_text
+		
+		if (count_nk != 1)
+			rt = "true";		
+
+		return rt;
+	}
+	
 	@PostMapping(value = "/join/duplicateCheck" , produces = "application/json; charset=UTF-8" )
 	public String duplicateCheck(String memberId) throws Exception {
 		
@@ -40,6 +56,20 @@ public class UserRestController {
 		String rt = "";  // return_text
 		
 		if (count_mem + count_cpy != 1)
+			rt = "true";		
+
+		return rt;
+	}
+	@PostMapping(value = "/join/CpnCheck" , produces = "application/json; charset=UTF-8" )
+	public String CpnCheck(String memberCpnum) throws Exception {
+		
+		UIDao dao = sqlSession.getMapper(UIDao.class);
+		
+		int count_cpyNum = dao.check_cpyNum(memberCpnum);
+		
+		String rt = "";  // return_text
+		
+		if (count_cpyNum != 1)
 			rt = "true";		
 
 		return rt;

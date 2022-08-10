@@ -4,7 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tech.gndo1.user.dao.UIDao">
-
+	<!-- 소비자 닉네임 중복검사 -->
+	<select id="check_nk" resultType="Integer">
+		SELECT COUNT(MEM_NICKNAME) COUNT FROM MEMBERS WHERE MEM_NICKNAME=#{param1}
+	</select>
 	<!--중복검사, 로그인유효성 검사(id)-->
 	<select id="check_mem" resultType="Integer">
 		SELECT COUNT(MEM_ID) COUNT FROM MEMBERS WHERE MEM_ID=#{param1}
@@ -12,7 +15,10 @@
 	<select id="check_cpy" resultType="Integer">
 		SELECT COUNT(CPY_ID) COUNT FROM COMPANY WHERE CPY_ID=#{param1}
 	</select>
-	
+	<!-- 사업자등록번호 중복검사 -->
+	<select id="check_cpyNum" resultType="Integer">
+		SELECT COUNT(CPY_CPNUM) COUNT FROM COMPANY WHERE CPY_CPNUM=#{param1}
+	</select>
 	<!--로그인 유효성 검사(pwd)-->
 	<select id="login_checkmpwd" resultType="com.tech.gndo1.mb.dto.MembersDto">
 		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_ID=#{param1}
