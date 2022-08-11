@@ -36,6 +36,7 @@ public class JoinController {
 	@Autowired
 	private SqlSession sqlSession;
 	private String logkey = "";
+	@Autowired
 	private JavaMailSenderImpl mailSender;
 	
 	@RequestMapping("/join")
