@@ -337,7 +337,7 @@ function email_vc(){
 var email_auth_cd = ''; 
 
 $(".email_auth_btn").click(function(){
-	var email = $('#cpy_email').val();
+	var email = $('#mem_email').val();
 	if(email == ''){
 		alert("이메일을 입력해주세요.");
 		return false;
