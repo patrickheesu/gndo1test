@@ -46,6 +46,22 @@
   	<put-attribute name="title" value="소비자페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/mypage/members/mbPage.jsp"/>
   </definition>
+  <definition name="mypage/company/cpPage" extends="baseLayout">
+  	<put-attribute name="title" value="사업자페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/company/cpPage.jsp"/>
+  </definition>
+<definition name="totList" extends="baseLayout">
+  	<put-attribute name="title" value="검색페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/totList.jsp"/>
+  </definition>
+<definition name="mypage/members/mbPayment" extends="baseLayout">
+  	<put-attribute name="title" value="소비자결제내역페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/members/mbPayment.jsp"/>
+  </definition>
+<definition name="mypage/company/cpPayment" extends="baseLayout">
+  	<put-attribute name="title" value="사업자결제내역페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/company/cpPayment.jsp"/>
+  </definition>
 </tiles-definitions>
 
 

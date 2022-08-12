@@ -11,4 +11,77 @@
 		SELECT * FROM MEMBERS WHERE MEM_NUM=#{param1}
 	
 	</select>
+	<select id="accnamesel" resultType="String">
+		SELECT ACC_NAME FROM ACCOMMODATION_INFO A,ROOMTYPE R WHERE A.ACC_NUM=R.ACC_NUM AND R.RT_NUM=#{param1}
+	</select>
+	<insert id="reservein">
+		INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
+	
+	</insert>
+	<select id="reserveselect" resultType="Integer">
+		SELECT MAX(RS_NUM) FROM RESERVE WHERE MEM_NUM=#{param1}
+	</select>
+	<insert id="paymentin">
+		INSERT INTO PAYMENT VALUES(PAYMENT_SEQ.NEXTVAL,#{param1},SYSDATE,#{param2})
+	</insert>
+	<resultMap type="com.tech.gndo1.roomtype.dto.RoomTypeDto" id="roomtype">
+		<result property="rt_num" column="RT_NUM"/>
+		<result property="acc_num" column="ACC_NUM"/>
+		<result property="rt_rmname" column="RT_RMNAME"/>
+		<result property="rt_rmcount" column="RT_RMCOUNT"/>
+		<result property="rt_rpeople" column="RT_RPEOPLE"/>
+		<result property="rt_price" column="RT_PRICE"/>
+		<result property="rt_info" column="RT_INFO"/>
+		<result property="rt_in" column="RT_IN"/>
+		<result property="rt_out" column="RT_OUT"/>
+	</resultMap>
+	<resultMap type="com.tech.gndo1.cptype.dto.Accommodation_infoDto" id="accommodation_info">
+		<result property="acc_num" column="ACC_NUM"/>
+		<result property="cpy_num" column="CPY_NUM"/>
+		<result property="acc_location" column="ACC_LOCATION"/>
+		<result property="acc_map" column="ACC_MAP"/>
+		<result property="acc_la" column="ACC_LA"/>
+		<result property="acc_lo" column="ACC_LO"/>
+		<result property="acc_tel" column="ACC_TEL"/>
+		<result property="acc_info" column="ACC_INFO"/>
+		<result property="acc_serkeyword" column="ACC_SERKEYWORD"/>
+		<result property="acc_name" column="ACC_NAME"/>
+		<result property="acc_detailmap" column="ACC_DETAILMAP"/>
+	</resultMap>
+	<resultMap type="com.tech.gndo1.payment.dto.PaymentDto" id="payment">
+		<result property="pm_num" column="PM_NUM"/>
+		<result property="rs_num" column="RS_NUM"/>
+		<result property="pm_date" column="PM_DATE"/>
+		<result property="pm_type" column="PM_TYPE"/>
+	</resultMap>
+	<resultMap type="com.tech.gndo1.payment.dto.ReserveDto" id="reserve">
+		<result property="rs_num" column="RS_NUM"/>
+		<result property="mem_num" column="MEM_NUM"/>
+		<result property="rt_num" column="RT_NUM"/>
+		<result property="rs_start" column="RS_START"/>
+		<result property="rs_end" column="RS_END"/>
+		<result property="rs_people" column="RS_PEOPLE"/>
+		<result property="rs_name" column="RS_NAME"/>
+		<result property="rs_pnum" column="RS_PNUM"/>
+		
+		<collection property="acc" resultMap="accommodation_info"/>
+		<collection property="rt" resultMap="roomtype"/>
+	</resultMap>
+	<select id="mbpaymentselect" resultType="com.tech.gndo1.payment.dto.ReserveDto" resultMap="reserve">
+		SELECT * FROM RESERVE R,PAYMENT P,ACCOMMODATION_INFO A,ROOMTYPE RT
+		WHERE R.RS_NUM=P.RS_NUM AND A.ACC_NUM=RT.ACC_NUM AND RT.RT_NUM=R.RT_NUM AND R.MEM_NUM=#{param1}
+		AND NOT P.PM_NUM IN (SELECT PC.PM_NUM FROM PAYMENT PM, PAY_CANCLE PC WHERE PM.PM_NUM=PC.PM_NUM)
+	</select>
+	<select id="cppaymentselect" resultType="com.tech.gndo1.payment.dto.ReserveDto" resultMap="reserve">
+		SELECT * FROM RESERVE R,PAYMENT P ,ACCOMMODATION_INFO A, ROOMTYPE RT 
+		WHERE R.RS_NUM=P.RS_NUM AND A.ACC_NUM=RT.ACC_NUM AND RT.RT_NUM=R.RT_NUM 
+		AND RT.ACC_NUM = (SELECT A.ACC_NUM FROM COMPANY C, ACCOMMODATION_INFO A WHERE C.CPY_NUM=A.CPY_NUM AND A.CPY_NUM=#{param1})
+		AND NOT P.PM_NUM IN (SELECT PC.PM_NUM FROM PAYMENT PM, PAY_CANCLE PC WHERE PM.PM_NUM=PC.PM_NUM)
+	</select>
+	<select id="mbpaycancelselect" resultType="com.tech.gndo1.payment.dto.ReserveDto" resultMap="reserve">
+		SELECT * FROM RESERVE R,PAYMENT P,ACCOMMODATION_INFO A,ROOMTYPE RT WHERE R.RS_NUM=P.RS_NUM AND A.ACC_NUM=RT.ACC_NUM AND RT.RT_NUM=R.RT_NUM AND P.PM_NUM=#{param1}
+	</select>
+	<insert id="paycancelin">
+		INSERT INTO PAY_CANCLE VALUES(PAY_CANCLE_SEQ.NEXTVAL,#{param1},#{param3},#{param4},#{param2},SYSDATE)
+	</insert>
 </mapper>

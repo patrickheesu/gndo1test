@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tech.gndo1.cptype.dao.CIDao;
 import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
-import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
 @Controller
 public class CptypeController {
@@ -89,58 +88,79 @@ public class CptypeController {
 	@RequestMapping("/cpRoomInsert2")
 	public String cpRoomInsert2(MultipartHttpServletRequest mtfrequest,Model model,HttpSession session) {
 		CIDao dao=sqlSession.getMapper(CIDao.class);
-		
-		String acc_num=mtfrequest.getParameter("accsel");
-		System.out.println(acc_num);
+		int cpy_num=(Integer)session.getAttribute("cpy_num");
+		String acc_num=mtfrequest.getParameter("acc_num");
 		Accommodation_infoDto cdto=dao.cptype(acc_num);
+		System.out.println(acc_num);
 		session.setAttribute("acc_num", cdto.getAcc_num());
 		int acc_nu=(Integer)session.getAttribute("acc_num");
 		System.out.println(acc_nu);
-		String rt_rmname=mtfrequest.getParameter("rt_rmname");
-		String rt_rmcount=mtfrequest.getParameter("rt_rmcount");
-		String rt_rpeople=mtfrequest.getParameter("rt_rpeople");
-		String rt_price=mtfrequest.getParameter("rt_price");
-		String rt_info=mtfrequest.getParameter("rt_info");
-		String rt_in=mtfrequest.getParameter("rt_in");
-		String rt_out=mtfrequest.getParameter("rt_out");
-		dao.rtInsert(rt_rmname,rt_rmcount,rt_rpeople,rt_price,rt_info,rt_in,rt_out,acc_nu);
-	
-		int rt_num=dao.selrt_num();
-		
+		int countnum=Integer.parseInt(mtfrequest.getParameter("addcount"));
+		System.out.println(countnum);
 		String root="C:\\javasbigspring\\springwork22\\gndo1test2\\src\\main\\webapp\\resources\\upload";
-		List<MultipartFile> fileList= mtfrequest.getFiles("file");
-		
-		for (MultipartFile mf : fileList) {
-			String originFile=mf.getOriginalFilename();
-			long longtime=System.currentTimeMillis();
-			String changeFile=longtime+"_"+mf.getOriginalFilename();
-			String pathfile=root+"\\"+originFile;
-			String after_pathfile = root + "\\" + changeFile;
-			try {
-				if (!originFile.equals("")) {
-					mf.transferTo(new File(after_pathfile));
-					dao.rtimginsert(originFile,rt_num,changeFile);
+		for (int i = 1; i < countnum + 1; i++) {
+			String rt_rmname=mtfrequest.getParameter("rt_rmname"+i);
+			String rt_rmcount=mtfrequest.getParameter("rt_rmcount"+i);
+			String rt_rpeople=mtfrequest.getParameter("rt_rpeople"+i);
+			String rt_price=mtfrequest.getParameter("rt_price"+i);
+			String rt_info=mtfrequest.getParameter("rt_info"+i);
+			String rt_in=mtfrequest.getParameter("rt_in"+i);
+			String rt_out=mtfrequest.getParameter("rt_out"+i);
+			dao.rtInsert(rt_rmname,rt_rmcount,rt_rpeople,rt_price,rt_info,rt_in,rt_out,acc_nu);
+			int rt_num=dao.selrt_num();
+			
+				List<MultipartFile> fileList= mtfrequest.getFiles("file"+i);
+				for (MultipartFile mf : fileList) {
+					String originFile=mf.getOriginalFilename();
+					long longtime=System.currentTimeMillis();
+					String changeFile=longtime+"_"+mf.getOriginalFilename();
+					String pathfile=root+"\\"+originFile;
+					String after_pathfile = root + "\\" + changeFile;
+					try {
+						if (!originFile.equals("")) {
+							mf.transferTo(new File(after_pathfile));
+							dao.rtimginsert(originFile,rt_num,changeFile);
+						}
+					}catch (Exception e) { }
 				}
-			}catch (Exception e) { }
-		}
+			}
 		
+//		String rt_rmname=mtfrequest.getParameter("rt_rmname");
+//		String rt_rmcount=mtfrequest.getParameter("rt_rmcount");
+//		String rt_rpeople=mtfrequest.getParameter("rt_rpeople");
+//		String rt_price=mtfrequest.getParameter("rt_price");
+//		String rt_info=mtfrequest.getParameter("rt_info");
+//		String rt_in=mtfrequest.getParameter("rt_in");
+//		String rt_out=mtfrequest.getParameter("rt_out");
+//		dao.rtInsert(rt_rmname,rt_rmcount,rt_rpeople,rt_price,rt_info,rt_in,rt_out,acc_nu);
+	
+		
+		
+		
+		
+		
+		
+		int acc_cnt=dao.acccnt(cpy_num);
+		model.addAttribute("acccnt",acc_cnt);
 		return "mypage/company/cpPage"; //사업자 페이지로 이동
 				
 	}
+	@RequestMapping("/cpRoomAdd")
+	 public String cpRoomAdd(Model model,HttpSession session) {
+		CIDao cdao=sqlSession.getMapper(CIDao.class);
+		int cpy_num=(Integer)session.getAttribute("cpy_num");
+		int acc_num=cdao.accsel(cpy_num);
+		model.addAttribute("accsel",acc_num);
+		
+		 return "mypage/company/cpRoomInsert";
+	 }
 	@RequestMapping("/htList")
 	public String htList() {
 		return "hotel/htList";
 		
 	}
-	@RequestMapping("/htDetail")
-	public String htDetail(Model model) {
-		CIDao dao=sqlSession.getMapper(CIDao.class);
-		List<RoomTypeDto> rdto=dao.htsel();
-		model.addAttribute("rdto",rdto);
-		System.out.println(rdto);
-		
-		
-		
-		return "hotel/htDetail";
+	@RequestMapping("/testpage")
+	public String testtest() {
+		return "testpage";
 	}
 }

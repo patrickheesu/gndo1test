@@ -22,10 +22,21 @@ public interface CIDao {
 			String rt_out,int acc_nu);
 
 	int accsel(int cpy_num);
-
+	
 	Accommodation_infoDto cptype(String acc_num);
 
 	List<RoomTypeDto> htsel();
+	int acccnt(int cpy_num);
+
+	List<RoomTypeDto> rtnumsel(int acc_num);
+
+	Accommodation_infoDto cptypesel(int acc_num);
+
+	void rtnumdel(String rt_num);
+
+	List<RoomTypeDto> rtimgselect(int acc_num);
+
+
 
 //	public CpTypeDto accinfo();
 

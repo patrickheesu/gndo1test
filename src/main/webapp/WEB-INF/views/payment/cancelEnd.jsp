@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>예약·결제 취소 페이지</h1>
+	예약·결제 취소가 완료 되었습니다.
+	<a href="main">메인으로 가기</a> <a href="mbpayment">결제내역으로 가기</a>
 </body>
 </html>
