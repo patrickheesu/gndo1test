@@ -24,9 +24,19 @@
    
          <div class="mypage_button">
          <div class="box bg-1">
+           
+           <c:choose>
+           	<c:when test="${acccnt eq 1 }">
+           	<a style="color: gray;" title="Button fade blue/green" class="button btnFade btnBlueGreen" onclick="acc()">사업장 등록</a>
+           <a href="cpRoomAdd" title="Button fade blue/green" class="button btnFade btnBlueGreen">객실 추가 등록</a>
+           <a href="cppayment" title="Button fade blue/green" class="button btnFade btnBlueGreen">예약 및 결제 현황</a>
+           </c:when>
+           <c:otherwise>
            <a href="cpinsert" title="Button fade blue/green" class="button btnFade btnBlueGreen">사업장 등록</a>
-           <a href="htDetail" title="Button fade blue/green" class="button btnFade btnBlueGreen">내 사업장 관리</a>
-           <a href="#" title="Button fade blue/green" class="button btnFade btnBlueGreen">예약 및 결제 현황</a>
+           <a style="color: gray;" title="Button fade blue/green" class="button btnFade btnBlueGreen" onclick="accin()">객실 추가 등록</a>
+           <a style="color: gray;" title="Button fade blue/green" class="button btnFade btnBlueGreen" onclick="accin()">예약 및 결제 현황</a>
+           </c:otherwise>
+           </c:choose>
          </div>
          </div>
          
@@ -53,6 +63,13 @@
    
    </div>
 </div>
-
+<script>
+	function accin(){
+		alert("사업장 등록을 먼저 해주세요");
+	}	
+	function acc(){
+		alert("이미 사업장등록이 되어있습니다");
+	}
+</script>
 </body>
 </html>

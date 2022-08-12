@@ -36,9 +36,21 @@
 	<select id="cptype" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto">
 		SELECT * FROM ACCOMMODATION_INFO WHERE ACC_NUM=#{param1}
 	</select>
+	<select id="cptypesel" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto">
+		SELECT * FROM ACCOMMODATION_INFO WHERE ACC_NUM=#{param1}
+	</select>
 	<select id="htsel" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto">
 		SELECT * FROM ROOMTYPE
 	</select>
+	<select id="acccnt" resultType="Integer">
+		SELECT COUNT(ACC_NUM) FROM ACCOMMODATION_INFO WHERE CPY_NUM=#{param1}
+	</select>
+	<select id="rtnumsel" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto">
+		SELECT RT_NUM FROM ROOMTYPE WHERE ACC_NUM=#{param1}
+	</select>
+	<delete id="rtnumdel">
+		DELETE FROM ROOMTYPE WHERE RT_NUM=#{param1}
+	</delete>
 <!-- 	<select id="rlist" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto"> -->
 <!-- 		SELECT RT_NUM,ACC_NUM,RT_RMNAME,RT_RMCOUNT, -->
 <!-- 		RT_RPEOPLE,RT_PRICE,RT_INFO,RT_IN,RT_OUT -->

@@ -8,6 +8,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <script>
         // 클릭 카운트
@@ -23,6 +25,9 @@
         // 더하기/빼기
         if(type === 'plus') {
             number = parseInt(number) + 1;
+            if (number>${rdto.rt_rpeople}) {
+				number=${rdto.rt_rpeople};
+			}
         }else if(type === 'minus')  {
             number = parseInt(number) - 1;
             if (number<0)
@@ -55,20 +60,21 @@
 <body>
 <%-- <c:forEach items="${rdto}" var="dto"> --%>
 <div id="tablediv">
+
 <table class="ctable">
         <tr>
             <td>
-                <h1 class="h1">호텔</h1>
+                <h1 class="h1">${acc_name }</h1>
             </td>
         </tr>
         <tr>
             <td>
                 <h3>${rdto.rt_rmname}</h3>
             </td>
-            <td><img src="resources/img/reserve/객실1.png" width="700px;" height="400"/></td>
-        </tr> 
+            <td><img src="resources/image/객실1.png" width="700px;" height="400"/></td>
+        </tr>
         <tr>
-            <td>2022.07.18(월) ~ 2022.07.19(화)</td>
+            <td>체크인<input type="date" id="theDate1" />체크아웃<input type="date" id="theDate2" /></td>
         </tr>
         <tr>
             <td>체크인 ${rdto.rt_in } 체크아웃 ${rdto.rt_out } </td>
@@ -84,9 +90,9 @@
     <div class="cdiv">
     <h2>예약자 정보</h2>
     <h3>이름</h3> 
-    <input type="text" id="memname" placeholder="홍길동" onfocus="this.placeholder=''" onblur="this.placeholder='홍길동'"> <br>
+    <input type="text" name="memname" id="memname" placeholder="" onfocus="this.placeholder=''" onblur="this.placeholder=''"> <br>
     <h3>핸드폰번호</h3>
-    <input type="text" id="memtel" placeholder="010-0000-0000" onfocus="this.placeholder=''" onblur="this.placeholder='010-0000-0000'"> <br>
+    <input type="text" name="memtel" id="memtel" oninput="autoHyphen2(this)" maxlength="13"> <br>
     <input type="checkbox" name="meminfo" id="meminfo" value="mbinfo" onclick="sameinfo()" />회원정보와같음 <br />
     <h3>인원수</h3>
     <div id="count">
@@ -206,9 +212,32 @@
       </div>
     </div>
 <br /><br />
-<input type="button"  onclick="payment();" value="결제하기"/> <br /></div>
+<input type="button" onclick="payment();"  value="결제하기"/> <br /></div>
 <input type="button"  onclick="checkcheck();" value="테스트"/>
-<script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() +1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;       
+    document.getElementById("theDate1").value = today;
+    
+    date.setDate(date.getDate()+1);
+     var day = date.getDate();
+     var month = date.getMonth() +1;
+     var year = date.getFullYear();
+     if (month < 10) month = "0" + month;
+     if (day < 10) day = "0" + day;
+     var today = year + "-" + month + "-" + day;
+    document.getElementById("theDate2").value = today;
+});
 
 function sameinfo(){	
 	if (document.getElementById("meminfo").checked) {		
@@ -222,7 +251,9 @@ function sameinfo(){
 
 
 function checkcheck(){
-	alert($('input[name="agree"]:checked').val());
+	alert("dddddd");
+	
+// 	location.href="main?mem_num=${rdto.rt_price}";
 // 	 const query = 'input[name="agree"]:checked';
 // 	  const selectedEls = 
 // 	      document.querySelectorAll(query);
@@ -258,45 +289,89 @@ function checkSelectAll()  {
 	}
 function selectAll(selectAll)  {
   const checkboxes 
-     = document.querySelectorAll('input[type="checkbox"]');
+     = document.querySelectorAll('input[name="agree"]');
   
   checkboxes.forEach((checkbox) => {
     checkbox.checked = selectAll.checked
   })
 }
+
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script>
-	function payment(){
-// 		alert($('input[name="pay_type"]:checked').val());
+<script type="text/javascript">
+const resultElement1 = document.getElementById('result');
+const ran1 = Math.random();
+const ran2 = Math.random();
+const ran3 = Math.random();
+const autoHyphen2 = (target) => {
+	 target.value = target.value
+	   .replace(/[^0-9]/g, '')
+	  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	}
+
+function payment(){
+		rs_start=$("#theDate1").val();
+		rs_end=$("#theDate2").val();
+		rs_people=resultElement1.innerText;
+		rs_name=$("#memname").val();
+		rs_pnum=$("#memtel").val();
+		pm_type=$('input[name="pay_type"]:checked').val();		
+		alert(rs_start);
+		alert(rs_end);
+		alert(rs_people);
+		alert(rs_name);
+		alert(rs_pnum);
+		alert(pm_type);
+		
+		alert("dd");
+		const text = $("#memtel").val();
+		const regPhone=/^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/;
+		if ($('input[name="agree"]:checked').val()=="nineteen") {
+			if ($('input[name="pay_type"]:checked').val()=="Kakao" || $('input[name="pay_type"]:checked').val()=="Toss" || $('input[name="pay_type"]:checked').val()=="Card") {
+				if ($("#memname").val()!=="" && $("#memtel").val()!=="" ) {
+					if (resultElement1.innerText > 0) {
+						if (regPhone.test(text) === true) {	
+				alert("결제를진행함미다");	
+				paymenting();
+				
+	
+						}else{alert("휴대폰번호를 정확히 입력해주세요");}														
+					}else{alert("인원수를 입력해주세요");}
+				}else{alert("예약자 정보를 입력해주세요");}
+			}else{alert("결제수단을 선택해주세요");}
+		}else{alert("[필수]만 19세 이상 이용 동의를 체크해주세요");}
+		
+	}
+	function paymenting(){
 		var Kakao = "";
 		var Toss = "";
 		var Card = "";
+		
 		if ($('input[name="pay_type"]:checked').val()=="Kakao") {
 			paymentKakao();
 		}else if ($('input[name="pay_type"]:checked').val()=="Toss") {
 			paymentToss();
 		}else if ($('input[name="pay_type"]:checked').val()=="Card") {
 			paymentCard();
-		}
-		
-		
+		}		
 	}
+	
 function paymentKakao(data){
 	IMP.init('imp23258415');
 	IMP.request_pay({
 		pg: 'kakaopay',
 		pay_method: "card",
-		merchant_uid: "iamport_test_idhhjsffdfeeee",
+		merchant_uid: ""+ran1+"",
 		name: "${rdto.rt_rmname}",
-		amount: ${rdto.rt_price},
+		amount: "${rdto.rt_price}",
 		buyer_email: "${mdto.mem_email}",
 		buyer_name: "${mdto.mem_name}",
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
 			alert("완료 -> imp_uid : "+rsp.imp_uid+" / mercha  nt_uid(orderKey) : "+rsp.merchant_uid);
+			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
 			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");
 		}
@@ -307,15 +382,16 @@ function paymentCard(data){
 	IMP.request_pay({
 		pg: 'html5_inicis',
 		pay_method: "card",
-		merchant_uid: "aaaa",
+		merchant_uid: ""+ran2+"",
 		name: "${rdto.rt_rmname}",
-		amount: ${rdto.rt_price},
+		amount: 1,
 		buyer_email: "${mdto.mem_email}",
 		buyer_name: "${mdto.mem_name}",
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
 			alert("완료 -> imp_uid : "+rsp.imp_uid+" / merchant_uid(orderKey) : "+rsp.merchant_uid);
+			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
 			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");
 		}
@@ -326,17 +402,18 @@ function paymentToss(data){
 	IMP.request_pay({
 		pg: 'tosspay',
 		pay_method: "card",
-		merchant_uid: "iamport_test_idddhsffdfeeeed",
+		merchant_uid: ""+ran3+"",
 		name: "${rdto.rt_rmname}",
-		amount: ${rdto.rt_price},
+		amount: 1,
 		buyer_email: "${mdto.mem_email}",
 		buyer_name: "${mdto.mem_name}",
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
 			alert("완료 -> imp_uid : "+rsp.imp_uid+" / merchant_uid(orderKey) : "+rsp.merchant_uid);
+			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
-			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");
+			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");			
 		}
 	});
 	}
