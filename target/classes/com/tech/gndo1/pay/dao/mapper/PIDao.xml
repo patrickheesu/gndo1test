@@ -64,6 +64,7 @@
 		<result property="rs_name" column="RS_NAME"/>
 		<result property="rs_pnum" column="RS_PNUM"/>
 		
+		<collection property="pay" resultMap="payment"/>
 		<collection property="acc" resultMap="accommodation_info"/>
 		<collection property="rt" resultMap="roomtype"/>
 	</resultMap>
