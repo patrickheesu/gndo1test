@@ -29,4 +29,8 @@ public interface UIDao {
 	public void insertMembers(String mem_id, String mem_pwd, String mem_nickname, String mem_name, String mem_gender, 
 			Date mem_birth, String mem_phonenum, String mem_addr, String mem_email, String logkey);
 
+	public int acccnt(int cpy_num);
+
+	public int accsel(int cpy_num);
+
 }
