@@ -6,7 +6,17 @@ import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.mb.dto.MembersDto;
 
 public interface UIDao {
+	public String find_memid(String memName, String memEmail);
+	public String find_cpyid(String cpyName, String cpyEmail);
 	
+	public int m_Existent(String memId, String memEmail);
+	public void mpChange(String cn, String logkey, String memId, String memEmail);
+	
+	public int c_Existent(String cpyId, String cpyEmail);
+	public void cpChange(String cn, String logkey, String cpyId, String cpyEmail);
+	
+	public int check_memail(String email);
+	public int check_cpmail(String email);	
 	public int check_nk(String memberNk);
 
 	public int check_mem(String memberId);

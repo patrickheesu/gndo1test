@@ -22,26 +22,30 @@
             margin: auto;
             text-align: center;
         }
-		#button1{
-    background-color: rgb(0, 145, 255);
-    border-color: transparent;
-    border-radius: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
-}
-#button2{
-    background-color: rgb(0, 145, 255);
-    border-color: transparent;
-    border-radius: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
-}
+		#button{
+		    background-color: rgb(0, 145, 255);
+		    border-color: transparent;
+		    border-radius: 3px;
+		    padding-left: 110px;
+		    padding-right: 110px;
+		    padding-top: 5px;
+		    padding-bottom: 5px;
+		    color: white;
+		    font-size: large;
+		    margin-top: 10px;
+		    margin-left: 10px;
+		}
+		.button1,.button2{
+		    background-color: rgb(0, 145, 255);
+		    border-color: transparent;
+		    border-radius: 3px;
+		    padding-left: 24px;
+		    padding-right: 18px;
+		    padding-top: 5px;
+		    padding-bottom: 5px;
+		    color: white;
+		    margin-top: 10px;
+		}
 
 
     </style>
@@ -59,16 +63,15 @@
             <td class="account">비밀번호</td>
             <td colspan="2"><input type="password" placeholder="********" name="pass" id="pwd" class="account2"></td>
         </tr>
-        
-
     </table>
     <input type="radio" class="radio" value="members" name="sort" checked>
     	<label>소비자</label>
     <input type="radio" class="radio" value="company" name="sort">
     	<label>사업자</label> <br>
-    <input id="button1" type="submit" value="로그인" style="margin-right: 5px;" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)"/>
     <!-- <a href="../main"><button id="button" style="margin-right: 5px;" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">로그인</button></a> -->
-    <button type="button" id="button2" style="margin-left: 10px;" onclick="gojoin();" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">회원가입</button>
+    <button type="button" class="button1" style="margin-left: 10px;" onclick="gojoin();" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">회원가입</button>
+    <button type="button" class="button2" onclick="goidAssistance();" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">아이디/비밀번호 찾기</button><br />
+    <input id="button" type="submit" value="로그인" style="margin-right: 5px;" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)" size="50"/> 
     </form>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -84,6 +87,10 @@
         function gojoin(){
         	
         	location.href='join';
+        }
+		function goidAssistance(){
+        	
+        	location.href='idAssistance';
         }
         function login_check(){
         	var check_id = $('#id').val();
