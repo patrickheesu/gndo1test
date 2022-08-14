@@ -175,7 +175,6 @@ function addroominsertform(){
 }
 
 function delroom(thisno){
-	alert(thisno);
 	var htmltxt="";
 	$.ajax({
 		type:"post",
