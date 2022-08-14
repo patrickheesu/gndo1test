@@ -89,5 +89,10 @@
    <select id="myPage_mem" resultType="com.tech.gndo1.mb.dto.MembersDto">
 		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_NUM=#{param1}
 	</select>
+	
+	<!-- cpPage 비밀번호 추출 -->
+   <select id="myPage_cpy" resultType="com.tech.gndo1.cp.dto.CompanyDto">
+		SELECT CPY_PWD, CPY_LOGKEY FROM COMPANY WHERE CPY_NUM=#{param1}
+	</select>
 
 </mapper>
