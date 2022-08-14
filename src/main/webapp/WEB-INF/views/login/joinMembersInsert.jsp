@@ -338,24 +338,34 @@ var email_auth_cd = '';
 
 $(".email_auth_btn").click(function(){
 	var email = $('#mem_email').val();
-	if(email == ''){
-		alert("이메일을 입력해주세요.");
-		return false;
-	}else if(email != ''){
+	var data = {email : email}
 		$.ajax({
-			type : "POST",
-			url : "<%=path%>/join/emailAuth",
-			data : {email : email},
-			success: function(data){
-				alert("인증번호가 발송되었습니다.");
-				email_auth_cd = data;
-				console.log(email_auth_cd);
-			},
-			error: function(data){
-				alert("메일 발송에 실패했습니다.");
+			type : 'POST' ,
+		   	url : '<%=path%>/join/duplicateCheck3',
+		   	async : false ,
+			data : data,
+			dataType : 'text',
+			success : function(result) {
+				if (result != 'true') {
+					alert("중복된 이메일입니다.");
+				}else if(result == 'true'){
+					$.ajax({
+						type : "POST",
+						url : "<%=path%>/join/emailAuth",
+						async : false ,
+						data : {email : email},
+						success: function(data){
+							alert("인증번호가 발송되었습니다.");
+							email_auth_cd = data;
+							console.log(email_auth_cd);
+						},
+						error: function(data){
+							alert("메일 발송에 실패했습니다.");
+						}
+					});
+				}
 			}
 		});
-	}
 });
 $("#email_auth_key").keyup(function(){
 	console.log(email_auth_cd);

@@ -1,0 +1,39 @@
+body{
+	text-align: center;
+	margin: auto;
+}
+.a{
+	width: 200px;
+	height: 200px;
+}
+.b{
+	margin: auto;
+	text-align: center;
+}
+.c{
+	text-decoration-line: none;
+	margin: 20px 40px 20px 40px;
+	font-size: x-large;
+}
+.d{
+	position: relative;
+}
+table{
+	margin: auto; 
+}
+.memberstable, .companytable{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: x-large;
+}
+input{
+	line-height: 25px;
+	margin-left: 10px;
+}
+.button{
+	line-height: 25px;
+	margin-left: 10px;
+}
+.output{
+	padding-bottom: 10px;
+}

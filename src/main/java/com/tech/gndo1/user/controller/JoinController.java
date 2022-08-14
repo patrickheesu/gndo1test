@@ -39,6 +39,16 @@ public class JoinController {
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 	
+	@RequestMapping("/idAssistance")
+	public String idAssistance() {
+		return "login/idAssistance";
+	}
+	
+	@RequestMapping("/passAssistance")
+	public String passAssistance() {
+		return "login/passAssistance";
+	}
+	
 	@RequestMapping("/join")
 	public String join() {
 		return "login/join";
