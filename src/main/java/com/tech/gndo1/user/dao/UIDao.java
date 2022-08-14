@@ -42,5 +42,8 @@ public interface UIDao {
 	public int acccnt(int cpy_num);
 
 	public int accsel(int cpy_num);
+	
+	public MembersDto myPage_mem(int mem_num);
+
 
 }

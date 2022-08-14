@@ -84,4 +84,10 @@
 	<select id="accsel" resultType="Integer">
 		SELECT ACC_NUM FROM ACCOMMODATION_INFO WHERE CPY_NUM=#{param1}
 	</select>
+	
+	<!-- mbPage 비밀번호 추출 -->
+   <select id="myPage_mem" resultType="com.tech.gndo1.mb.dto.MembersDto">
+		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_NUM=#{param1}
+	</select>
+
 </mapper>
