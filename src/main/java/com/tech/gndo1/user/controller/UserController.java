@@ -48,5 +48,14 @@ public class UserController {
 		return "mypage/members/mbModify";
 	}
 
+	@RequestMapping("/cpModify")
+	public String cpModify() {
+		return "mypage/company/cpModify";
+	}
+	
+	@RequestMapping("/mbreview")
+	public String mbreview() {
+		return "mypage/members/mbReview";
+	}
 	
 }

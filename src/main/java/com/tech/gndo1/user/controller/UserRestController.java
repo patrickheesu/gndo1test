@@ -359,5 +359,44 @@ public class UserRestController {
 		return check_bool;
 	}
 	
+	@PostMapping("/myPage/cpPwdCheck")
+	public String cpPwdCheck(HttpServletRequest request, String password) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+		System.out.println("in"+password);
+		UIDao dao = sqlSession.getMapper(UIDao.class);
+		
+		String check_bool = "default";
+		String solve_pwd = "";
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("cpy_num") != null) {
+			int cpy_num = (Integer)session.getAttribute("cpy_num");
+			CompanyDto cdto = dao.myPage_cpy(cpy_num);
+			String db_key = cdto.getCpy_logkey();
+			String db_pwd = cdto.getCpy_pwd();
+			byte[] keyBytes = new byte[16];
+			System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+			SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+			Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			String iv = db_key.substring(0, 16);
+			byte[] ivBytes = new byte[16];
+			System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+			c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+			byte[] byteStr = Base64.getDecoder().decode(db_pwd);
+			solve_pwd = new String(c.doFinal(byteStr), "utf-8");			
+			
+				if (password.equals(solve_pwd)) {
+					check_bool = "true";
+				} else {
+					check_bool = "false";
+				}
+		} else {
+			check_bool = "logout";
+		}
+		
+		
+		System.out.println(check_bool);
+		return check_bool;
+	}
+	
 	
 }

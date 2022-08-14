@@ -50,7 +50,7 @@
 						<b>비밀번호 확인</b> <br />
    						<div id="pass1">
    							비밀번호 재입력 
-   							<input type="text" id="password"/><input type="button" value="확인" onclick="passCheck();"/>
+   							<input type="password" id="password"/><input type="button" value="확인" onclick="passCheck();"/>
    							 <br />
    							</div>
    						· 외부로부터 회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다. <br />
@@ -103,6 +103,7 @@
 <script>
 function pwdCheck() {
 	console.log("pop");
+	$("#password").val("");
 	$("#popup").bPopup();
 }
 function passCheck() {
