@@ -31,12 +31,14 @@ public interface CIDao {
 	List<RoomTypeDto> rtnumsel(int acc_num);
 
 	Accommodation_infoDto cptypesel(int acc_num);
+	
+	void rtdel(String rt_num);
+	void rtidel(String rt_num);
 
-	void rtnumdel(String rt_num);
 
 	List<RoomTypeDto> rtimgselect(int acc_num);
 
-
+	List<RoomTypeDto> accroomselect(int acc_num);
 
 //	public CpTypeDto accinfo();
 

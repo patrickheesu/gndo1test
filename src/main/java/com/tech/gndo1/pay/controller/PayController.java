@@ -44,8 +44,6 @@ public class PayController {
 		int rt_num=Integer.parseInt(request.getParameter("rt_num"));
 		String rs_start=request.getParameter("rs_start");
 		String rs_end=request.getParameter("rs_end");
-		System.out.println(rs_start);
-		System.out.println(rs_end);
 		int rs_people=Integer.parseInt(request.getParameter("rs_people"));
 		String rs_name=request.getParameter("rs_name");
 		String rs_pnum=request.getParameter("rs_pnum");
@@ -62,10 +60,10 @@ public class PayController {
 		PIDao pdao=sqlSession.getMapper(PIDao.class);
 		HttpSession session=request.getSession();
 		int mem_num=(Integer)(session.getAttribute("mem_num"));
-		System.out.println(mem_num);
 		List<ReserveDto> rdto=pdao.mbpaymentselect(mem_num);
-		System.out.println(rdto.get(0).getRs_people());
-		System.out.println(rdto.get(0).getPay().getPm_type());
+		if (rdto.size()==0) {
+			model.addAttribute("paycheck",rdto.size());
+		}
 		model.addAttribute("rdto",rdto);
 		
 		return "mypage/members/mbPayment";
@@ -75,9 +73,10 @@ public class PayController {
 		PIDao pdao=sqlSession.getMapper(PIDao.class);
 		HttpSession session=request.getSession();
 		int cpy_num=(Integer)(session.getAttribute("cpy_num"));
-		System.out.println(cpy_num);
-		System.out.println("dddd");
 		List<ReserveDto> rdto=pdao.cppaymentselect(cpy_num);
+		if (rdto.size() ==0) {
+			model.addAttribute("paycheck",rdto.size());
+		}
 		model.addAttribute("rdto",rdto);
 		
 		
@@ -89,7 +88,6 @@ public class PayController {
 		PIDao pdao=sqlSession.getMapper(PIDao.class);
 		int pm_num=Integer.parseInt(request.getParameter("pm_num"));
 		List<ReserveDto> rdto=pdao.mbpaycancelselect(pm_num);
-		System.out.println(rdto);
 		model.addAttribute("rdto",rdto);
 		return "payment/cancel";
 	}
@@ -101,7 +99,6 @@ public class PayController {
 		List<ReserveDto> rdto=pdao.mbpaycancelselect(pm_num);
 		int rt_price=rdto.get(0).getRt().getRt_price();
 		double pc_appamt=rt_price*0.9;
-		System.out.println(pc_appamt);
 		pdao.paycancelin(pm_num,pc_reason,rt_price,pc_appamt);
 		return "payment/cancelEnd";
 	}

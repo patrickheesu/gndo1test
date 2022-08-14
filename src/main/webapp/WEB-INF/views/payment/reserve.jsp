@@ -213,7 +213,6 @@
     </div>
 <br /><br />
 <input type="button" onclick="payment();"  value="결제하기"/> <br /></div>
-<input type="button"  onclick="checkcheck();" value="테스트"/>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -245,28 +244,6 @@ function sameinfo(){
 		$('#memtel').val("${mdto.mem_phonenum}");
 	}
 	
-}
-
-
-
-
-function checkcheck(){
-	alert("dddddd");
-	
-// 	location.href="main?mem_num=${rdto.rt_price}";
-// 	 const query = 'input[name="agree"]:checked';
-// 	  const selectedEls = 
-// 	      document.querySelectorAll(query);
-	  
-// 	  // 선택된 목록에서 value 찾기
-// 	  let result = '';
-// 	  selectedEls.forEach((el) => {
-// 	    result += el.value + ' ';
-// 	  });
-// 	  if (result==nineteen'') {
-// 		alert("dff");
-// 	}
-// 	  alert(result);
 }
 
 function checkSelectAll()  {
@@ -317,14 +294,7 @@ function payment(){
 		rs_name=$("#memname").val();
 		rs_pnum=$("#memtel").val();
 		pm_type=$('input[name="pay_type"]:checked').val();		
-		alert(rs_start);
-		alert(rs_end);
-		alert(rs_people);
-		alert(rs_name);
-		alert(rs_pnum);
-		alert(pm_type);
 		
-		alert("dd");
 		const text = $("#memtel").val();
 		const regPhone=/^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/;
 		if ($('input[name="agree"]:checked').val()=="nineteen") {
@@ -332,7 +302,6 @@ function payment(){
 				if ($("#memname").val()!=="" && $("#memtel").val()!=="" ) {
 					if (resultElement1.innerText > 0) {
 						if (regPhone.test(text) === true) {	
-				alert("결제를진행함미다");	
 				paymenting();
 				
 	
@@ -370,7 +339,7 @@ function paymentKakao(data){
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
-			alert("완료 -> imp_uid : "+rsp.imp_uid+" / mercha  nt_uid(orderKey) : "+rsp.merchant_uid);
+			alert("결제가 완료되었습니다.");
 			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
 			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");
@@ -384,13 +353,13 @@ function paymentCard(data){
 		pay_method: "card",
 		merchant_uid: ""+ran2+"",
 		name: "${rdto.rt_rmname}",
-		amount: 1,
+		amount: "${rdto.rt_price}",
 		buyer_email: "${mdto.mem_email}",
 		buyer_name: "${mdto.mem_name}",
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
-			alert("완료 -> imp_uid : "+rsp.imp_uid+" / merchant_uid(orderKey) : "+rsp.merchant_uid);
+			alert("결제가 완료되었습니다.");
 			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
 			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");
@@ -404,13 +373,13 @@ function paymentToss(data){
 		pay_method: "card",
 		merchant_uid: ""+ran3+"",
 		name: "${rdto.rt_rmname}",
-		amount: 1,
+		amount: "${rdto.rt_price}",
 		buyer_email: "${mdto.mem_email}",
 		buyer_name: "${mdto.mem_name}",
 		buyer_tel : "${mdto.mem_phonenum}"
 	}, function(rsp){
 		if(rsp.success){
-			alert("완료 -> imp_uid : "+rsp.imp_uid+" / merchant_uid(orderKey) : "+rsp.merchant_uid);
+			alert("결제가 완료되었습니다.");
 			location.href="paymentEnd?mem_num=${mdto.mem_num}&rt_num=${rdto.rt_num}&rs_start="+rs_start+"&rs_end="+rs_end+"&rs_people="+rs_people+"&rs_name="+rs_name+"&rs_pnum="+rs_pnum+"&pm_type="+pm_type;
 		}else{
 			alert("실패 : 코드("+rsp.error_code+") / 메세지("+rsp.error_msg +")");			

@@ -16,11 +16,21 @@
 	#contentaccor{
 		padding-left: 30px;
 	}
+	#htitle{
+		text-align: center;
+		margin-top: 300px;
+		color: blue;
+	}
 </style>
 </head>
 <body>
 
 		<h1 style="text-align: center;">예약·결제 내역 리스트</h1>
+		<c:choose>
+		<c:when test="${paycheck eq 0 }">
+			<h1 id="htitle">예약 · 결제 내역이 없습니다.</h1>
+		</c:when>
+		<c:otherwise>
 <div id="accordionpadding">
 	<div class="accordion" id="accordionExample">
       <div class="accordion-item">
@@ -50,5 +60,7 @@
       </div>      
     </div>
     </div>
+    </c:otherwise>
+    </c:choose>
 </body>
 </html>

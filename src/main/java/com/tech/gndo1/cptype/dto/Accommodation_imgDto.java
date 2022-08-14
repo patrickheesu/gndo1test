@@ -42,4 +42,14 @@ public class Accommodation_imgDto {
 	public void setAcci_afterimg(String acci_afterimg) {
 		this.acci_afterimg = acci_afterimg;
 	}
+
+
+	public Accommodation_imgDto(int acci_num, int acc_num, String acci_img, String acci_afterimg) {
+		super();
+		this.acci_num = acci_num;
+		this.acc_num = acc_num;
+		this.acci_img = acci_img;
+		this.acci_afterimg = acci_afterimg;
+	}
+	
 }
