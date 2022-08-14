@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tech.gndo1.cptype.dao.CIDao;
 import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
+import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
 @Controller
 public class CptypeController {
@@ -159,8 +160,15 @@ public class CptypeController {
 		return "hotel/htList";
 		
 	}
-	@RequestMapping("/testpage")
-	public String testtest() {
-		return "testpage";
+	@RequestMapping("/htDetail")
+	public String htDetail(Model model) {
+		CIDao dao=sqlSession.getMapper(CIDao.class);
+		List<RoomTypeDto> rdto=dao.htsel();
+		model.addAttribute("rdto",rdto);
+		System.out.println(rdto);
+		
+		
+		
+		return "hotel/htDetail";
 	}
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
  	결제가 완료되었습니다.
- 	<a href="paymain"><input type="button" />메인으로</a>
+ 	<a href="./"><input type="button" />메인으로</a>
  	<a href="mbpayment"><input type="button" />결제내역</a>
  	
 </body>

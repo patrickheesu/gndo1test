@@ -40,4 +40,10 @@
    <insert id="insertMembers">
       INSERT INTO MEMBERS VALUES(MEMBERS_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},SYSDATE,#{param10})
    </insert>
+   <select id="acccnt" resultType="Integer">
+		SELECT COUNT(ACC_NUM) FROM ACCOMMODATION_INFO WHERE CPY_NUM=#{param1}
+	</select>
+	<select id="accsel" resultType="Integer">
+		SELECT ACC_NUM FROM ACCOMMODATION_INFO WHERE CPY_NUM=#{param1}
+	</select>
 </mapper>
