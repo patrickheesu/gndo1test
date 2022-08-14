@@ -5,6 +5,7 @@ import java.util.List;
 import com.tech.gndo1.mb.dto.MembersDto;
 import com.tech.gndo1.payment.dto.ReserveDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
+import com.tech.gndo1.roomtype.dto.RoomTypeimgDto;
 
 public interface PIDao {
 	List<RoomTypeDto> reservesel(int acc_num);
@@ -12,6 +13,8 @@ public interface PIDao {
 	RoomTypeDto reservesel(String rt_num);
 
 	MembersDto memsel(String mem_num);
+	
+	public List<RoomTypeimgDto> rmimg(String rt_num);
 
 	void reservein(int mem_num, int rt_num, String rs_start, String rs_end, int rs_people, String rs_name, String rs_pnum);
 

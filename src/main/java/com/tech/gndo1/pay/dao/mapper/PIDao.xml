@@ -14,6 +14,10 @@
 	<select id="accnamesel" resultType="String">
 		SELECT ACC_NAME FROM ACCOMMODATION_INFO A,ROOMTYPE R WHERE A.ACC_NUM=R.ACC_NUM AND R.RT_NUM=#{param1}
 	</select>
+	<select id="rmimg" resultType="com.tech.gndo1.roomtype.dto.RoomTypeimgDto">								
+		SELECT * FROM ROOMTYPE_IMG WHERE RT_NUM=#{param1}
+	</select>
+	
 	<insert id="reservein">
 		INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
 	

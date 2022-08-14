@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="resources/css/list/mainsilde.css">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -71,7 +73,21 @@
             <td>
                 <h3>${rdto.rt_rmname}</h3>
             </td>
-            <td><img src="resources/image/객실1.png" width="700px;" height="400"/></td>
+            <td>
+             <div class="slideshow-container">
+            <c:forEach items="${rmtidto }" var="dto" varStatus="status">
+            <div class="mySlides fade">
+            <div class="numbertext">${status.count} / ${fn:length(rmtidto) }</div>
+            <img src="resources/upload/${dto.rti_afterimg}" style="width:100%"/>
+            </div>
+            </c:forEach>
+            
+            
+             <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+     		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
+   			 </div>
+            
+            </td>
         </tr>
         <tr>
             <td>체크인<input type="date" id="theDate1" />체크아웃<input type="date" id="theDate2" /></td>
@@ -387,5 +403,59 @@ function paymentToss(data){
 	});
 	}
 </script>
+<SCript>
+      var slideIndex = 0; //slide index
+
+// HTML 로드가 끝난 후 동작
+window.onload=function(){
+  showSlides(slideIndex);
+
+/*   // Auto Move Slide
+   var sec = 5000;
+  setInterval(function(){
+    slideIndex++;
+    showSlides(slideIndex);
+
+  }, sec); */ 
+}
+
+
+// Next/previous controls
+function moveSlides(n) {
+  slideIndex = slideIndex + n
+  showSlides(slideIndex);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  slideIndex = n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  var size = slides.length;
+
+  if ((n+1) > size) {
+    slideIndex = 0; n = 0;
+  }else if (n < 0) {
+    slideIndex = (size-1);
+    n = (size-1);
+  }
+
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[n].style.display = "block";
+  dots[n].className += " active";
+}
+
+    </SCript>
 </body>
 </html>

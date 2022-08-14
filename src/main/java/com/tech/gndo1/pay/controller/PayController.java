@@ -15,6 +15,7 @@ import com.tech.gndo1.mb.dto.MembersDto;
 import com.tech.gndo1.pay.dao.PIDao;
 import com.tech.gndo1.payment.dto.ReserveDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
+import com.tech.gndo1.roomtype.dto.RoomTypeimgDto;
 
 @Controller
 public class PayController {
@@ -35,6 +36,8 @@ public class PayController {
 		model.addAttribute("mdto",mdto);
 		model.addAttribute("rdto",rdto);
 		model.addAttribute("acc_name",acc_name);
+		List<RoomTypeimgDto> rmtidto=dao.rmimg(rt_num);
+		model.addAttribute("rmtidto",rmtidto);
 		return "payment/reserve";
 	}
 	@RequestMapping("/paymentEnd")
