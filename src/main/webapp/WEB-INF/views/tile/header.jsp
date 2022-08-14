@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +32,7 @@
 		text-decoration: none;
 		color: #333;
 	}
+	
 </style>
 <body>
  <table class="ttable">
@@ -45,7 +48,7 @@
                    <div class="login"><a href="mbPage">내정보</a> | <a href="logout">로그아웃.</a></div>
                 </c:when>
                 <c:when test="${cpy_num ne null }">
-                   <div class="login"><a href="cpPage">내정보</a> | <a href="logout">로그아웃</a></div>
+                   <div class="login"><a href="cpPage" >내정보</a> | <a href="logout">로그아웃</a></div>
                 </c:when>
                 <c:otherwise>
                    <div class="login"><a href="login">로그인</a> | <a href="join">회원가입</a></div>
@@ -55,5 +58,7 @@
     </table>
 <hr / style="width: 1130px;
  		text-align: center; border-color: #ffffff;">
+ 		
+
 </body>
 </html>
