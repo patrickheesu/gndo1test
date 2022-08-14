@@ -48,9 +48,36 @@
 	<select id="rtnumsel" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto">
 		SELECT RT_NUM FROM ROOMTYPE WHERE ACC_NUM=#{param1}
 	</select>
-	<delete id="rtnumdel">
+	<delete id="rtdel">
 		DELETE FROM ROOMTYPE WHERE RT_NUM=#{param1}
 	</delete>
+	<delete id="rtidel">
+		DELETE FROM ROOMTYPE_IMG WHERE RT_NUM=#{param1}
+	</delete>
+	
+	<resultMap type="com.tech.gndo1.roomtype.dto.RoomTypeimgDto" id="roomtypeimg">
+		<result property="rti_num" column="RTI_NUM" />
+		<result property="rt_num" column="RT_NUM" />
+		<result property="rti_img" column="RTI_IMG" />
+		<result property="rti_afterimg" column="RTI_AFTERIMG" />
+	</resultMap>
+	<resultMap type="com.tech.gndo1.roomtype.dto.RoomTypeDto" id="roomtype">
+		<result property="rt_num" column="RT_NUM"/>
+		<result property="acc_num" column="ACC_NUM"/>
+		<result property="rt_rmname" column="RT_RMNAME"/>
+		<result property="rt_rmcount" column="RT_RMCOUNT"/>
+		<result property="rt_rpeople" column="RT_RPEOPLE"/>
+		<result property="rt_price" column="RT_PRICE"/>
+		<result property="rt_info" column="RT_INFO"/>
+		<result property="rt_in" column="RT_IN"/>
+		<result property="rt_out" column="RT_OUT"/>
+	<collection property="rti" resultMap="roomtypeimg"/>
+	</resultMap>
+		<select id="accroomselect" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto" resultMap="roomtype">
+			SELECT R.RT_NUM, R.RT_RMNAME, R.RT_RMCOUNT,R.RT_RPEOPLE,R.RT_PRICE,R.RT_INFO,R.RT_IN,R.RT_OUT,MIN(I.RTI_AFTERIMG) RTI_IMG,COUNT(I.RTI_AFTERIMG) RTI_AFTERIMG FROM ROOMTYPE R, ROOMTYPE_IMG I
+			WHERE R.RT_NUM=I.RT_NUM AND R.ACC_NUM=#{PARAM1}
+			GROUP BY R.RT_NUM, R.RT_RMNAME, R.RT_RMCOUNT,R.RT_RPEOPLE,R.RT_PRICE,R.RT_INFO,R.RT_IN,R.RT_OUT
+		</select>
 <!-- 	<select id="rlist" resultType="com.tech.gndo1.roomtype.dto.RoomTypeDto"> -->
 <!-- 		SELECT RT_NUM,ACC_NUM,RT_RMNAME,RT_RMCOUNT, -->
 <!-- 		RT_RPEOPLE,RT_PRICE,RT_INFO,RT_IN,RT_OUT -->

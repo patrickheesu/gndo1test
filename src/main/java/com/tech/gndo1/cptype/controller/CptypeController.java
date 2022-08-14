@@ -77,74 +77,9 @@ public class CptypeController {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		
-		
-		
-		
+		}										
 		
 		return "mypage/company/cpRoomInsert"; //객실등록 페이지로 이동
-	}
-	@RequestMapping("/cpRoomInsert2")
-	public String cpRoomInsert2(MultipartHttpServletRequest mtfrequest,Model model,HttpSession session) {
-		CIDao dao=sqlSession.getMapper(CIDao.class);
-		int cpy_num=(Integer)session.getAttribute("cpy_num");
-		String acc_num=mtfrequest.getParameter("acc_num");
-		Accommodation_infoDto cdto=dao.cptype(acc_num);
-		System.out.println(acc_num);
-		session.setAttribute("acc_num", cdto.getAcc_num());
-		int acc_nu=(Integer)session.getAttribute("acc_num");
-		System.out.println(acc_nu);
-		int countnum=Integer.parseInt(mtfrequest.getParameter("addcount"));
-		System.out.println(countnum);
-		String root="C:\\javasbigspring\\springwork22\\gndo1test2\\src\\main\\webapp\\resources\\upload";
-		for (int i = 1; i < countnum + 1; i++) {
-			String rt_rmname=mtfrequest.getParameter("rt_rmname"+i);
-			String rt_rmcount=mtfrequest.getParameter("rt_rmcount"+i);
-			String rt_rpeople=mtfrequest.getParameter("rt_rpeople"+i);
-			String rt_price=mtfrequest.getParameter("rt_price"+i);
-			String rt_info=mtfrequest.getParameter("rt_info"+i);
-			String rt_in=mtfrequest.getParameter("rt_in"+i);
-			String rt_out=mtfrequest.getParameter("rt_out"+i);
-			dao.rtInsert(rt_rmname,rt_rmcount,rt_rpeople,rt_price,rt_info,rt_in,rt_out,acc_nu);
-			int rt_num=dao.selrt_num();
-			
-				List<MultipartFile> fileList= mtfrequest.getFiles("file"+i);
-				for (MultipartFile mf : fileList) {
-					String originFile=mf.getOriginalFilename();
-					long longtime=System.currentTimeMillis();
-					String changeFile=longtime+"_"+mf.getOriginalFilename();
-					String pathfile=root+"\\"+originFile;
-					String after_pathfile = root + "\\" + changeFile;
-					try {
-						if (!originFile.equals("")) {
-							mf.transferTo(new File(after_pathfile));
-							dao.rtimginsert(originFile,rt_num,changeFile);
-						}
-					}catch (Exception e) { }
-				}
-			}
-		
-//		String rt_rmname=mtfrequest.getParameter("rt_rmname");
-//		String rt_rmcount=mtfrequest.getParameter("rt_rmcount");
-//		String rt_rpeople=mtfrequest.getParameter("rt_rpeople");
-//		String rt_price=mtfrequest.getParameter("rt_price");
-//		String rt_info=mtfrequest.getParameter("rt_info");
-//		String rt_in=mtfrequest.getParameter("rt_in");
-//		String rt_out=mtfrequest.getParameter("rt_out");
-//		dao.rtInsert(rt_rmname,rt_rmcount,rt_rpeople,rt_price,rt_info,rt_in,rt_out,acc_nu);
-	
-		
-		
-		
-		
-		
-		
-		int acc_cnt=dao.acccnt(cpy_num);
-		model.addAttribute("acccnt",acc_cnt);
-		return "mypage/company/cpPage"; //사업자 페이지로 이동
-				
 	}
 	@RequestMapping("/cpRoomAdd")
 	 public String cpRoomAdd(Model model,HttpSession session) {

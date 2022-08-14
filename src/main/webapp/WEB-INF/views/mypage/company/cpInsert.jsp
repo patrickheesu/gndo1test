@@ -101,8 +101,6 @@
 			</tr>
     	</table>
     	<div id="map" style="width:100%; height:500px;"></div>
-<!--     	<div id="map" style="width:100%; height:350px;"></div> -->
-<input type="button" value="테스트버튼" onclick="testbtn();" />
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a45464228f79ad52de13e4c48d3dc9d7&libraries=services"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a45464228f79ad52de13e4c48d3dc9d7"></script>
@@ -120,7 +118,7 @@ function valueck(){
 					if ($("#acc_info").val()!=="") {
 						if ($("#acc_serkeyword").val()!=="") {
 							if ($("#file").val()!=="") {
-								alert("진행시켜");
+								
 								return true;
 							}else alert("사진을 1장이상 추가해주세요"); return false; 
 						}else alert("검색키워드를 입력해주세요"); return false;
@@ -173,11 +171,7 @@ function geoCoding(){
 
 	} 
 	});
-//		event.currentTarget.submit();
-	
-//		return true;
 
-//	}
 
 
 
@@ -202,35 +196,6 @@ function addrsearch(){
 
 </script>
 
-<!-- <script>
-//지도 설정
-const mapContainer = document.getElementById('map'),
-	mapOption = { 
-	    center: new kakao.maps.LatLng(37.6064791858348,129.068953110056),	// 지도의 중심 좌표(임의 설정)
-	    level: 3					// 지도의 확대 레벨(임의 설정)
-	};
-    
-//설정한 지도 생성
-const map = new kakao.maps.Map(mapContainer, mapOption);
-
-//마커 초기화(초기화 시 지도에 미리 지정 가능 : 카카오맵 API 문서 참조)
-const marker = new kakao.maps.Marker();
-
-//카카오맵 클릭 이벤트 추가
-kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
-	//클릭한 위도, 경도 정보 불러오기
-	const latlng = mouseEvent.latLng;
-	var lat = latlng.getLat();
-	var lng = latlng.getLng();
-	
-	//마커 위치를 클릭한 위치로 이동
-	marker.setPosition(latlng);
-	marker.setMap(map);
-	alert(latlng);
-	alert("위도 : "+ lat + " , 경도 : "+ lng);
-});
-
-</script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

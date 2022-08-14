@@ -5,11 +5,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+    <title>예약·결제 취소 완료</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .a{
+            width: 400px;
+            height: 400px;
+            align-items: center;
+        }
+    </style>
+   <link rel="stylesheet" href="resources/css/login/joinEnd.css">   
 </head>
 <body>
-<h1>예약·결제 취소 페이지</h1>
-	예약·결제 취소가 완료 되었습니다.
-	<a href="./">메인으로 가기</a> <a href="mbpayment">결제내역으로 가기</a>
+    <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3><br>
+    <h1>예약·결제 취소가 완료되었습니다</h1>
+    <a href="./"><button class="button" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">메인으로 가기</button></a>
+    <a href="mbpayment"><button class="button" onmouseover="OnMouseIn(this)" onmouseout="OnMouseOut(this)">결제 내역 보기</button></a>
+<script>
+  	function OnMouseIn(elem){
+  	    elem.style.border="2px solid blue";
+  	    elem.style.color="blue";
+  	}
+  	function OnMouseOut(elem){
+  	    elem.style.border="";
+  	    elem.style.color="";
+  	}
+</script>
 </body>
 </html>
