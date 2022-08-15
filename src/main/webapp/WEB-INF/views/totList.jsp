@@ -75,7 +75,11 @@ ratingToPercent() {
 		
 		<!-- 타이틀 -->
 		<div class="hotle_title"><h1 style="font-style: italic;">#${cptype }</h1></div>
-		
+		<c:choose>
+      	<c:when test="${adto eq 0 }">
+      		<h1>등록된 숙소가 없습니다.</h1>
+      	</c:when>
+      	<c:otherwise>
 		<c:forEach items="${search}" var="search">
 			<div class="louge_list" style="width: 17rem;">
 				<a href="htdetail?acc_num=${search.acc_num }">
@@ -90,7 +94,8 @@ ratingToPercent() {
 			<%-- ${search.r.rt_price}
 			${search.i.acci_afterimg} --%>
 		</c:forEach>
-		
+		 </c:otherwise>
+      </c:choose>
 	</td>
 </tr>
 
