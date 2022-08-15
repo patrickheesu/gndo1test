@@ -25,7 +25,7 @@ public class CptypeController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping("/cpinsert")
+	@RequestMapping("/cpInsert")
 	public String cpinsert(HttpServletRequest request,Model model) throws Exception {
 		//숙소등록 페이지로 이동
 		return "mypage/company/cpInsert";
@@ -59,7 +59,7 @@ public class CptypeController {
 		System.out.println(lat+lng);
 		int acc_num2=dao.selacc_num();
 		//업소사진 다중업로드
-		String root="C:\\javasbigspring\\springwork22\\gndo1test2\\src\\main\\webapp\\resources\\upload";
+		String root="C:\\javabigspring\\springwork22\\gndo1\\src\\main\\webapp\\resources\\upload";
 		List<MultipartFile> fileList= mtfrequest.getFiles("file");
 		
 		for (MultipartFile mf : fileList) {
@@ -100,7 +100,6 @@ public class CptypeController {
 		CIDao dao=sqlSession.getMapper(CIDao.class);
 		List<RoomTypeDto> rdto=dao.htsel();
 		model.addAttribute("rdto",rdto);
-		System.out.println(rdto);
 		
 		
 		

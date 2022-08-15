@@ -53,7 +53,7 @@ public class CptypeRestController {
 		cdao.rtInsert(rt_rmname, rt_rmcount, rt_rpeople, rt_price, rt_info, rt_in, rt_out, acc_nu);
 		
 		
-		String root="C:\\javasbigspring\\springwork22\\gndo1test2\\src\\main\\webapp\\resources\\upload";
+		String root="C:\\javabigspring\\springwork22\\gndo1\\src\\main\\webapp\\resources\\upload";
 		
 		int rt_num=cdao.selrt_num();
 		System.out.println("rtnum="+rt_num);
@@ -72,7 +72,6 @@ public class CptypeRestController {
 				}
 			}catch (Exception e) { }
 		}
-		System.out.println("filelist"+fileList);
 		for (MultipartFile mf : fileList) {
 			String originFile=mf.getOriginalFilename();
 			long longtime=System.currentTimeMillis();
@@ -87,8 +86,6 @@ public class CptypeRestController {
 			}catch (Exception e) { }
 		}
 		List<RoomTypeDto> rdto=cdao.accroomselect(acc_num);
-		System.out.println("뭔데"+rdto.get(0).getRti().getRti_afterimg());
-		System.out.println("뭔데:"+rdto.get(0).getRti().getRti_img());
 		model.addAttribute("rdto",rdto);
 		return rdto;
 	}
