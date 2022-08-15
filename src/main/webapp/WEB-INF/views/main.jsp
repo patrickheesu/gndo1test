@@ -176,7 +176,7 @@ $(function(){
             <input type='button'onclick='count1("minus2")'value='-'/>
             아동<div id='result2'>0</div>
         </div>
-        <form action="totList" method="post">
+        <form action="totList?cptype=통합검색&typecode=0" method="post">
         <div id="search2">
         
         <input type="text" name="sk" class="form-control" placeholder="키워드를 입력하세요." aria-label="Example text with two button addons" style="width: 300px; height: 40px;">
@@ -190,11 +190,11 @@ $(function(){
         <div id="submenu">
   <!-- 아이콘 이미지 삽입 -->
 	  		<div id="submenu_icon">
-		        <a href="htList"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="resources/motel/mtList.jsp"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="resources/pension/psList.jsp"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
-		        <a href="resources/guestHouse/ghList.jsp"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="resources/camping/cpList.jsp"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=hotel&typecode=1"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=motel&typecode=2"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=pension&typecode=3"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
+		        <a href="totList?cptype=guestHouse&typecode=4"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=camping&typecode=5"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
 	        </div>
         </div>
       

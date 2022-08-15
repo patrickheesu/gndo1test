@@ -74,12 +74,12 @@ ratingToPercent() {
 	<td>
 		
 		<!-- 타이틀 -->
-		<div class="hotle_title"><h1 style="font-style: italic;">#통합검색</h1></div>
+		<div class="hotle_title"><h1 style="font-style: italic;">#${cptype }</h1></div>
 		
 		<c:forEach items="${search}" var="search">
 			<div class="louge_list" style="width: 17rem;">
 				<a href="htdetail?acc_num=${search.acc_num }">
-		  			<img src="resources/img/list_view/ex_img4.JPG" class="card-img-top" alt="${search.ai.acci_afterimg}">
+		  			<img src="resources/upload/${search.ai.acci_afterimg}" class="card-img-top" alt="${search.ai.acci_afterimg}">
 		  			<div class="card-body">
 		 		 		<h5 class="card-title">${search.acc_name}</h5>
 		    			<p class="card-text">~ ${search.r.rt_price}원 부터</p>

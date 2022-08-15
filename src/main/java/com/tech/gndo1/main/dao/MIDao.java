@@ -10,4 +10,6 @@ public interface MIDao {
 	public int get_birth(int mem_num);
 
 	public ArrayList<Accommodation_infoDto> get_recomand(String param1, String param2, String param3, String param4);
+
+	public ArrayList<Accommodation_infoDto> cptypelistselect(int typecode);
 }
