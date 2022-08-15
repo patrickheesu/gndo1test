@@ -69,12 +69,24 @@ public class MainController {
 	
 	@RequestMapping("/totList")
 	public String List (HttpServletRequest request, Model model){
-		String sk=request.getParameter("sk");
-		System.out.println(sk);
-		MIDao dao=sqlSession.getMapper(MIDao.class);
-		System.out.println("1번");
-		ArrayList<Accommodation_infoDto> adto = dao.search_list(sk);	
-		model.addAttribute("search", adto);
+		int typecode=Integer.parseInt(request.getParameter("typecode"));
+		   String cptype=request.getParameter("cptype");
+		   MIDao dao=sqlSession.getMapper(MIDao.class);
+	   if (typecode == 0) {
+		   String sk=request.getParameter("sk");
+			System.out.println(sk);
+			System.out.println("1번");
+			ArrayList<Accommodation_infoDto> adto = dao.search_list(sk);	
+			model.addAttribute("search", adto);
+			model.addAttribute("cptype",cptype);
+		}else {
+			System.out.println("typecode:"+typecode);
+			System.out.println("cptype"+cptype);
+			ArrayList<Accommodation_infoDto> aidto=dao.cptypelistselect(typecode);
+			model.addAttribute("search",aidto);
+			model.addAttribute("cptype",cptype);
+		}
+		
 		
 	
 	return "totList";
