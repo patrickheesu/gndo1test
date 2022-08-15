@@ -79,12 +79,18 @@ public class MainController {
 			ArrayList<Accommodation_infoDto> adto = dao.search_list(sk);	
 			model.addAttribute("search", adto);
 			model.addAttribute("cptype",cptype);
+			if (adto.size()==0) {
+				model.addAttribute("adto",adto.size());
+			}
 		}else {
 			System.out.println("typecode:"+typecode);
 			System.out.println("cptype"+cptype);
 			ArrayList<Accommodation_infoDto> aidto=dao.cptypelistselect(typecode);
 			model.addAttribute("search",aidto);
 			model.addAttribute("cptype",cptype);
+			if (aidto.size()==0) {
+				model.addAttribute("adto",aidto.size());
+			}
 		}
 		
 		
