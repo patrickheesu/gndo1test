@@ -10,202 +10,124 @@
     <link rel="stylesheet" href="resources/css/main/style.css">
     <link rel="stylesheet" href="resources/css/main/recom.css">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js">
-</script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script anguage="JavaScript" type="text/JavaScript" ></script>
+
 <script>
-$(function(){
-    $('#datepicker1, #datepicker2').datepicker({
-    });
- });
+var slideIndex = 0; //slide index
+
+//HTML 로드가 끝난 후 동작
+window.onload=function(){
+showSlides(slideIndex);
+
+// Auto Move Slide
+var sec = 3000;
+setInterval(function(){
+ slideIndex++;
+ showSlides(slideIndex);
+}, sec);
+}
+
+//Next/previous controls
+function moveSlides(n) {
+slideIndex = slideIndex + n
+showSlides(slideIndex);
+}
+
+//Thumbnail image controls
+function currentSlide(n) {
+slideIndex = n;
+showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+var slides = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("dot");
+var size = slides.length;
+
+if ((n+1) > size) {
+ slideIndex = 0; n = 0;
+}else if (n < 0) {
+ slideIndex = (size-1);
+ n = (size-1);
+}
+
+for (i = 0; i < slides.length; i++) {
+   slides[i].style.display = "none";
+}
+for (i = 0; i < dots.length; i++) {
+   dots[i].className = dots[i].className.replace(" active", "");
+}
+
+slides[n].style.display = "block";
+dots[n].className += " active";
+}
+
 </script>
 
 </head>
 <body>
-   
-    <script>
-        //슬라이더 이미지
-        slider[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-
-        var slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-            autoplay: {
-        	    delay: 3000}
-        }
-
-
-        // 달력
-        $(function() {
-            //input을 datepicker로 선언
-            $("#datepicker1, #datepicker2").datepicker({
-                dateFormat: 'yy-mm-dd' //달력 날짜 형태
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
-                ,changeYear: true //option값 년 선택 가능
-                ,changeMonth: true //option값  월 선택 가능                
-                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-                ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-                ,buttonText: "선택" //버튼 호버 텍스트              
-                ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-                ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-                ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-            });                    
-            
-            //초기값을 오늘 날짜로 설정해줘야 합니다.
-            $('#datepicker1, #datepicker2').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
-        });
-     </script>
-
-     <script>
-     //체크인 체크아웃
-        // 클릭 카운트
-        // 결과 출력
-
-        function count(type)  {
-        // 결과를 표시할 element
-        const resultElement = document.getElementById('result1');
-        
-        // 현재 화면에 표시된 값
-        let number = resultElement.innerText;
-        
-        // 더하기/빼기
-        if(type === 'plus1') {
-            number = parseInt(number) + 1;
-        }else if(type === 'minus1')  {
-            number = parseInt(number) - 1;
-            if (number<0)
-                number=0;
-        }
-
-        resultElement.innerText = number;
-        }
-        // 클릭 카운트
-        // 결과 출력
-        function count1(type)  {
-        // 결과를 표시할 element
-        const resultElement = document.getElementById('result2');
-        
-        // 현재 화면에 표시된 값
-        let number = resultElement.innerText;
-        
-        // 더하기/빼기
-        if(type === 'plus2') {
-            number = parseInt(number) + 1;
-        }else if(type === 'minus2')  {
-            number = parseInt(number) - 1;
-            if (number<0)
-                number=0;
-        }
-        // 결과 출력
-        resultElement.innerText = number;
-        }
-
-     </script>
-        <div class="clear"></div>
-        <div id="wrap">			
-            <div class="slider">
-                <input type="radio" name="slide" id="slide1" checked>
-                <input type="radio" name="slide" id="slide2">
-                <input type="radio" name="slide" id="slide3">
-                <input type="radio" name="slide" id="slide4">
-                <input type="radio" name="slide" id="slide5">
-                <ul id="imgholder" class="imgs">
-                    <li class="item"><img src="resources/img/main/main_1.jpg"></li>
-                    <li class="item"><img src="resources/img/main/main_2.jpg"></li>
-                    <li class="item"><img src="resources/img/main/main_3.jpg"></li>
-                    <li class="item"><img src="resources/img/main/main_4.jpg"></li>
-                    <li class="item"><img src="resources/img/main/main_5.jpg"></li>
-                </ul>
-                <div class="bullets">
-                    <label for="slide1">&nbsp;</label>
-                    <label for="slide2">&nbsp;</label>
-                    <label for="slide3">&nbsp;</label>
-                    <label for="slide4">&nbsp;</label>
-                    <label for="slide5">&nbsp;</label>
-                </div>
-        	<script src="slide.js"></script>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div id="search">
-       
-            <div id="checkin">
-            <button class="btn btn-outline-secondary" type="button">체크인 <input type="text" id="datepicker1"></button>
-            </div>
-            <div id="checkout">
-            <button class="btn btn-outline-secondary" type="button">체크아웃 <input type="text" id="datepicker2"></button>
-             </div>
-        <div id="adult">
-            <input type='button'onclick='count("plus1")' value='+'/>
-            <input type='button'onclick='count("minus1")'value='-'/>
-            성인<div id='result1'>0</div>
-        </div>
-        <div id="child">
-            <input type='button'onclick='count1("plus2")' value='+'/>
-            <input type='button'onclick='count1("minus2")'value='-'/>
-            아동<div id='result2'>0</div>
-        </div>
+<div class="clear"></div>
+<div id="wrap">	
+	<div id="search">
         <form action="totList?cptype=통합검색&typecode=0" method="post">
-        <div id="search2">
-        
-        <input type="text" name="sk" class="form-control" placeholder="키워드를 입력하세요." aria-label="Example text with two button addons" style="width: 300px; height: 40px;">
-
-        <input type="submit" value="검색"  />
-        </div>
+        	<div id="search2">
+        		<input type="text" name="sk" class="form-control" placeholder="어디로 떠나시나요? 지역,숙소명,키워드로 찾아보세요!" aria-label="Example text with two button addons" style="width: 800px; height: 40px;">
+        		<input type="submit" value="검색"  />
+        	</div>
         </form>
-
-        </div>
-
-        <div id="submenu">
+    </div>	
+    <div id="submenu">
   <!-- 아이콘 이미지 삽입 -->
-	  		<div id="submenu_icon">
-		        <a href="totList?cptype=hotel&typecode=1"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="totList?cptype=motel&typecode=2"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="totList?cptype=pension&typecode=3"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
-		        <a href="totList?cptype=guestHouse&typecode=4"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
-		        <a href="totList?cptype=camping&typecode=5"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
-	        </div>
-        </div>
-      
-
-        <div id="front">
-        
-        <c:if test="${adto ne null }">
+	  	<div id="submenu_icon">
+		      <a href="totList?cptype=hotel&typecode=1"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
+		      <a href="totList?cptype=motel&typecode=2"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
+		      <a href="totList?cptype=pension&typecode=3"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
+		      <a href="totList?cptype=guestHouse&typecode=4"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
+		      <a href="totList?cptype=camping&typecode=5"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
+	     </div>
+    </div>
+	<div class="slideshow-container">
+		<!-- Full-width images with number and caption text -->
+	      <div class="mySlides fade">
+	        <img src="resources/img/main/main_1.jpg" style="width:100%">
+	      </div>
+	
+	      <div class="mySlides fade">
+	        <img src="resources/img/main/main_2.jpg" style="width:100%">
+	      </div>	
+	      <div class="mySlides fade">
+	        <img src="resources/img/main/main_3.jpg" style="width:100%">
+	      </div>
+	      <div class="mySlides fade">
+	        <img src="resources/img/main/main_4.jpg" style="width:100%">
+	      </div>
+	
+	      <div class="mySlides fade">
+	        <img src="resources/img/main/main_5.jpg" style="width:100%">
+	      </div>
+	</div>
+	    <br/>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+</div>
+<div class="clear"></div>
+<div id="front">
+	<c:if test="${adto ne null }">
         <div id="recommend">
             <h2>${age }대 HOT 5 숙소 !</h2>
             <table id="recom_table">
-            	
             			<c:forEach items="${adto }" var="adto">
             				<tr>
 								<div class="main_rclist" style="width: 17rem;">
@@ -214,7 +136,9 @@ $(function(){
 					  					<div class="card-body">
 					  						<h5 class="card-title">${adto.acc_name }</h5>
 					    					<p class="card-text">${adto.r.rt_price }</p>
-					    					<p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+					    					<p 
+					    					
+					    					class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
 										</div>
 									</a>
 								</div>
@@ -223,66 +147,193 @@ $(function(){
             </table>
         </div>
         </c:if>
-        
-        <div id="sale">
-            <h2 style="margin-bottom: 30px;">오늘의 특가!</h2>
-                <div id="saleimg">   <!-- 특가 배너 이미지 -->
-                    <a href="#"><img src="resources/img/main/banner1.png" alt="sale1"></a>
-                    <a href="#"><img src="resources/img/main/banner2.png" alt="sale2"></a>
-                    <a href="#"><img src="resources/img/main/banner3.png" alt="sale3"></a>
-                    <a href="#"><img src="resources/img/main/banner4.png" alt="sale4"></a>
-                    <a href="#"><img src="resources/img/main/banner5.png" alt="sale5"></a>
-                </div>
-        </div>
 	</div>
-        <div id="remap">
-        <div id="remap_sub">
-            <h2>권역별 추천 숙박</h2>
-        <div id="remapcom">
+<div id="remap">
+    <div id="remap_sub">
+    	<h2 id="remaptitle">권역별 추천 숙박</h2>
+    	<div id="remapcom">
             <div id="coment">
                 <div id="coment_img" style="position: relative; float: left;">
                     <img src="resources/img/main/map_main.png" id="image">
-            </div>
-         </div>
-    </div>
-                <div id="coment2">
-                <button onclick="changeimg(1)">주문진권</button>
-                <button onclick="changeimg(2)">대관령권</button>
-                <button onclick="changeimg(3)">시내권</button>
-                <button onclick="changeimg(4)">경포권</button>
-                <button onclick="changeimg(5)">정동진·옥계권</button>
-            </div>
-        
-		<div class="section">
-		<input type="radio" name="slide1" id="slide01" checked>
-		<input type="radio" name="slide1" id="slide02">
-		<input type="radio" name="slide1" id="slide03">
-	<div class="slidewrap">
-		<ul class="slidelist">
-			<li>
-				<a><img src="resources/img/main/slide01.jpg"></a>
-			</li>
-			<li>
-				<a><img src="resources/img/main/banner1.png"></a>
-			</li>
-			<li>
-				<a><img src="resources/img/main/slide03.jpg"></a>
-			</li>
-		</ul>
-		<div class="bullets">
-              <label for="slide01">&nbsp;</label>
-              <label for="slide02">&nbsp;</label>
-              <label for="slide03">&nbsp;</label>
-       </div>
-
-	</div>
-	</div>
+            	</div>
+        	 </div>
+    	</div>
+	    <div id="coment2">
+	       <button class="btn01" onclick="changeimg1()">주문진권</button>
+	       <button class="btn01" onclick="changeimg2()">대관령권</button>
+	       <button class="btn01" onclick="changeimg3()">시내권</button>
+	       <button class="btn01" onclick="changeimg4()">경포권</button>
+	       <button class="btn01" onclick="changeimg5()">정동진·옥계권</button>
+	    </div>
+		<div class="bottommap">
+			<div class="section" id="sectiondiv1">
+				<input type="radio" name="slide1" id="slide01" checked>
+				<input type="radio" name="slide1" id="slide02">
+				<input type="radio" name="slide1" id="slide03">
+				
+				<div class="slidewrap">
+					<ul class="slidelist">
+						<li>
+							<a><img src="resources/img/main/j_1.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/j_2.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/j_3.jpg"></a>
+						</li>
+					</ul>
+					<div class="bullets1">
+			              <label for="slide01">&nbsp;</label>
+			              <label for="slide02">&nbsp;</label>
+			              <label for="slide03">&nbsp;</label>
+			       </div>
+				</div>
+			</div>
+			
+			<div class="section" id="sectiondiv2">
+				<input type="radio" name="slide1" id="slide001" checked>
+				<input type="radio" name="slide1" id="slide002">
+				<input type="radio" name="slide1" id="slide003">
+				
+				<div class="slidewrap2">
+					<ul class="slidelist2" >
+						<li>
+							<a><img src="resources/img/main/dae_1.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/dae_2.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/dae_3.jpg"></a>
+						</li>
+					</ul>
+					<div class="bullets2">
+			              <label for="slide001">&nbsp;</label>
+			              <label for="slide002">&nbsp;</label>
+			              <label for="slide003">&nbsp;</label>
+			       </div>
+				</div>
+			</div>
+			
+			<div class="section" id="sectiondiv3">
+				<input type="radio" name="slide1" id="slide0001" checked>
+				<input type="radio" name="slide1" id="slide0002">
+				<input type="radio" name="slide1" id="slide0003">
+				
+				<div class="slidewrap3">
+					<ul class="slidelist3">
+						<li>
+							<a><img src="resources/img/main/cen_1.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/cen_2.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/cen_3.jpg"></a>
+						</li>
+					</ul>
+					<div class="bullets3">
+			              <label for="slide0001">&nbsp;</label>
+			              <label for="slide0002">&nbsp;</label>
+			              <label for="slide0003">&nbsp;</label>
+			       </div>
+				</div>
+			</div>
+			<div class="section" id="sectiondiv4">
+				<input type="radio" name="slide1" id="slide00001" checked>
+				<input type="radio" name="slide1" id="slide00002">
+				<input type="radio" name="slide1" id="slide00003">
+				
+				<div class="slidewrap4">
+					<ul class="slidelist4">
+						<li>
+							<a><img src="resources/img/main/k_1.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/k_2.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/k_3.jpg"></a>
+						</li>
+					</ul>
+					<div class="bullets4">
+			              <label for="slide00001">&nbsp;</label>
+			              <label for="slide00002">&nbsp;</label>
+			              <label for="slide00003">&nbsp;</label>
+			       </div>
+				</div>
+			</div>
+			<div class="section" id="sectiondiv5">
+				<input type="radio" name="slide1" id="slide000001" checked>
+				<input type="radio" name="slide1" id="slide000002">
+				<input type="radio" name="slide1" id="slide000003">
+				
+				<div class="slidewrap5">
+					<ul class="slidelist5">
+						<li>
+							<a><img src="resources/img/main/ok_1.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/ok_2.jpg"></a>
+						</li>
+						<li>
+							<a><img src="resources/img/main/ok_3.jpg"></a>
+						</li>
+					</ul>
+					<div class="bullets5">
+			              <label for="slide000001">&nbsp;</label>
+			              <label for="slide000002">&nbsp;</label>
+			              <label for="slide000003">&nbsp;</label>
+			       </div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-    <script>
-        function changeimg(n){
-            document.getElementById("image").src="resources/img/main/map_"+n+".png";
-        }
+<script>
+	     function changeimg1(){
+	         document.getElementById("image").src="resources/img/main/map_1.png";
+	         document.getElementById("sectiondiv1").style.display = "block";
+	         document.getElementById("sectiondiv2").style.display = "none";
+	         document.getElementById("sectiondiv3").style.display = "none";
+	         document.getElementById("sectiondiv4").style.display = "none";
+	         document.getElementById("sectiondiv5").style.display = "none";
+		     }
+	     function changeimg2(){
+	         document.getElementById("image").src="resources/img/main/map_2.png";
+	         document.getElementById("sectiondiv2").style.display = "block";
+	         document.getElementById("sectiondiv1").style.display = "none";
+	         document.getElementById("sectiondiv3").style.display = "none";
+	         document.getElementById("sectiondiv4").style.display = "none";
+	         document.getElementById("sectiondiv5").style.display = "none";
+		     }  
+	     function changeimg3(){
+	         document.getElementById("image").src="resources/img/main/map_3.png";
+	         document.getElementById("sectiondiv3").style.display = "block";
+	         document.getElementById("sectiondiv1").style.display = "none";
+	         document.getElementById("sectiondiv2").style.display = "none";
+	         document.getElementById("sectiondiv4").style.display = "none";
+	         document.getElementById("sectiondiv5").style.display = "none";
+		     }
+	     function changeimg4(){
+	         document.getElementById("image").src="resources/img/main/map_4.png";
+	         document.getElementById("sectiondiv4").style.display = "block";
+	         document.getElementById("sectiondiv1").style.display = "none";
+	         document.getElementById("sectiondiv2").style.display = "none";
+	         document.getElementById("sectiondiv3").style.display = "none";
+	         document.getElementById("sectiondiv5").style.display = "none";
+
+		     }  
+	     function changeimg5(){
+	         document.getElementById("image").src="resources/img/main/map_5.png";
+	         document.getElementById("sectiondiv5").style.display = "block";
+	         document.getElementById("sectiondiv1").style.display = "none";
+	         document.getElementById("sectiondiv2").style.display = "none";
+	         document.getElementById("sectiondiv3").style.display = "none";
+	         document.getElementById("sectiondiv4").style.display = "none";
+		     }  
+
     </script>
 </body>
 </html>
