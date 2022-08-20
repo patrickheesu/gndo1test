@@ -20,11 +20,19 @@
   	<put-attribute name="title" value="메인페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/totList.jsp"/>
   </definition>  
-  
-  
-  <definition name="review_list" extends="baseLayout">
+<definition name="board/review" extends="baseLayout">
   	<put-attribute name="title" value="리뷰페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/board/review.jsp"/>
+  </definition>
+  
+   <definition name="board/reviewInsert" extends="baseLayout">
+  	<put-attribute name="title" value="리뷰페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/board/reviewInsert.jsp"/>
+  </definition>
+  
+   <definition name="board/reviewDetail" extends="baseLayout">
+  	<put-attribute name="title" value="리뷰페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/board/reviewDetail.jsp"/>
   </definition>
 	<definition name="mypage/company/cpPage" extends="baseLayout">
   	<put-attribute name="title" value="사업자페이지"/>

@@ -1,85 +1,78 @@
 @charset "UTF-8";
-.slider{
-    width: 1900px;
-    height: 440px;
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-
-}
-.slider input[type=radio]{
-    display: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
 }
 
-ul.imgs{
-    padding: 0;
-    margin: 0;
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  max-height: 500px;
+  position: relative;
+  margin: auto;
 }
-ul.imgs li{
-    position: absolute;
-    left: 640px;
-    transition-delay: 1s;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.bullets{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
-    z-index: 2;
-}
-.bullets label{
-    display: inline-block;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,0.55);
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+.slideshow-container .mySlides img {
+	width: 1200px;
+  	height: 440px;
 }
 
-.slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
-    background-color: #fff;
-}
-.slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
-    background-color: #fff;
-}
-.slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
-    background-color: #fff;
-}
-.slider input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
-    background-color: #fff;
-}
-.slider input[type=radio]:nth-child(5):checked~.bullets>label:nth-child(5){
-    background-color: #fff;
+/* Hide the images by default */
+.mySlides {
+  display: none;
+
 }
 
-.slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
-    left: 0;
-    transition: 0.5s;
-    z-index:1;
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
 }
-.slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
-    left: 0;
-    transition: 0.5s;
-    z-index:1;
+.mySlides img{
+	 
 }
-.slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
-    left: 0;
-    transition: 0.5s;
-    z-index:1;
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+
+
 }
-.slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
-    left: 0;
-    transition: 0.5s;
-    z-index:1;
+
+.active, .dot:hover {
+  background-color: #717171;
 }
-.slider input[type=radio]:nth-child(5):checked~ul.imgs>li:nth-child(5){
-    left: 0;
-    transition: 0.5s;
-    z-index:1;
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
 
 

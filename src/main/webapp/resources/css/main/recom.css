@@ -1,7 +1,9 @@
 @charset "UTF-8";
+
 	/* 브라우저 마진과 패딩 리셋 */
 	* {margin:0;padding:0;}
 
+	/* 바텀 슬라이드 1번  주문진권 */
 	/* INPUT 가리기 */
 	.section [id*="slide1"] {display:none;}
 	.section {margin-top: 60px;}
@@ -9,11 +11,11 @@
 	
 	
 	/* 슬라이드 영역 - max-width 크기를 조절해주면 됩니다*/
-	.section .slidewrap {max-width:700px; margin:0 auto; overflow:hidden;position:relative;}
+	.section .slidewrap {max-width:650px; margin:0 auto; overflow:hidden;position:relative;background-color: #fff;}
 	.section .slidelist {white-space:nowrap; font-size:0; }
 	.section .slidelist > li {display:inline-block; vertical-align:middle; width:100%; transition:all .5s;}
 	.section .slidelist > li > a {display:block; position:relative; }
- 	.section .slidelist > li > a > img{height: 300px; width: 600px;} 
+ 	.section .slidelist > li > a > img{height: 450px; width: 630px;} 
 
 	.section input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
 	    background-color: #fff;
@@ -24,16 +26,6 @@
 	.section input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
 	    background-color: #fff;
 	}
-
-
-
-	/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
-/* 	.section .slide-control {position:absolute;top:0;left:0;z-index:10;height: 300px; width: 600px;}
-	.section .slide-control label {position:absolute;z-index:1;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
-	.section .slide-control .left {left:10px; background:url('resources/img/main/left.png') center center / 100% no-repeat;}
-	.section .slide-control .right {right:10px; background:url('resources/img/main/right.png') center center / 100% no-repeat;}
-	.section .slide-control [class*="control"] {display:none;} */
-
 
 	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
 	.section [id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
@@ -46,7 +38,8 @@
 	.section [id="slide03"]:checked ~ .slidewrap .control03 {display:block;}
 	
 	
-	.text-block {
+	
+.text-block {
   position: absolute;
   bottom: 50px;
   right: 50px;
@@ -56,12 +49,261 @@
   padding-right: 20px;
   opacity: 50%;
 }
-
+.card-title{
+	font-size: 20px;
+}
 #submitimg{
 	background: url("../../img/main/loupe.png");
 	width: 40px; 
 	height: 40px;
 }
 
+#sectiondiv2, #sectiondiv3, #sectiondiv4, #sectiondiv5{
+	display: none;
+	}
+
+.bullets1{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) ;
+    bottom: 10px;
+    z-index: 2;
+}
+.bullets1 label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+	/* 바텀 슬라이드 2번 대관령권 */
+	#sectiondiv2 [id*="slide001"] {display:none;}
+	#sectiondiv2 {margin-top: 60px;}
+	#sectiondiv2 input[type=radio]{display: none;}
+	
+
+	#sectiondiv2 .slidewrap2 {max-width:650px; margin:0 auto; overflow:hidden;position:relative;}
+	#sectiondiv2 .slidelist2 {white-space:nowrap; font-size:0; }
+	#sectiondiv2 .slidelist2 > li {display:inline-block; vertical-align:middle; width:100%; transition:all .5s;}
+	#sectiondiv2 .slidelist2 > li > a {display:block; position:relative; }
+ 	#sectiondiv2 .slidelist2 > li > a > img{height: 450px; width: 630px;} 
+
+	#sectiondiv2 input[type=radio]:nth-child(1):checked~.bullets2>label:nth-child(1){
+	    background-color: #fff;
+	}
+	#sectiondiv2 input[type=radio]:nth-child(2):checked~.bullets2>label:nth-child(2){
+	    background-color: #fff;
+	}
+	#sectiondiv2 input[type=radio]:nth-child(3):checked~.bullets2>label:nth-child(3){
+	    background-color: #fff;
+	}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	#sectiondiv2 [id="slide001"]:checked ~ .slidewrap2 .slidelist2 > li {transform:translateX(0%);}
+	#sectiondiv2 [id="slide002"]:checked ~ .slidewrap2 .slidelist2 > li {transform:translateX(-100%);}
+	#sectiondiv2 [id="slide003"]:checked ~ .slidewrap2 .slidelist2 > li {transform:translateX(-200%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	#sectiondiv2 [id="slide001"]:checked ~ .slidewrap2 .control01 {display:block;}
+	#sectiondiv2 [id="slide002"]:checked ~ .slidewrap2 .control02 {display:block;}
+	#sectiondiv2 [id="slide003"]:checked ~ .slidewrap2 .control03 {display:block;}
+	
+	.slidewrap2 .bullets2{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    z-index: 2;
+	}
+	.slidewrap2 .bullets2 label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 	
 	
+	
+	
+	/* 바텀 슬라이드 3번 시내권 */
+	#sectiondiv3 [id*="slide0001"] {display:none;}
+	#sectiondiv3 {margin-top: 60px;}
+	#sectiondiv3 input[type=radio]{display: none;}
+	
+
+	#sectiondiv3 .slidewrap3 {max-width:650px; margin:0 auto; overflow:hidden;position:relative;}
+	#sectiondiv3 .slidelist3 {white-space:nowrap; font-size:0; }
+	#sectiondiv3 .slidelist3 > li {display:inline-block; vertical-align:middle; width:100%; transition:all .5s;}
+	#sectiondiv3 .slidelist3 > li > a {display:block; position:relative; }
+ 	#sectiondiv3 .slidelist3 > li > a > img{height: 450px; width: 630px;} 
+
+	#sectiondiv3 input[type=radio]:nth-child(1):checked~.bullets3>label:nth-child(1){
+	    background-color: #fff;
+	}
+	#sectiondiv3 input[type=radio]:nth-child(2):checked~.bullets3>label:nth-child(2){
+	    background-color: #fff;
+	}
+	#sectiondiv3 input[type=radio]:nth-child(3):checked~.bullets3>label:nth-child(3){
+	    background-color: #fff;
+	}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	#sectiondiv3 [id="slide0001"]:checked ~ .slidewrap3 .slidelist3 > li {transform:translateX(0%);}
+	#sectiondiv3 [id="slide0002"]:checked ~ .slidewrap3 .slidelist3 > li {transform:translateX(-100%);}
+	#sectiondiv3 [id="slide0003"]:checked ~ .slidewrap3 .slidelist3 > li {transform:translateX(-200%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	#sectiondiv3 [id="slide0001"]:checked ~ .slidewrap3 .control01 {display:block;}
+	#sectiondiv3 [id="slide0002"]:checked ~ .slidewrap3 .control02 {display:block;}
+	#sectiondiv3 [id="slide0003"]:checked ~ .slidewrap3 .control03 {display:block;}
+	
+	.slidewrap3 .bullets3{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    z-index: 2;
+	}
+	.slidewrap3 .bullets3 label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+	
+	
+	/* 바텀 슬라이드 4번 경포권 */
+	#sectiondiv4 [id*="slide00001"] {display:none;}
+	#sectiondiv4 {margin-top: 60px;}
+	#sectiondiv4 input[type=radio]{display: none;}
+	
+
+	#sectiondiv4 .slidewrap4 {max-width:650px; margin:0 auto; overflow:hidden; position:relative;}
+	#sectiondiv4 .slidelist4 {white-space:nowrap; font-size:0; }
+	#sectiondiv4 .slidelist4 > li {display:inline-block; vertical-align:middle; width:100%; transition:all .5s;}
+	#sectiondiv4 .slidelist4 > li > a {display:block; position:relative; }
+ 	#sectiondiv4 .slidelist4 > li > a > img{height: 450px; width: 630px;} 
+
+	#sectiondiv4 input[type=radio]:nth-child(1):checked~.bullets4>label:nth-child(1){
+	    background-color: #fff;
+	}
+	#sectiondiv4 input[type=radio]:nth-child(2):checked~.bullets4>label:nth-child(2){
+	    background-color: #fff;
+	}
+	#sectiondiv4 input[type=radio]:nth-child(3):checked~.bullets4>label:nth-child(3){
+	    background-color: #fff;
+	}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	#sectiondiv4 [id="slide00001"]:checked ~ .slidewrap4 .slidelist4 > li {transform:translateX(0%);}
+	#sectiondiv4 [id="slide00002"]:checked ~ .slidewrap4 .slidelist4 > li {transform:translateX(-100%);}
+	#sectiondiv4 [id="slide00003"]:checked ~ .slidewrap4 .slidelist4 > li {transform:translateX(-200%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	#sectiondiv4 [id="slide00001"]:checked ~ .slidewrap4 .control01 {display:block;}
+	#sectiondiv4 [id="slide00002"]:checked ~ .slidewrap4 .control02 {display:block;}
+	#sectiondiv4 [id="slide00003"]:checked ~ .slidewrap4 .control03 {display:block;}
+	
+	.slidewrap4 .bullets4{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    z-index: 2;
+	}
+	.slidewrap4 .bullets4 label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+	
+	
+		/* 바텀 슬라이드 5번 경포권 */
+	#sectiondiv5 [id*="slide000001"] {display:none;}
+	#sectiondiv5 {margin-top: 60px;}
+	#sectiondiv5 input[type=radio]{display: none;}
+	
+
+	#sectiondiv5 .slidewrap5 {max-width:650px; margin:0 auto; overflow:hidden;position:relative;}
+	#sectiondiv5 .slidelist5 {white-space:nowrap; font-size:0; }
+	#sectiondiv5 .slidelist5 > li {display:inline-block; vertical-align:middle; width:100%; transition:all .5s;}
+	#sectiondiv5 .slidelist5 > li > a {display:block; position:relative; }
+ 	#sectiondiv5 .slidelist5 > li > a > img{height: 450px; width: 630px;} 
+
+	#sectiondiv5 input[type=radio]:nth-child(1):checked~.bullets5>label:nth-child(1){
+	    background-color: #fff;
+	}
+	#sectiondiv5 input[type=radio]:nth-child(2):checked~.bullets5>label:nth-child(2){
+	    background-color: #fff;
+	}
+	#sectiondiv5 input[type=radio]:nth-child(3):checked~.bullets5>label:nth-child(3){
+	    background-color: #fff;
+	}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	#sectiondiv5 [id="slide000001"]:checked ~ .slidewrap5 .slidelist5 > li {transform:translateX(0%);}
+	#sectiondiv5 [id="slide000002"]:checked ~ .slidewrap5 .slidelist5 > li {transform:translateX(-100%);}
+	#sectiondiv5 [id="slide000003"]:checked ~ .slidewrap5 .slidelist5 > li {transform:translateX(-200%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	#sectiondiv5 [id="slide000001"]:checked ~ .slidewrap5 .control01 {display:block;}
+	#sectiondiv5 [id="slide000002"]:checked ~ .slidewrap5 .control02 {display:block;}
+	#sectiondiv5 [id="slide000003"]:checked ~ .slidewrap5 .control03 {display:block;}
+	
+	.slidewrap5 .bullets5{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    z-index: 2;
+	}
+	.slidewrap5 .bullets5 label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.btn01 {
+  display: block;
+  position: relative;
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+  border: none;
+}
+.btn01 {
+  background: #4b94f2;
+}
+.btn01:hover {
+  background: #3573c4;
+}
+.coment2{
+	position: relative;
+}
+.bottommap{
+	position: absolute;
+	left:1000px;
+	margin-top: 50px;
+	
+}
+
+
