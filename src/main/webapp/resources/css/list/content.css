@@ -1,7 +1,7 @@
-.roompic{
+ .roompic{
     width: 1200px;
     height: 450px;
-    border: 1px solid blue;
+   border: 1px solid gray;
     margin: 20px;
     display: inline block;
 }
@@ -42,8 +42,8 @@
     width: 400px;
     height: 40px;
 }
-.map{
-    margin-left: 55px;
+#map{
+  /*   margin-left: 55px; */
 }
 .mapaddr{
     margin-top: 30px;
@@ -52,16 +52,32 @@
 }
 .hi2{
     margin-top: 30px;
+    margin-bottom: 20%;
 }
 
 .content5table {
 	margin-left : 25px;
-    width: 95%;
+    width: 70%;
     height: 390px;
     text-align: left;
+    margin-bottom: 60%;
    }
    .content5table tr td{
-   border: 1px solid rgba(0, 0, 0, 0.274);
-    padding: 10px;
    
+    padding: 10px;
+    border: 1px solid gray;
     }
+
+    .mapmap{
+	width: 300px;
+	
+}
+.reviewicon{
+	width: 50px;
+	
+	height: 50px;
+}
+.reviewimg{
+ width: 500px;
+ height: 300px;
+}

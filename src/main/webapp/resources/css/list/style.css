@@ -13,8 +13,7 @@
 }
 
 section{
-    height: 1190px;
-    border: solid 1px red;
+   
     display: none;
     padding: 20px 0 0;
     border-top: 1px solid #ddd;
@@ -23,8 +22,8 @@ section{
 
 #contentbox {
     width: 1320px;
-    height: 1800px;
-    border: solid 1px blue;
+    height: 100%;
+    border: 1px solid gray;
     margin: 0 auto;
 
 }
@@ -57,7 +56,7 @@ section{
 #mainmenu li {
 
     float: left;
-    margin: 20px 50px 0 200px;
+/*     margin: 20px 50px 0 200px; */
 
 }
  /* 여기부터 슬라이드 */
@@ -152,12 +151,18 @@ ul.imgs li {
 .leftinfo {
     display: inline-block;
     width: 500px;
-    margin-top: 70px;
+    margin-top: 50px;
     margin-left: 30px;
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.rating{
+
+.mapcomm{
+	width: 40px;
+	height: 35px;
+	font-size: 10px;
+}
+ .rating{
     
     font-size: 25px;
 }
@@ -167,18 +172,20 @@ ul.imgs li {
 }
 
 .star-rating,
-.star-rating span {
+.star-rating span{
     display: inline-block;
-    height: 55px;
+    height: 54.5px;
     overflow: hidden;
-    background: url(../img/star.png)no-repeat;
+    background: url(star.png)no-repeat;
 }
+
 
 .star-rating span {
     background-position: left bottom;
     line-height: 0;
     vertical-align: top;
-}
+    
+} 
 
 body {
     color: #555;
@@ -243,7 +250,17 @@ input:checked+label {
 font-size: 40px;
 font-weight: bold;
 }
-#content1{
+
+
+
+
+.mapmap{
+	width: 300px;
+	/* border: solid 1px blue; */
+}
+
+
+/* #content1{
     border: 3px solid rgb(247, 8, 8);
    
 }
@@ -258,6 +275,7 @@ font-weight: bold;
 }
 #content5{
     border: 3px solid rgb(59, 162, 33);
-}
+   
+} */
 
 
