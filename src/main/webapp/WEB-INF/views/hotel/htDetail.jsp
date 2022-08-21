@@ -127,7 +127,7 @@ function showSlides(n) {
 					<div class="roompic">
 						<img class="rp1" src="resources/upload/${dto.room_img.rti_afterimg}" alt="${dto.room_img.rti_afterimg}">
 						<div class="roomname">${dto.rt_rmname }</div>
-						<div class="roompp">기준${dto.rt_rpeople }인</div>
+						<div class="roompp">기준 ${dto.rt_rpeople }인</div>
 						<div class="rprice">가격 
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${dto.rt_price }원~
 
@@ -227,12 +227,12 @@ infowindow.open(map, marker);
              </div>
 			    <hr />
 			  </div>
-			  <c:forEach items="${Accdto }" var="dto">
 			<c:choose>			 
 			 <c:when test="${recnt eq 0 }">
 			 리뷰가 없습니다.
 			 </c:when>
 			 <c:otherwise>
+			  <c:forEach items="${Accdto }" var="dto">
 			 
 			<div class="reviewtitle">
 				<img class="reviewicon" style="width:50px" src="resources/img/mypage/company/reviewicon.png"/> 
@@ -244,13 +244,18 @@ infowindow.open(map, marker);
         	<div class="reviewtxt" style="white-space: pre-line;">${dto.rv.rv_content }</div>
         	<br />
         	<div> 
-        	<img class="reviewimg" src="resources/upload/${dto.rvi.rvi_afterimg}" ><br />
+        	<c:forEach items="${rv_imgList }" var="img">
+        		<c:if test="${img.rv_num eq dto.rv.rv_num }">
+	        		<img class="reviewimg" src="resources/upload/${img.rvi.rvi_afterimg}" alt="${img.rvi.rvi_afterimg}"> |        	    			
+        		</c:if>
+        	</c:forEach>
+        	<br />
          	 작성일 ${dto.rv.rv_date }
       		 </div>
      		  <hr />
+			 </c:forEach>
 			 </c:otherwise>
 			 </c:choose>
-			 </c:forEach>
 			</div>
 			</section>
 

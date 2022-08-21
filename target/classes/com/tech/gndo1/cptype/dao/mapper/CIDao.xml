@@ -94,6 +94,7 @@
 	<select id="accimg" resultType="com.tech.gndo1.roomtype.dto.AccimgDto">
 		SELECT * FROM ACCOMMODATION_IMG WHERE ACC_NUM=#{param1}
 	</select>
+	
 	<select id="accimgcnt" resultType="Integer">
 		SELECT COUNT(ACCI_AFTERIMG) FROM ACCOMMODATION_IMG WHERE ACC_NUM=#{param1}
 	</select>
@@ -118,7 +119,11 @@
 		WHERE RT.RT_NUM=RTI.RT_NUM AND RT.ACC_NUM=#{param1}
 	</select>
 	<select id="rating" resultType="Double">
-		SELECT ROUND(AVG (RV.RV_GRADE),1)
+		SELECT 
+    		CASE 
+        		WHEN ROUND(AVG (RV.RV_GRADE),1) IS NULL THEN 0
+        		ELSE ROUND(AVG (RV.RV_GRADE),1)
+    		END
 		FROM ACCOMMODATION_INFO AI, REVIEW RV, ROOMTYPE RT
 		WHERE AI.ACC_NUM=RT.ACC_NUM AND RT.RT_NUM = RV.RT_NUM AND AI.ACC_NUM=#{param1}
 	</select>
@@ -190,20 +195,46 @@
 	   <result property="acc_serkeyword" column="ACC_SERKEYWORD"/>
 	   <result property="acc_name" column="ACC_NAME"/>
 	   <result property="acc_detailmap" column="ACC_DETAILMAP"/>
-   <collection property="ai" resultMap="accommodation_img"/>
-   <collection property="r" resultMap="roomtype"/>
-   <collection property="rv" resultMap="review"/>
-   <collection property="rvi" resultMap="review_img"/>
-   <collection property="mem" resultMap="member"/>
-</resultMap>
+	   		<collection property="ai" resultMap="accommodation_img"/>
+   			<collection property="r" resultMap="roomtype"/>
+   			<collection property="rv" resultMap="review"/>
+   			<collection property="rvi" resultMap="review_img"/>
+   			<collection property="mem" resultMap="member"/>
+	</resultMap>
 
 
 
 
-<select id="accreselect" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto" resultMap="accommodation_info">
-SELECT MEM.MEM_NICKNAME,RV.RV_DATE ,RV.RV_CONTENT,R.RT_RMNAME, RV.RV_GRADE ,RV.RV_TITLE ,RVI.RVI_IMG,RVI.RVI_AFTERIMG
- 	FROM REVIEW RV,ROOMTYPE R,REVIEW_IMG RVI,ACCOMMODATION_INFO ACC,MEMBERS MEM 
-	WHERE RV.RT_NUM=R.RT_NUM AND RVI.RV_NUM=RV.RV_NUM AND MEM.MEM_NUM=RV.MEM_NUM AND ACC.ACC_NUM=#{param1}
+	<select id="accreselect" resultType="com.tech.gndo1.cptype.dto.Accommodation_infoDto" resultMap="accommodation_info">
+		SELECT DISTINCT(RV.RV_NUM), MEM.MEM_NICKNAME,RV.RV_DATE ,RV.RV_CONTENT,R.RT_RMNAME, RV.RV_GRADE ,RV.RV_TITLE 
+ 		FROM REVIEW RV,ROOMTYPE R,REVIEW_IMG RVI,ACCOMMODATION_INFO ACC,MEMBERS MEM 
+		WHERE RV.RT_NUM=R.RT_NUM AND RVI.RV_NUM=RV.RV_NUM AND MEM.MEM_NUM=RV.MEM_NUM AND ACC.ACC_NUM=R.ACC_NUM  AND ACC.ACC_NUM=#{param1}
+	</select>
+	
+	
+	<resultMap type="com.tech.gndo1.review.dto.Review_imgDto" id="rvi_rvi">
+      <result property="rvi_num" column="RVI_NUM" />
+      <result property="rv_num" column="RV_NUM" />
+      <result property="rvi_img" column="RVI_IMG" />
+      <result property="rvi_afterimg" column="RVI_AFTERIMG" />
+   </resultMap>
+	
+	<resultMap type="com.tech.gndo1.review.dto.ReviewDto" id="rvi_rv">
+		<result property="rv_num" column="RV_NUM" />
+      	<result property="mem_num" column="MEM_NUM" />
+      	<result property="rt_num" column="RT_NUM" />
+      	<result property="rv_date" column="RV_DATE" />
+      	<result property="rv_title" column="RV_TITLE" />
+      	<result property="rv_content" column="RV_CONTENT" />
+     	<result property="rv_grade" column="RV_GRADE" />
+     	<collection property="rvi" resultMap="rvi_rvi"/>
+	</resultMap>
+	
+	<select id="review_imgList" resultType="com.tech.gndo1.review.dto.ReviewDto" resultMap="rvi_rv">
+		SELECT RV.RV_NUM, RVI.RVI_AFTERIMG
+    	FROM REVIEW RV, REVIEW_IMG RVI, ROOMTYPE RT
+    	WHERE RV.RV_NUM=RVI.RV_NUM AND RT.RT_NUM=RV.RT_NUM
+    	AND RT.ACC_NUM=#{param1}
 	</select>
 	
 

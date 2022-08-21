@@ -2,6 +2,7 @@ package com.tech.gndo1.review.dto;
 
 import java.sql.Date;
 
+import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
 import com.tech.gndo1.mb.dto.MembersDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
@@ -18,13 +19,14 @@ public class ReviewDto {
 	private Review_replyDto rvr;
 	private MembersDto mem;
 	private RoomTypeDto rt;
+	private Accommodation_infoDto acc;
 	
 	public ReviewDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ReviewDto(int rv_num, int mem_num, int rt_num, Date rv_date, String rv_title, String rv_content,
-			int rv_grade, Review_imgDto rvi, Review_replyDto rvr, MembersDto mem, RoomTypeDto rt) {
+			int rv_grade, Review_imgDto rvi, Review_replyDto rvr, MembersDto mem, RoomTypeDto rt, Accommodation_infoDto acc) {
 		super();
 		this.rv_num = rv_num;
 		this.mem_num = mem_num;
@@ -37,6 +39,7 @@ public class ReviewDto {
 		this.rvr = rvr;
 		this.mem = mem;
 		this.rt = rt;
+		this.acc = acc;
 	}
 
 	public int getRv_num() {
@@ -125,6 +128,14 @@ public class ReviewDto {
 
 	public void setRt(RoomTypeDto rt) {
 		this.rt = rt;
+	}
+
+	public Accommodation_infoDto getAcc() {
+		return acc;
+	}
+
+	public void setAcc(Accommodation_infoDto acc) {
+		this.acc = acc;
 	}
 
 

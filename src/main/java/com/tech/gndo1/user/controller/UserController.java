@@ -1,5 +1,7 @@
 package com.tech.gndo1.user.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tech.gndo1.cptype.dao.CIDao;
+import com.tech.gndo1.review.dto.ReviewDto;
 import com.tech.gndo1.user.dao.UIDao;
 
 @Controller
@@ -54,7 +57,23 @@ public class UserController {
 	}
 	
 	@RequestMapping("/mbreview")
-	public String mbreview() {
+	public String mbreview(HttpServletRequest request,Model model) {
+		HttpSession session =request.getSession();
+		if (session.getAttribute("mem_num") != null) {
+			
+			int mem_num = (Integer)session.getAttribute("mem_num");
+			UIDao udao = sqlSession.getMapper(UIDao.class);
+			//내가 쓴 리뷰 목록 select
+			ArrayList<ReviewDto> rvdto = udao.mem_reviews(mem_num);
+			System.out.println(rvdto.size());
+			model.addAttribute("reviewDone", rvdto);
+			
+			//아직 쓰지 않은 리뷰 목록 select
+			rvdto = udao.have_to_write(mem_num);
+			model.addAttribute("reviewNone", rvdto);
+			
+			
+		}
 		return "mypage/members/mbReview";
 	}
 	

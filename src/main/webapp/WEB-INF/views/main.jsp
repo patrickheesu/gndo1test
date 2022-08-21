@@ -136,9 +136,7 @@ dots[n].className += " active";
 					  					<div class="card-body">
 					  						<h5 class="card-title">${adto.acc_name }</h5>
 					    					<p class="card-text">${adto.r.rt_price }</p>
-					    					<p 
-					    					
-					    					class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
+					    					<p class="card-text_1"><small class="text-muted">(1박 기준)</small></p>
 										</div>
 									</a>
 								</div>

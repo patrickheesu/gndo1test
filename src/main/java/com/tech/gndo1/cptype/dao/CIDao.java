@@ -1,9 +1,11 @@
 package com.tech.gndo1.cptype.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
+import com.tech.gndo1.review.dto.ReviewDto;
 import com.tech.gndo1.roomtype.dto.AccimgDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
@@ -60,6 +62,8 @@ public interface CIDao {
 	int reviewcnt(String acc_num);
 
 	List<Accommodation_infoDto> accreselect(String acc_num);
+
+	ArrayList<ReviewDto> review_imgList(String acc_num);
 
 //	public CpTypeDto accinfo();
 

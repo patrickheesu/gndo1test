@@ -1,9 +1,11 @@
 package com.tech.gndo1.user.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.mb.dto.MembersDto;
+import com.tech.gndo1.review.dto.ReviewDto;
 
 public interface UIDao {
 	public String find_memid(String memName, String memEmail);
@@ -47,4 +49,7 @@ public interface UIDao {
 	public CompanyDto myPage_cpy(int cpy_num);
 
 
+	public ArrayList<ReviewDto> mem_reviews(int mem_num);
+
+	public ArrayList<ReviewDto> have_to_write(int mem_num);
 }

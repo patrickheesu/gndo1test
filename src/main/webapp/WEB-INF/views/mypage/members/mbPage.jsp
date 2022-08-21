@@ -41,7 +41,7 @@
    <div class="mypage_body">
       <div class="user">
          <div class="user_tab">
-            <a href="#"><img src="resources/img/mypage/user_icon.png" width="80px" height="80px" id="user_icon"/></a>
+            <a href="main"><img src="resources/img/mypage/user_icon.png" width="80px" height="80px" id="user_icon"/></a>
             <div class="usertext">${mem_nickname }<small style="font-size:20px;">님</small></div>
             <div class="user_setting">
                <a href="#" onclick="pwdCheck();">내정보관리 ></a>
