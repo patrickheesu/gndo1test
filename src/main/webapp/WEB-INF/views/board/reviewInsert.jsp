@@ -22,8 +22,7 @@
 			</div>
 			
 			<div class="reviewgrade">
-				<label for="rvgrade" class="rvgrade" >평점</label>
-				
+				<label for="rvgrade" >평점</label>
 				<div class="star-rating">
 				  <input type="radio" id="5-stars" name="rv_grand" value="5" />
 				  <label for="5-stars" class="star">&#9733;</label>

@@ -6,16 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <title>GANGNENGDOWON</title>
+    
     <link rel="stylesheet" href="resources/css/main/gmain.css">
     <link rel="stylesheet" href="resources/css/main/style.css">
     <link rel="stylesheet" href="resources/css/main/recom.css">
-    
+   
 	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script anguage="JavaScript" type="text/JavaScript" ></script>
-
+	 
 <script>
 var slideIndex = 0; //slide index
 
@@ -69,49 +70,53 @@ dots[n].className += " active";
 
 </script>
 
+
 </head>
 <body>
 <div class="clear"></div>
 <div id="wrap">	
 	<div id="search">
-        <form action="totList?cptype=통합검색&typecode=0" method="post">
-        	<div id="search2">
-        		<input type="text" name="sk" class="form-control" placeholder="어디로 떠나시나요? 지역,숙소명,키워드로 찾아보세요!" aria-label="Example text with two button addons" style="width: 800px; height: 40px;">
-        		<input type="submit" value="검색"  />
-        	</div>
-        </form>
-    </div>	
-    <div id="submenu">
+	   <form action="totList" method="post">
+	        <div id="search2">
+	        	<span id="searchinput">
+	        		<input type="text" name="sk" class="form-control" placeholder="어디로 떠나시나요? 지역,숙소명,키워드로 찾아보세요!" aria-label="Example text with two button addons" style="width: 800px; height: 50px;">
+	        	</span>
+	        	<input type="image" value="submit" src="resources/img/main/loupe.png" class="searchicon" style="width: 40px;"/>
+	        </div>
+	    </form>
+	</div> 
+	 <div id="submenu">
   <!-- 아이콘 이미지 삽입 -->
-	  	<div id="submenu_icon">
-		      <a href="totList?cptype=hotel&typecode=1"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
-		      <a href="totList?cptype=motel&typecode=2"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
-		      <a href="totList?cptype=pension&typecode=3"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
-		      <a href="totList?cptype=guestHouse&typecode=4"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
-		      <a href="totList?cptype=camping&typecode=5"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
-	     </div>
+	  		<div id="submenu_icon">
+		        <a href="totList?cptype=hotel&typecode=1"><img src="resources/img/main/hotel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=motel&typecode=2"><img src="resources/img/main/motel.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=pension&typecode=3"><img src="resources/img/main/pension.png" style="width:105px; heigth:105px;" alt=""></a>
+		        <a href="totList?cptype=guestHouse&typecode=4"><img src="resources/img/main/guesthouse.png" style="width:100px; heigth:100px;" alt=""></a>
+		        <a href="totList?cptype=camping&typecode=5"><img src="resources/img/main/camping.png" style="width:100px; heigth:100px;" alt=""></a>
+	        </div>
+        </div>   
+      <div class="slideshow-container">
+
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <img src="resources/img/main/main_1.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="resources/img/main/main_2.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="resources/img/main/main_3.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="resources/img/main/main_4.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="resources/img/main/main_5.jpg" style="width:100%">
+      </div>
     </div>
-	<div class="slideshow-container">
-		<!-- Full-width images with number and caption text -->
-	      <div class="mySlides fade">
-	        <img src="resources/img/main/main_1.jpg" style="width:100%">
-	      </div>
-	
-	      <div class="mySlides fade">
-	        <img src="resources/img/main/main_2.jpg" style="width:100%">
-	      </div>	
-	      <div class="mySlides fade">
-	        <img src="resources/img/main/main_3.jpg" style="width:100%">
-	      </div>
-	      <div class="mySlides fade">
-	        <img src="resources/img/main/main_4.jpg" style="width:100%">
-	      </div>
-	
-	      <div class="mySlides fade">
-	        <img src="resources/img/main/main_5.jpg" style="width:100%">
-	      </div>
-	</div>
-	    <br/>
+    <br/>
+
     <!-- The dots/circles -->
     <div style="text-align:center">
       <span class="dot" onclick="currentSlide(0)"></span>
@@ -144,26 +149,26 @@ dots[n].className += " active";
             			</c:forEach>
             </table>
         </div>
-        </c:if>
-	</div>
-<div id="remap">
-    <div id="remap_sub">
-    	<h2 id="remaptitle">권역별 추천 숙박</h2>
-    	<div id="remapcom">
-            <div id="coment">
-                <div id="coment_img" style="position: relative; float: left;">
-                    <img src="resources/img/main/map_main.png" id="image">
-            	</div>
-        	 </div>
-    	</div>
-	    <div id="coment2">
-	       <button class="btn01" onclick="changeimg1()">주문진권</button>
-	       <button class="btn01" onclick="changeimg2()">대관령권</button>
-	       <button class="btn01" onclick="changeimg3()">시내권</button>
-	       <button class="btn01" onclick="changeimg4()">경포권</button>
-	       <button class="btn01" onclick="changeimg5()">정동진·옥계권</button>
-	    </div>
-		<div class="bottommap">
+     </c:if>
+</div>
+        <div id="remap">
+	        <div id="remap_sub">
+	            <h2 id="remaptitle">권역별 추천 숙박</h2>
+		        <div id="remapcom">
+		            <div id="coment">
+		                <div id="coment_img" style="position: relative; float: left;">
+		                    <img src="resources/img/main/map_1.png" id="image">
+		            	</div>
+		         	</div>
+		    	</div>
+		    	<div id="coment2">
+			       <button class="btn01" onclick="changeimg1()">주문진권</button>
+			       <button class="btn01" onclick="changeimg2()">대관령권</button>
+			       <button class="btn01" onclick="changeimg3()">시내권</button>
+			       <button class="btn01" onclick="changeimg4()">경포권</button>
+			       <button class="btn01" onclick="changeimg5()">정동진·옥계권</button>
+		  	  </div>	
+		    <div class="bottommap">
 			<div class="section" id="sectiondiv1">
 				<input type="radio" name="slide1" id="slide01" checked>
 				<input type="radio" name="slide1" id="slide02">
@@ -331,7 +336,7 @@ dots[n].className += " active";
 	         document.getElementById("sectiondiv3").style.display = "none";
 	         document.getElementById("sectiondiv4").style.display = "none";
 		     }  
-
     </script>
+
 </body>
 </html>

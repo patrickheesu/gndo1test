@@ -6,10 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/review/review.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    
 <title>review_list</title>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
@@ -62,10 +59,10 @@ $(function(){
 						<a href="reviewDetail?rv_num=${review.rv_num }">
 							<div class="card" style="max-width: 600px; border-collapse: collapse;">
 							  <div class="row">
-							    <div class="col-md-4">
+							    <div class="col_01">
 							      <img src="resources/upload/${review.rvi.rvi_afterimg }" class="img-fluid" alt="${review.rvi.rvi_afterimg }">
 							    </div>
-							    <div class="col-md-8">
+							    <div class="col_02">
 							      <div class="card-body">
 							        <h5 class="card-title"><text>${status.count }#</text>${review.rv_title }</h5>
 							        <p class="card-text" >${review.rv_content }</p>

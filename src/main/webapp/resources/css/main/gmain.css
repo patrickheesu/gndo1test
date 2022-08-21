@@ -54,13 +54,7 @@ a {
 	color: #F23005;
 }
 
-/* #remaptitle {
-	font-weight: bold;
-	font-size: 20px;
-	float: right;
-	display: flex;
-}
- */
+
 #main_img {
 	width: 100%;
 	position: relative;
@@ -70,12 +64,6 @@ a {
 #searchinput{
 	margin:0 auto;
 	width: 1000px;
-}
-
-#lou {
-	flex: 1;
-	margin-top: 4px;
-	margin-left: 4px;
 }
 
 .form-control {
