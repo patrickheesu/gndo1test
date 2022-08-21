@@ -30,14 +30,33 @@ div.card-body{
 a{
 	text-decoration: none;
 }
-card-text{
-	    white-space: normal;
-    line-height: 1.2;
-    height: 3.6em;
-    text-align: left;
-    word-wrap: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-
+.card-text{
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+    overflow: hidden;
 }
+.row{
+	width: 700px;
+	height: 300px;
+}
+.col_01 img{
+	width: 200px;
+	height: 250px;
+}
+.col_01{
+	float:left;
+	width: 200px;
+	height: 250px;
+}
+
+.col_02{
+	margin-left:30px;
+	float: left;
+	width: 300px;
+	height: 250px;
+}
+

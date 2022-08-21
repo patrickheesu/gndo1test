@@ -12,17 +12,16 @@
 	width:1200px;
 	margin: 0 auto;
 	text-align: center;
-	border: 
+
 }
 #detailimg img{
-	width: 200px;
 	height: 200px;
 }
 #satr-grade{
 color: #3573c4;
 }
 
-th{
+.rvdetail th{
 	width: 80px;
 	background-color: #f6f6f6;
     position: static;
@@ -30,13 +29,14 @@ th{
     padding-left: 20px;
     padding-right: 20px;
 }
-td{
+.rvdetail td{
 	padding: 11px;
     box-sizing: border-box;
     vertical-align: middle;
     width:800px;
     text-align: left;
     }
+    
 .rvdetail th,.rvdetail td{
    	border-bottom: 1px solid #d9d9d9;
    
@@ -44,7 +44,10 @@ td{
 .bottombut{
 	margin: 15px;
 }
-    
+.rvtextcontent{
+	width: 500px;
+	word-break:break-all; 
+}
 
 
 </style>
@@ -91,7 +94,7 @@ td{
 
 <tr>
 	<th>내용</th>
-	<td>${review_detail.rv_content }</td>
+	<td class="rvtextcontent">${review_detail.rv_content }</td>
 </tr>
 <tr>
 	<th>날짜</th>

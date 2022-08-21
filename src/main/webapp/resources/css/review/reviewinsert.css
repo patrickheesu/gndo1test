@@ -36,9 +36,7 @@ select{
 	float: right;
 	margin-right: 350px;
 }
-.rvgrade{
-  left: 0;
-}
+
 .star-rating {
   float:left;
   text-align: center;
@@ -75,7 +73,5 @@ label{
 	padding: 12px 12px 12px 0;
     display: inline-block;
 }
-.reviewgrade{
-	
-}
+
 
