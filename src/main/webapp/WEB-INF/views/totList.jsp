@@ -82,7 +82,7 @@ ratingToPercent() {
       	<c:otherwise>
 		<c:forEach items="${search}" var="search">
 			<div class="louge_list" style="width: 17rem;">
-				<a href="htdetail?acc_num=${search.acc_num }">
+				<a href="htDetail?acc_num=${search.acc_num }">
 		  			<img src="resources/upload/${search.ai.acci_afterimg}" class="card-img-top" alt="${search.ai.acci_afterimg}">
 		  			<div class="card-body">
 		 		 		<h5 class="card-title">${search.acc_name}</h5>

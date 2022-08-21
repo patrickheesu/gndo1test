@@ -14,6 +14,8 @@ public class RoomTypeDto {
 	
 	private RoomTypeimgDto rti;
 	
+	private RoomTypeimgDto room_img;
+	
 	public RoomTypeDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -90,7 +92,6 @@ public class RoomTypeDto {
 		this.rt_out = rt_out;
 	}
 
-	
 	public RoomTypeimgDto getRti() {
 		return rti;
 	}
@@ -99,8 +100,16 @@ public class RoomTypeDto {
 		this.rti = rti;
 	}
 
+	public RoomTypeimgDto getRoom_img() {
+		return room_img;
+	}
+
+	public void setRoom_img(RoomTypeimgDto room_img) {
+		this.room_img = room_img;
+	}
+
 	public RoomTypeDto(int rt_num, int acc_num, String rt_rmname, int rt_rmcount, int rt_rpeople, int rt_price,
-			String rt_info, String rt_in, String rt_out, RoomTypeimgDto rti) {
+			String rt_info, String rt_in, String rt_out, RoomTypeimgDto rti, RoomTypeimgDto room_img) {
 		super();
 		this.rt_num = rt_num;
 		this.acc_num = acc_num;
@@ -112,9 +121,7 @@ public class RoomTypeDto {
 		this.rt_in = rt_in;
 		this.rt_out = rt_out;
 		this.rti = rti;
+		this.room_img = room_img;
 	}
-
-	
-	
 	
 }
