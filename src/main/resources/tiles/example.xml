@@ -70,6 +70,11 @@
   	<put-attribute name="title" value="사업자결제내역페이지"/>
   	<put-attribute name="body" value="/WEB-INF/views/mypage/company/cpPayment.jsp"/>
   </definition>
+  
+  <definition name="mypage/members/mbReview" extends="baseLayout">
+  	<put-attribute name="title" value="소비자리뷰페이지"/>
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/members/mbReview.jsp"/>
+  </definition>
 </tiles-definitions>
 
 

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.cptype.dao.CIDao;
 import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
+import com.tech.gndo1.review.dto.ReviewDto;
 import com.tech.gndo1.roomtype.dto.AccimgDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
@@ -136,6 +137,9 @@ public class CptypeController {
 		List<Accommodation_infoDto> Accdto=dao.accreselect(acc_num);
 		model.addAttribute("Accdto", Accdto);
 		
+		List<ReviewDto> review_imgList = dao.review_imgList(acc_num);
+		System.out.println("size:"+review_imgList.size());
+		model.addAttribute("rv_imgList", review_imgList);
 		
 		
 		
