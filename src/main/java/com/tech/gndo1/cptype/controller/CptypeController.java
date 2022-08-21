@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.cptype.dao.CIDao;
 import com.tech.gndo1.cptype.dto.Accommodation_infoDto;
+import com.tech.gndo1.roomtype.dto.AccimgDto;
 import com.tech.gndo1.roomtype.dto.RoomTypeDto;
 
 @Controller
@@ -96,10 +98,44 @@ public class CptypeController {
 		
 	}
 	@RequestMapping("/htDetail")
-	public String htDetail(Model model) {
+	public String htDetail(HttpServletRequest request ,Model model) {
+		String acc_num = request.getParameter("acc_num");
+		
 		CIDao dao=sqlSession.getMapper(CIDao.class);
-		List<RoomTypeDto> rdto=dao.htsel();
+		
+		System.out.println(acc_num);
+
+		
+		List<RoomTypeDto> rdto=dao.htsel(acc_num);
 		model.addAttribute("rdto",rdto);
+		
+		System.out.println(rdto.size());
+	
+		
+		Accommodation_infoDto cdto=dao.csel(acc_num);
+		model.addAttribute("cdto",cdto);
+		
+		
+		List<AccimgDto> aidto=dao.accimg(acc_num);
+		model.addAttribute("aidto",aidto);
+		
+		
+		double avr=dao.rating(acc_num);
+		model.addAttribute("avr", avr);
+		
+		double avr_star = avr*20;
+		model.addAttribute("avr_star", avr_star);	
+		
+		int recnt=dao.reviewcnt(acc_num);
+		model.addAttribute("recnt", recnt);
+		
+		
+		CompanyDto cidto=dao.cinfo(cdto.getCpy_num());
+		model.addAttribute("cidto",cidto);
+		
+		List<Accommodation_infoDto> Accdto=dao.accreselect(acc_num);
+		model.addAttribute("Accdto", Accdto);
+		
 		
 		
 		
