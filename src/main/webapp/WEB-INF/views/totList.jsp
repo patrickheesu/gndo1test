@@ -91,8 +91,6 @@ ratingToPercent() {
 					</div>
 				</a>
 			</div>	
-			<%-- ${search.r.rt_price}
-			${search.i.acci_afterimg} --%>
 		</c:forEach>
 		 </c:otherwise>
       </c:choose>
