@@ -36,19 +36,17 @@
 				  <label for="1-star" class="star">&#9733;</label>
 				</div>
 			</div>
-	
-			<div class="reviewaccname">
-				<select name="stayinfo" id="stayinfo">
-				<option value="stay01">숙소들1</option>
-				<option value="stay02">숙소들2</option>
-				</select>
-			</div>
-					
+         <c:forEach items="${reviewNone}" var="dto">
+            <div class="reviewaccname">
+               <label for="stay">숙소명</label>
+               <span class="stayinfo">${dto.acc.acc_name} / ${dto.rt.rt_rmname}</span>
+            </div>
+      	</c:forEach>
 			  <label for="rvcontent" class="rv_content">내용</label>
 			  <textarea class="rvcontent" id="review_content"  name="rv_content"></textarea>
 	
-			<div class="reviewcontent">파일첨부
-			 <input type="file" name="rvi_img" />  
+			<div class="reviewfile">파일첨부
+			 <input type="file" name="rvi_img" class="rvfile"/>  
 			</div>
 
 			<input type="submit" value="리뷰등록" id="review_submit" />

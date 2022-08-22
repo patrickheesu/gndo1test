@@ -124,7 +124,7 @@ hr {
 	margin-left: -15px;
 }
 
-#recom_table th, td {
+#recom_table th, #recom_table td {
 	padding: 5px;
 	text-align: left;
 }

@@ -42,16 +42,7 @@ $(function(){
 
 <div class="clear"></div>
 <div class="reviewall">
-	<div id="review_list">
-		<c:choose>
-			<c:when test="${reviewcount eq 1 }">
-		 		<a href="reviewInsert" style="display: none;"><button>글쓰기</button></a>
-			</c:when>
-			<c:otherwise>
-				<a href="reviewInsert"><button>글쓰기</button></a>
-			</c:otherwise>
-		</c:choose>
-		
+	<div id="review_list">		
 		<c:choose>
 			<c:when test="${listsize lt 33 }">
 				<c:forEach items="${review }" var="review" varStatus="status">
@@ -64,7 +55,7 @@ $(function(){
 							    </div>
 							    <div class="col_02">
 							      <div class="card-body">
-							        <h5 class="card-title"><text>${status.count }#</text>${review.rv_title }</h5>
+							        <h5 class="card-title"><text>#</text>${review.rv_title }</h5>
 							        <p class="card-text" >${review.rv_content }</p>
 							        <p class="card-text"><img src="${pageContext.request.contextPath}/resources/img/list_review/user.png" alt="" width="15px" height="15px"/>
 							        <small class="text-muted"></small>${review.mem.mem_nickname }<small class="text-muted_2">${review.rv_date }</small></p>
@@ -74,6 +65,7 @@ $(function(){
 							</div>
 						</a>
 					</div>
+					<hr style="color: #f0f0f0;"/>
 				</c:forEach>
 			</c:when>
 			
@@ -105,6 +97,7 @@ $(function(){
 							  </div>
 							</div>
 						</a>
+						<hr style="color: #f0f0f0;"/>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
