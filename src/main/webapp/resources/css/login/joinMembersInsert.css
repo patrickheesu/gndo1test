@@ -1,3 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+	text-align: center;
+}
+
+.a {
+	width: 200px;
+	height: 200px;
+	align-items: center;
+}
 .date{
     padding-left: 33px;
     padding-right: 33px;
@@ -12,10 +26,13 @@
     padding-right: 50px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: rgb(0, 145, 255);
+    background-color: #4b94f2;
     border-color: transparent;
     border-radius: 3px;
     color: white;
+}
+.join2:hover{
+	background-color: #3573c4;
 }
 .button{
     margin-top: 20px;
@@ -36,3 +53,38 @@ a{
 	text-align: center;
 	width: 177px;
 }
+td{
+	text-align: left;
+	padding-left: 5px;
+}
+span{
+	font-size: x-small;
+}
+input{
+	outline: none;
+	border: none;
+	font-size: small;
+	padding-bottom: 5px;
+}
+hr{
+	color: black;
+	border: 0px;
+	border-top: 1px solid black;
+}
+.checkId_bt, .checkCpnum_bt, .email_auth_btn, 
+.checkBr_bt, .checkNk_bt{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #4b94f2;
+    border-color: transparent;
+    border-radius: 3px;
+    color: white; 
+}
+.checkId_bt:hover, .checkCpnum_bt:hover, 
+.email_auth_btn:hover, .checkBr_bt:hover, 
+.checkNk_bt:hover{
+	background-color: #3573c4;
+}
+

@@ -35,13 +35,16 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("mem_num", mdto.getMem_num());
 			session.setAttribute("mem_nickname", mdto.getMem_nickname());
-			
+			session.setAttribute("mem_id", mdto.getMem_id());
+			session.setAttribute("mem_email", mdto.getMem_email());
 		} else {
 			CompanyDto cdto = dao.company(id);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("cpy_num", cdto.getCpy_num());
 			session.setAttribute("cpy_name", cdto.getCpy_name());
+			session.setAttribute("cpy_id", cdto.getCpy_id());
+			session.setAttribute("cpy_email", cdto.getCpy_email());
 		}
 
 		

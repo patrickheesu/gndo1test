@@ -46,7 +46,24 @@ public interface UIDao {
 	public int accsel(int cpy_num);
 	
 	public MembersDto myPage_mem(int mem_num);
+	
+	public MembersDto mpwddpCheck(int mem_num);
+
+	public void modifyPass(String pw, String logkey, int mem_num);
+	
+	public void modifyTel(String mp, int mem_num);
+	
+	public void womem(int mem_num);
+	
 	public CompanyDto myPage_cpy(int cpy_num);
+	
+	public CompanyDto cpwddpCheck(int cpy_num);
+	
+	public void cpmodifyPass(String pw, String logkey, int cpy_num);
+	
+	public void cpmodifyTel(String mp, int cpy_num);
+	
+	public void wocpy(int cpy_num);
 
 
 	public ArrayList<ReviewDto> mem_reviews(int mem_num);

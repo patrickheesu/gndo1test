@@ -6,22 +6,10 @@
 <head>
 <meta charset="UTF-8">
     <title>소비자 이용약관</title>
-    <style>
-        body{
-            text-align: center;
-        }
-        .a{
-            width: 200px;
-            height: 200px;
-            align-items: center;
-        }
-
-
-    </style>
     <link rel="stylesheet" href="resources/css/login/joinMembers.css">   
 </head>
 <body>
-    <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3><br>
+    <a href="./"><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""><br></a>
     <form action="joinMembersInsert" id="joinForm" name="form">
         <ul>
             <li>
@@ -90,9 +78,7 @@
 		    ac.button.disabled=false;
 		    ac.button.style.border="2px solid blue";
 		    ac.button.style.color="blue";
-			
 		} else {
-			
 		    ac.button.disabled=true;
 		    ac.button.style.border="";
 		    ac.button.style.color="";

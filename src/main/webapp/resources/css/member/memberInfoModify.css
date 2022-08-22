@@ -1,0 +1,219 @@
+hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #4b94f2;
+}
+.a{
+	width: 180px;
+	height: 180px;
+	align-items: center;
+}
+.memberbody {
+    max-width: 750px;
+	align-items: center;
+    border: solid 1px #4b94f2;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.memberprofile {
+
+    background: #fff;
+}
+
+.userprofile_img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: #aaa;
+    margin: 0 auto;
+    display: block;
+}
+
+.userprofile {
+    padding: 30px 30px 15px;
+    background: #fff;
+}
+
+.userprofile_nickname {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'KoPubDotumMedium';
+}
+.nicknamechange{
+    
+    font-size: 12px;
+    background-color: white;
+    border: none;
+    text-align: center;
+}
+
+.userprofile_email {
+    text-align: center;
+    font-size: 20px;
+    color: #919191;
+
+}
+
+@font-face {
+    font-family: 'KoPubDotumMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.memberinfo {
+    margin: auto;
+    border: solid 1px #4b94f2; 
+    padding: 20px 30px 30px;
+	max-width: 750px;
+}
+.memuid{
+	padding: 10px 0;
+}
+
+.memberid {
+	float: left;
+    width: 100px;
+    display: inline-block;
+}
+
+.userid {
+	float: left;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.memuemail {
+    padding: 10px 0;
+}
+
+.memberemail {
+	float: left;
+    width: 100px;
+    display: inline-block;
+}
+
+.useremail {
+	float: left;
+    display: inline-block;
+    margin-left: 30px;
+}
+.memupass {
+    padding: 10px 0;
+}
+
+.memberpass {
+	float: left;
+    width: 100px;
+    display: inline-block;
+}
+
+.userpass {
+ 	float: left;
+    display: inline-block;
+    margin-left: 30px;
+}
+.pass{
+	line-height: 20px;
+}
+.span{
+	float: left;
+	margin-left: 10px;
+	font-size: small;
+	color: red;
+}
+
+.userpassupdate {
+    float: right;
+    display: inline-block;
+    background-color: white;
+    border: none;
+}
+.popStyle {
+   opacity: 0;
+   display: none;
+   position: relative;
+   left: 100px;
+   width: auto;
+   border: 5px solid #fff;
+   padding: 10px;
+   background-color: #fff;
+   
+   width: 440px;
+   height: 160px;
+}
+.pcontent {
+   position: absolute;
+   width: 400px;
+   height: 130px;
+}
+.text{
+	text-align: left;
+} 
+.memutel{
+	padding: 10px 0;
+}
+.membertel {
+	float: left;
+    width: 100px;
+    display: inline-block;
+}
+
+.usertel {
+	float: left;
+    display: inline-block;
+    margin-left: 30px;
+}
+.usertelupdate {
+	float: right;
+    display: inline-block;
+    background-color: white;
+    
+    border: none;
+}
+.memberusernum {
+    position: relative;
+}
+.membernum {
+    width: 100px;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.usernum {
+    display: inline-block;
+    padding: 10px 0;
+    margin-left: 30px;
+}
+
+.outuser {
+	margin: auto;
+    margin-top: 10px;
+    border: solid 1px #4b94f2;
+	max-width: 750px;
+	margin-bottom: 20px;
+    
+
+}
+.without{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    padding:  15px 25px 15px;
+    
+}
+
+.without text {
+    font-size: 25px;
+    text-align: right;
+    margin-left: 530px;
+    position: relative;
+    display: inline-block;
+}
+.userpassupdate, .usertelupdate{
+	color: #4b94f2; 
+}
+

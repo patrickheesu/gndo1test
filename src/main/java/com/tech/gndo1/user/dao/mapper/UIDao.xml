@@ -86,14 +86,57 @@
 	</select>
 	
 	<!-- mbPage 비밀번호 추출 -->
-   <select id="myPage_mem" resultType="com.tech.gndo1.mb.dto.MembersDto">
+	<select id="myPage_mem" resultType="com.tech.gndo1.mb.dto.MembersDto">
 		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_NUM=#{param1}
 	</select>
+	<!-- mbModify 비밀번호 수정 중 현재 비밀번호 회피 -->
+	<select id="mpwddpCheck" resultType="com.tech.gndo1.mb.dto.MembersDto">
+		SELECT MEM_PWD, MEM_LOGKEY FROM MEMBERS WHERE MEM_NUM=#{param1}
+	</select>
+	<!-- mbModify 팝업창에서 비밀번호 수정 -->
+	<update id="modifyPass">
+		UPDATE MEMBERS
+		SET MEM_PWD = #{param1}, MEM_LOGKEY = #{param2} 
+		WHERE MEM_NUM = #{param3}
+	</update>
+	<!-- mbModify 팝업창에서 전화번호 수정 -->
+	<update id="modifyTel">
+		UPDATE MEMBERS
+		SET MEM_PHONENUM = #{param1} 
+		WHERE MEM_NUM = #{param2}
+	</update>
+	<!-- mbModify 팝업창에서 회원탈퇴 -->
+	<delete id="womem">
+		DELETE FROM MEMBERS 
+		WHERE MEM_NUM = #{param1}
+	</delete>
 	
 	<!-- cpPage 비밀번호 추출 -->
-   <select id="myPage_cpy" resultType="com.tech.gndo1.cp.dto.CompanyDto">
+	<select id="myPage_cpy" resultType="com.tech.gndo1.cp.dto.CompanyDto">
 		SELECT CPY_PWD, CPY_LOGKEY FROM COMPANY WHERE CPY_NUM=#{param1}
 	</select>
+	<!-- cpModify 비밀번호 수정 중 현재 비밀번호 회피 -->
+	<select id="cpwddpCheck" resultType="com.tech.gndo1.cp.dto.CompanyDto">
+		SELECT CPY_PWD, CPY_LOGKEY FROM COMPANY WHERE CPY_NUM=#{param1}
+	</select>
+	<!-- cpModify 팝업창에서 비밀번호 수정 -->
+	<update id="cpmodifyPass">
+		UPDATE COMPANY
+		SET CPY_PWD = #{param1}, CPY_LOGKEY = #{param2} 
+		WHERE CPY_NUM = #{param3}
+	</update>
+	<!-- cpModify 팝업창에서 전화번호 수정 -->
+	<update id="cpmodifyTel">
+		UPDATE COMPANY
+		SET CPY_TEL = #{param1} 
+		WHERE CPY_NUM = #{param2}
+	</update>
+	<!-- mbModify 팝업창에서 회원탈퇴 -->
+	<delete id="wocpy">
+		DELETE FROM COMPANY 
+		WHERE CPY_NUM = #{param1}
+	</delete>
+	
 	
 	<resultMap type="com.tech.gndo1.review.dto.Review_imgDto" id="review_img">
 		<result property="rvi_num" column="RVI_NUM"/>

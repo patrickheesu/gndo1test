@@ -13,12 +13,24 @@
 <link rel="stylesheet" href="resources/css/login/assistance.css">  
 </head>
 <body>
-<h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3>
+<a href="./"><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3><br></a>
 <div>
 	<table class="table1">
 	<tr>
-		<td><a class="c" href="idAssistance">아이디 찾기</a></td>
-		<td><a class="c" href="passAssistance">비밀번호 찾기</a></td>
+		<td>
+			<a class="c" href="idAssistance">
+				<button class="bt1" id="bt1"
+				 onmouseover="OnMouseIn(this)" 
+				 onmouseout="OnMouseOut(this)">아이디 찾기</button>
+			</a>
+		</td>
+		<td>
+			<a class="c" href="passAssistance">
+				<button class="bt2" id="bt1"
+				 onmouseover="OnMouseIn(this)" 
+				 onmouseout="OnMouseOut(this)">비밀번호 찾기</button>
+			</a>
+		</td>
 	</tr>
 </table>
 </div>
@@ -52,17 +64,20 @@
 			<td><input id="cpy_name" type="text"  size="35px"/></td>
 			<td></td>
 		</tr>
-		<tr class="d" style="top: 10px;"/>
+		<tr class="d" style="top: 10px;">
 			<td>이메일 주소</td>
 			<td><input id="cpy_email" type="text" size="35px" ></td>
-			<td><button id="cfbutton" class="button">아이디 찾기</button></td>
+			<td>
+				<button id="cfbutton" class="button" onmouseover="OnMouseIn(this)" 
+				 onmouseout="OnMouseOut(this)">아이디 찾기</button>
+			</td>
 		</tr>
 	</table>
 </div>
 <div id="midiv" style="display: none;">
 	<span id="memId" class="output"></span><br />
-	<a href="login"><button>로그인</button></a>
-	<a href="passAssistance"><button>비밀번호 찾기</button></a>
+	<a href="login"><button class="button2">로그인</button></a>
+	<a href="passAssistance"><button class="button2">비밀번호 찾기</button></a>
 </div>
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -91,7 +106,6 @@
 					if(!data){
 						alert("아이디가 존재하지 않습니다");
 					}else{
-						alert("아이디존재");
 						memId = data;
 						console.log(data);
 						$('#midiv').css('display','block');
@@ -116,7 +130,6 @@
 					if(!data){
 						alert("아이디가 존재하지 않습니다");
 					}else{
-						alert("아이디존재");
 						cpyId = data;
 						console.log(data);
 						$('#midiv').css('display','block');
@@ -126,6 +139,14 @@
 				}
 			})
 	})
+	function OnMouseIn(elem){
+            elem.style.border="2px solid blue";
+            elem.style.color="blue";
+    }
+	function OnMouseOut(elem){
+            elem.style.border="";
+            elem.style.color="";
+	}
 </script>
 </body>
 </html>
