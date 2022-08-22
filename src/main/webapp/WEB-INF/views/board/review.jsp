@@ -65,7 +65,7 @@ $(function(){
 							</div>
 						</a>
 					</div>
-					<hr style="color: #f0f0f0;"/>
+					<hr/>
 				</c:forEach>
 			</c:when>
 			
@@ -97,14 +97,14 @@ $(function(){
 							  </div>
 							</div>
 						</a>
-						<hr style="color: #f0f0f0;"/>
+						<hr/>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</div>
 </div>
 <input type="image" src="${pageContext.request.contextPath}/resources/img/list_review/top.png" id="topbnt"
-	onClick="javascript:window.scrollTo(0,0)" alt="맨위로" style="width: 50px; height: 50px; bottom: 100px; right: 500px; position: fixed; float: right;" />
+	onClick="javascript:window.scrollTo(0,0)" alt="맨위로" style="width: 50px; height: 50px; bottom: 200px; right: 500px; position: fixed; float: right;" />
 
 </body>
 </html>

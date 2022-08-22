@@ -48,7 +48,7 @@ html,body{
 #footer{
    clear: both;
    padding: 0px;
-   height: 250px;
+   height: 200px;
 /*    position: absolute;
    width: 100%;
    bottom: 0; */
