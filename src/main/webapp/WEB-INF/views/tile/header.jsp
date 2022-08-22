@@ -43,7 +43,7 @@
         <tr>
             <td><a href="review">리뷰</a></td>
             <td><a href="">공지사항</a></td>
-            <td><a href="">Q&A</a></td>
+             <td><a href="QnA">Q&A</a></td>
 		<c:choose>
             <c:when test="${mem_num ne null }">      
                    <div class="login"><a href="mbPage">내정보</a> | <a href="logout">로그아웃</a></div>

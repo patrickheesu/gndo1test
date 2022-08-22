@@ -1,13 +1,15 @@
  .roompic{
     width: 1200px;
     height: 450px;
-   border: 1px solid gray;
+   	border: 1px solid rgb(0, 145, 255);
     margin: 20px;
     display: inline block;
+    margin-left: 50px;
+	
 }
 .rp1{
     width: 650px;
-    height: 450px;
+    height: 448px;
     margin-right: 70px;
 }
 .roomname{
@@ -41,7 +43,16 @@
     bottom: 100px;
     width: 400px;
     height: 40px;
+    background-color: rgb(0, 145, 255);
+    color: white;
+    border-color: transparent;
+ 
+		
 }
+.rbutton:hover{
+	background-color: #3573c4;
+	
+	}
 #map{
   /*   margin-left: 55px; */
 }
@@ -53,17 +64,22 @@
 .hi2{
     margin-top: 30px;
     margin-bottom: 20%;
+  	margin-left: 150px;
+	margin-right: 150px;
 }
 
 .content5table {
-	margin-left : 25px;
+	margin-left: 100px;
+	margin-right: 150px;
+	margin-top:50px;
     width: 70%;
     height: 390px;
     text-align: left;
-    margin-bottom: 60%;
+    margin-bottom: 30%;
    }
    .content5table tr td{
    
+   	
     padding: 10px;
     border: 1px solid gray;
     }
@@ -72,12 +88,27 @@
 	width: 300px;
 	
 }
+.review{
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
 .reviewicon{
 	width: 50px;
-	
 	height: 50px;
+}
+.reviewname{
+	margin-left: 55px;
+}
+.reviewtxt{
+	margin-left: 55px;
+}
+.reviewdate{
+	margin-left: 55px;
 }
 .reviewimg{
  width: 500px;
  height: 300px;
+ border-radius: 5%;
+ margin-left: 55px
 }

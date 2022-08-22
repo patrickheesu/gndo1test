@@ -16,14 +16,14 @@ section{
    
     display: none;
     padding: 20px 0 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgb(0, 145, 255);
 
 }
 
 #contentbox {
     width: 1320px;
     height: 100%;
-    border: 1px solid gray;
+    border: 1px solid rgb(0, 145, 255);
     margin: 0 auto;
 
 }

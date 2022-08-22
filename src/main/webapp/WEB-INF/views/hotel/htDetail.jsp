@@ -23,7 +23,7 @@
       <!-- Full-width images with number and caption text -->
         <c:forEach items="${aidto}" var="dto" varStatus="status">
       	<div class="mySlides fade">
-        <div class="numbertext">${status.count} / ${fn:length(aidto) }</div>
+        <div class="numbertext">${status.count} / ${fn:length(aidto) }│전체 사진 </div>
         <img src="resources/upload/${dto.acci_afterimg}" style="width:100%">
        </div>
         </c:forEach>
@@ -48,16 +48,7 @@
 // HTML 로드가 끝난 후 동작
 window.onload=function(){
   showSlides(slideIndex);
-
-/*   // Auto Move Slide
-   var sec = 5000;
-  setInterval(function(){
-    slideIndex++;
-    showSlides(slideIndex);
-
-  }, sec); */ 
 }
-
 
 // Next/previous controls
 function moveSlides(n) {
@@ -153,20 +144,6 @@ function reservebtn(){
 	alert("로그인을 해주세요");
 }
 </script>
-				<!--                 <div class="roompic"> -->
-				<!--                     <img class="rp1" src="resources/img/list/roomslide01.jpg" alt=""> -->
-				<!--                     <div class="roomname"> -->
-				<!--                         방이름 -->
-				<!--                     </div> -->
-				<!--                     <div class="roompp"> -->
-				<!--                         기준 2인 -->
-				<!--                     </div> -->
-				<!--                     <div class="rprice"> -->
-				<!--                         가격 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 150,000원 -->
-
-				<!--                     </div> -->
-				<!--                     <button class="rbutton">예약하기</button> -->
-				<!--                 </div> -->
 
 			</section>
       <script type="text/javascript"
@@ -204,13 +181,12 @@ var infowindow = new kakao.maps.InfoWindow({
 infowindow.open(map, marker); 
 </script>
            <section id="content3">
-				<div class="hi"></div>
-				<div class="hi2">
 				
-					<h3 style="white-space: pre-line;">
-					<strong>숙소설명</strong> <BR>
+				<div class="hi2" style="white-space: pre-line;">
+				
+					<h3><strong>이용 안내</strong> <BR></h3>
 					
-					${cdto.acc_info}</h3>
+					${cdto.acc_info}
 			</div>
 			</section>
 			<section id="content4">
@@ -222,11 +198,12 @@ infowindow.open(map, marker);
 
                     <div class="star-rating">
                     
-                        <span style="width:${avr_star}%;"></span>
-                      
+                       <span style="width:${avr_star}%;"></span>
+                    
              </div>
 			    <hr />
 			  </div>
+			  <div>
 			<c:choose>			 
 			 <c:when test="${recnt eq 0 }">
 			 리뷰가 없습니다.
@@ -237,25 +214,27 @@ infowindow.open(map, marker);
 			<div class="reviewtitle">
 				<img class="reviewicon" style="width:50px" src="resources/img/mypage/company/reviewicon.png"/> 
 				<strong>${dto.rv.rv_title }</strong>	
-				<div class="reviewname">${dto.mem.mem_nickname }님 "${dto.r.rt_rmname }" 객실 이용/별점[${dto.rv.rv_grade }.0]
+				<div class="reviewname">${dto.mem.mem_nickname }님 "${dto.r.rt_rmname }"
+				 객실 이용/별점[<img src="resources/css/list/yellowstar1.png" style=" width: 15px; height: 15px; margin-bottom: 3px;"/>${dto.rv.rv_grade }.0]
       			</div>
       			</div>
         		<br>
-        	<div class="reviewtxt" style="white-space: pre-line;">${dto.rv.rv_content }</div>
+        	<div class="reviewtxt" style=" width: 800px; word-break:break-all;">${dto.rv.rv_content }</div>
         	<br />
         	<div> 
         	<c:forEach items="${rv_imgList }" var="img">
         		<c:if test="${img.rv_num eq dto.rv.rv_num }">
-	        		<img class="reviewimg" src="resources/upload/${img.rvi.rvi_afterimg}" alt="${img.rvi.rvi_afterimg}"> |        	    			
+	        		<img class="reviewimg" src="resources/upload/${img.rvi.rvi_afterimg}" alt="${img.rvi.rvi_afterimg}">   	    			
         		</c:if>
         	</c:forEach>
         	<br />
-         	 작성일 ${dto.rv.rv_date }
+         	 <div class="reviewdate">작성일 ${dto.rv.rv_date }</div>
       		 </div>
      		  <hr />
 			 </c:forEach>
 			 </c:otherwise>
 			 </c:choose>
+			</div>
 			</div>
 			</section>
 
@@ -285,11 +264,7 @@ infowindow.open(map, marker);
 						<td>사업자등록번호</td>
 						<td>${cidto.cpy_cpnum}</td>
 					</tr>
-				
-
 				</table>
-
-
 			</section>
 		</div>
 	</div>

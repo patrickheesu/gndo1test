@@ -138,4 +138,9 @@ public class BoardController {
 		
 		return "board/reviewDetail";
 	}
+	@RequestMapping("/QnA")
+	public String QnA() {
+		
+		return "board/QnA";
+	}
 }
