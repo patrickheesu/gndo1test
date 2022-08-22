@@ -202,13 +202,13 @@ dots[n].className += " active";
 				<div class="slidewrap2">
 					<ul class="slidelist2" >
 						<li>
-							<a><img src="resources/img/main/dae_1.jpg"></a>
+							<a href="#"><img src="resources/img/main/dae_1.jpg"></a>
 						</li>
 						<li>
-							<a><img src="resources/img/main/dae_2.jpg"></a>
+							<a href="#"><img src="resources/img/main/dae_2.jpg"></a>
 						</li>
 						<li>
-							<a><img src="resources/img/main/dae_3.jpg"></a>
+							<a href="#"><img src="resources/img/main/dae_3.jpg"></a>
 						</li>
 					</ul>
 					<div class="bullets2">
@@ -251,13 +251,13 @@ dots[n].className += " active";
 				<div class="slidewrap4">
 					<ul class="slidelist4">
 						<li>
-							<a><img src="resources/img/main/k_1.jpg"></a>
+							<a href=""><img src="resources/img/main/k_1.jpg"></a>
 						</li>
 						<li>
-							<a><img src="resources/img/main/k_2.jpg"></a>
+							<a href=""><img src="resources/img/main/k_2.jpg"></a>
 						</li>
 						<li>
-							<a><img src="resources/img/main/k_3.jpg"></a>
+							<a href=""><img src="resources/img/main/k_3.jpg"></a>
 						</li>
 					</ul>
 					<div class="bullets4">
