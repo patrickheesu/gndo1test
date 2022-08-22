@@ -12,8 +12,34 @@ body{
 }
 .c{
 	text-decoration-line: none;
-	margin: 20px 40px 20px 40px;
-	font-size: x-large;
+}
+.bt1{
+	width: 100%;
+	height: 100%;
+	background-color: #3573c4;
+    border-color: transparent;
+    border-radius: 3px;
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+}
+.bt1:hover{
+	background-color: #3573c4;
+}
+.bt2{
+	width: 100%;
+	height: 100%;
+	background-color: #4b94f2;
+    border-color: transparent;
+    border-radius: 3px;
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+}
+.bt2:hover{
+	background-color: #3573c4;
 }
 .d{
 	position: relative;
@@ -30,10 +56,27 @@ input{
 	line-height: 25px;
 	margin-left: 10px;
 }
+
 .button{
+	background-color: #4b94f2;
+    border-color: transparent;
+    border-radius: 3px;
 	line-height: 25px;
 	margin-left: 10px;
+	color: white;
 }
-.output{
-	padding-bottom: 10px;
+.button:hover{
+	background-color: #3573c4;
+}
+.button2{
+	background-color: #4b94f2;
+    border-color: transparent;
+    border-radius: 3px;
+	line-height: 25px;
+	margin-left: 10px;
+	color: white;
+	margin-top: 5px;
+}
+.button2:hover{
+	background-color: #3573c4;
 }

@@ -320,83 +320,310 @@ public class UserRestController {
 		return check_bool;
 	}
 	
-	@PostMapping("/myPage/pwdCheck")
-	public String pwdCheck(HttpServletRequest request, String password) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-		System.out.println("in"+password);
-		UIDao dao = sqlSession.getMapper(UIDao.class);
-		
-		String check_bool = "default";
-		String solve_pwd = "";
-		HttpSession session = request.getSession();
-		
-		if (session.getAttribute("mem_num") != null) {
-			int mem_num = (Integer)session.getAttribute("mem_num");
-			MembersDto mdto = dao.myPage_mem(mem_num);
-			String db_key = mdto.getMem_logkey();
-			String db_pwd = mdto.getMem_pwd();
-			byte[] keyBytes = new byte[16];
-			System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
-			SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
-			Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
-			String iv = db_key.substring(0, 16);
-			byte[] ivBytes = new byte[16];
-			System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
-			c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
-			byte[] byteStr = Base64.getDecoder().decode(db_pwd);
-			solve_pwd = new String(c.doFinal(byteStr), "utf-8");			
+	//mbPage 내정보관리 누를 시 비밀번호 확인 팝업
+		@PostMapping("/myPage/pwdCheck")
+		public String pwdCheck(HttpServletRequest request, String password) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+			System.out.println("in"+password);
+			UIDao dao = sqlSession.getMapper(UIDao.class);
 			
-				if (password.equals(solve_pwd)) {
+			String check_bool = "default";
+			String solve_pwd = "";
+			HttpSession session = request.getSession();
+			
+			if (session.getAttribute("mem_num") != null) {
+				int mem_num = (Integer)session.getAttribute("mem_num");
+				MembersDto mdto = dao.myPage_mem(mem_num);
+				String db_key = mdto.getMem_logkey();
+				String db_pwd = mdto.getMem_pwd();
+				byte[] keyBytes = new byte[16];
+				System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+				SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+				Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+				String iv = db_key.substring(0, 16);
+				byte[] ivBytes = new byte[16];
+				System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+				c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+				byte[] byteStr = Base64.getDecoder().decode(db_pwd);
+				solve_pwd = new String(c.doFinal(byteStr), "utf-8");			
+				
+					if (password.equals(solve_pwd)) {
+						check_bool = "true";
+					} else {
+						check_bool = "false";
+					}
+			} else {
+				check_bool = "logout";
+			}
+			
+			
+			System.out.println(check_bool);
+			return check_bool;
+		}
+		// mbModify 수정하기 및 회원탈퇴 누를 시 비밀번호 확인 팝업
+		@PostMapping("/myPage/mpwddpCheck")
+		public String mpwddpCheck(String pw1, HttpServletRequest request) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+			UIDao dao = sqlSession.getMapper(UIDao.class);
+			String solve_pwd = "";
+			String check_bool = "default";
+			HttpSession session = request.getSession();
+			
+			if (session.getAttribute("mem_num") != null) {
+				int mem_num = (Integer)session.getAttribute("mem_num");
+				MembersDto mdto = dao.mpwddpCheck(mem_num);
+				String db_key = mdto.getMem_logkey();
+				String db_pwd = mdto.getMem_pwd();
+				byte[] keyBytes = new byte[16];
+				System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+				SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+				Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+				String iv = db_key.substring(0, 16);
+				byte[] ivBytes = new byte[16];
+				System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+				c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+				byte[] byteStr = Base64.getDecoder().decode(db_pwd);
+				solve_pwd = new String(c.doFinal(byteStr), "utf-8");
+				
+				if(pw1.equals(solve_pwd)) {
 					check_bool = "true";
-				} else {
+				}else {
 					check_bool = "false";
 				}
-		} else {
-			check_bool = "logout";
+			
+			}else {
+				check_bool = "logout";
+			}
+			System.out.println(check_bool);
+			return check_bool;
 		}
-		
-		
-		System.out.println(check_bool);
-		return check_bool;
-	}
+		//비밀번호 수정 팝업창에서 확인 누를 시 비밀번호 변경
+		@PostMapping(value = "/myPage/mppwd" , produces = "application/json; charset=UTF-8")
+		public String mppwd(String pw, HttpServletRequest request) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+			UIDao dao = sqlSession.getMapper(UIDao.class);
+			HttpSession session = request.getSession();
+			String check_bool = "";
+			
+			
+				int mem_num = (Integer) session.getAttribute("mem_num");
+				System.out.println(mem_num);
+				//암호화 처리
+				//단방향 암호화
+				MessageDigest md = MessageDigest.getInstance("SHA-512");
+				// 암호화할 데이터를 byte형 배열로 넣어준다. 예외발생해서 예외처리
+				md.update(pw.getBytes("utf-8"));
+				// md.digest() : 암호화된 데이터를 byte배열로 반환한다.
+				logkey = Base64.getEncoder().encodeToString(md.digest());
+				      
+				//양방향 암호화
+				byte[] keyBytes = new byte[16];
+				System.arraycopy(logkey.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+				SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+				Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+				String iv = logkey.substring(0, 16);
+			    byte[] ivBytes = new byte[16]; 
+			    System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+			    c.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+			    byte[] encryptBytes = c.doFinal(pw.getBytes("utf-8"));
+			    pw = Base64.getEncoder().encodeToString(encryptBytes);
+			    System.out.println(pw);
+			    System.out.println(logkey);
+			    System.out.println(mem_num);
+//			    session.invalidate();
+			    dao.modifyPass(pw, logkey, mem_num);
+			    check_bool = "true";
+			    System.out.println("비밀번호 변경 완료!");
+				
+			
+			System.out.println(check_bool);
+			return check_bool;
+		}
+		//전화번호 수정 팝업창에서 확인 누를 시 전화번호 변경
+		@PostMapping(value="/myPage/mtel", produces = "application/json; charset=UTF-8")
+		public String mtel(String mp, HttpServletRequest request) throws Exception {
+			UIDao dao = sqlSession.getMapper(UIDao.class);
+			HttpSession session = request.getSession();
+			String check_bool = "";
+			if (session.getAttribute("mem_num") != null) {
+				int mem_num = (Integer) session.getAttribute("mem_num");
+				dao.modifyTel(mp,mem_num);
+				System.out.println("전화번호 변경!");
+				check_bool="true";
+			}else {
+				check_bool="logout";
+			}
+			System.out.println(check_bool);
+			return check_bool;
+		}
+		//회원탈퇴 팝업창에서 확인 누를 시 회원탈퇴
+		@PostMapping(value="/myPage/womem", produces = "application/json; charset=UTF-8")
+		public String womem(HttpServletRequest request) throws Exception {
+			UIDao dao = sqlSession.getMapper(UIDao.class);
+			System.out.println("맵퍼 접속성공");
+			HttpSession session = request.getSession();
+			String check_bool = "";
+			if (session.getAttribute("mem_num") != null) {
+				int mem_num = (Integer) session.getAttribute("mem_num");
+				dao.womem(mem_num);
+				session.invalidate();
+				System.out.println("회원탈퇴 완료");
+				check_bool="true";
+			}else {
+				check_bool="logout";
+			}
+			System.out.println(check_bool);
+			return check_bool;
+		}
+		@PostMapping("/myPage/cpPwdCheck")
+		public String cpPwdCheck(HttpServletRequest request, String password) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+			System.out.println("in"+password);
+			UIDao dao = sqlSession.getMapper(UIDao.class);
+			
+			String check_bool = "default";
+			String solve_pwd = "";
+			HttpSession session = request.getSession();
+			
+			if (session.getAttribute("cpy_num") != null) {
+				int cpy_num = (Integer)session.getAttribute("cpy_num");
+				CompanyDto cdto = dao.myPage_cpy(cpy_num);
+				String db_key = cdto.getCpy_logkey();
+				String db_pwd = cdto.getCpy_pwd();
+				byte[] keyBytes = new byte[16];
+				System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+				SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+				Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+				String iv = db_key.substring(0, 16);
+				byte[] ivBytes = new byte[16];
+				System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+				c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+				byte[] byteStr = Base64.getDecoder().decode(db_pwd);
+				solve_pwd = new String(c.doFinal(byteStr), "utf-8");			
+				
+					if (password.equals(solve_pwd)) {
+						check_bool = "true";
+					} else {
+						check_bool = "false";
+					}
+			} else {
+				check_bool = "logout";
+			}
+			
+			
+			System.out.println(check_bool);
+			return check_bool;
+		}
+			// cpModify 수정하기 및 회원탈퇴 누를 시 비밀번호 확인 팝업
+			@PostMapping("/myPage/cpwddpCheck")
+			public String cpwddpCheck(String pw1, HttpServletRequest request) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+				UIDao dao = sqlSession.getMapper(UIDao.class);
+				String solve_pwd = "";
+				String check_bool = "default";
+				HttpSession session = request.getSession();
+				
+				if (session.getAttribute("cpy_num") != null) {
+					int cpy_num = (Integer)session.getAttribute("cpy_num");
+					CompanyDto cdto = dao.cpwddpCheck(cpy_num);
+					String db_key = cdto.getCpy_logkey();
+					String db_pwd = cdto.getCpy_pwd();
+					byte[] keyBytes = new byte[16];
+					System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+					SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+					Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+					String iv = db_key.substring(0, 16);
+					byte[] ivBytes = new byte[16];
+					System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+					c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+					byte[] byteStr = Base64.getDecoder().decode(db_pwd);
+					solve_pwd = new String(c.doFinal(byteStr), "utf-8");
+					
+					if(pw1.equals(solve_pwd)) {
+						check_bool = "true";
+					}else {
+						check_bool = "false";
+					}
+				
+				}else {
+					check_bool = "logout";
+				}
+				System.out.println(check_bool);
+				return check_bool;
+			}
+			//비밀번호 수정 팝업창에서 확인 누를 시 비밀번호 변경
+			@PostMapping(value = "/myPage/cmppwd" , produces = "application/json; charset=UTF-8")
+			public String cmppwd(String pw, HttpServletRequest request) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+				UIDao dao = sqlSession.getMapper(UIDao.class);
+				HttpSession session = request.getSession();
+				String check_bool = "";
+				
+				
+					int cpy_num = (Integer) session.getAttribute("cpy_num");
+					System.out.println(cpy_num);
+					//암호화 처리
+					//단방향 암호화
+					MessageDigest md = MessageDigest.getInstance("SHA-512");
+					// 암호화할 데이터를 byte형 배열로 넣어준다. 예외발생해서 예외처리
+					md.update(pw.getBytes("utf-8"));
+					// md.digest() : 암호화된 데이터를 byte배열로 반환한다.
+					logkey = Base64.getEncoder().encodeToString(md.digest());
+					      
+					//양방향 암호화
+					byte[] keyBytes = new byte[16];
+					System.arraycopy(logkey.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
+					SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+					Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+					String iv = logkey.substring(0, 16);
+				    byte[] ivBytes = new byte[16]; 
+				    System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
+				    c.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
+				    byte[] encryptBytes = c.doFinal(pw.getBytes("utf-8"));
+				    pw = Base64.getEncoder().encodeToString(encryptBytes);
+				    System.out.println(pw);
+				    System.out.println(logkey);
+				    System.out.println(cpy_num);
+				    dao.cpmodifyPass(pw, logkey, cpy_num);
+				    check_bool = "true";
+				    System.out.println("비밀번호 변경 완료!");
+					
+				
+				System.out.println(check_bool);
+				return check_bool;
+			}
+			//전화번호 수정 팝업창에서 확인 누를 시 전화번호 변경
+			@PostMapping(value="/myPage/ctel", produces = "application/json; charset=UTF-8")
+			public String ctel(String mp, HttpServletRequest request) throws Exception {
+				UIDao dao = sqlSession.getMapper(UIDao.class);
+				HttpSession session = request.getSession();
+				String check_bool = "";
+				if (session.getAttribute("cpy_num") != null) {
+					int cpy_num = (Integer) session.getAttribute("cpy_num");
+					dao.cpmodifyTel(mp,cpy_num);
+					System.out.println("전화번호 변경!");
+					check_bool="true";
+				}else {
+					check_bool="logout";
+				}
+				System.out.println(check_bool);
+				return check_bool;
+			}
+			//회원탈퇴 팝업창에서 확인 누를 시 회원탈퇴
+			@PostMapping(value="/myPage/wocpy", produces = "application/json; charset=UTF-8")
+			public String wocpy(HttpServletRequest request) throws Exception {
+				UIDao dao = sqlSession.getMapper(UIDao.class);
+				System.out.println("맵퍼 접속성공");
+				HttpSession session = request.getSession();
+				String check_bool = "";
+				if (session.getAttribute("cpy_num") != null) {
+					int cpy_num = (Integer) session.getAttribute("cpy_num");
+					dao.wocpy(cpy_num);
+					session.invalidate();
+					System.out.println("회원탈퇴 완료");
+					check_bool="true";
+				}else {
+					check_bool="logout";
+				}
+				System.out.println(check_bool);
+				return check_bool;
+			}
 	
-	@PostMapping("/myPage/cpPwdCheck")
-	public String cpPwdCheck(HttpServletRequest request, String password) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-		System.out.println("in"+password);
-		UIDao dao = sqlSession.getMapper(UIDao.class);
-		
-		String check_bool = "default";
-		String solve_pwd = "";
-		HttpSession session = request.getSession();
-		
-		if (session.getAttribute("cpy_num") != null) {
-			int cpy_num = (Integer)session.getAttribute("cpy_num");
-			CompanyDto cdto = dao.myPage_cpy(cpy_num);
-			String db_key = cdto.getCpy_logkey();
-			String db_pwd = cdto.getCpy_pwd();
-			byte[] keyBytes = new byte[16];
-			System.arraycopy(db_key.getBytes("utf-8"), 0, keyBytes, 0, keyBytes.length);
-			SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
-			Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
-			String iv = db_key.substring(0, 16);
-			byte[] ivBytes = new byte[16];
-			System.arraycopy(iv.getBytes("utf-8"), 0, ivBytes, 0, ivBytes.length);
-			c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(ivBytes));
-			byte[] byteStr = Base64.getDecoder().decode(db_pwd);
-			solve_pwd = new String(c.doFinal(byteStr), "utf-8");			
-			
-				if (password.equals(solve_pwd)) {
-					check_bool = "true";
-				} else {
-					check_bool = "false";
-				}
-		} else {
-			check_bool = "logout";
-		}
-		
-		
-		System.out.println(check_bool);
-		return check_bool;
-	}
+	
 	
 	
 }

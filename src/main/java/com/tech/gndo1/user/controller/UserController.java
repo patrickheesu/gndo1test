@@ -47,13 +47,20 @@ public class UserController {
 		return "redirect:./";
 	}
 	@RequestMapping("/mbModify")
-	public String mbModify() {
+	public String mbModify(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("mem_num") != null) {
 		return "mypage/members/mbModify";
+		}
+		return "redirect:./";
 	}
-
 	@RequestMapping("/cpModify")
-	public String cpModify() {
+	public String cpModify(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("cpy_num") != null) {
 		return "mypage/company/cpModify";
+		}
+		return "redirect:./";
 	}
 	
 	@RequestMapping("/mbreview")

@@ -9,88 +9,142 @@
 <head>
 <meta charset="UTF-8">
 <title>사업자 회원가입</title>
-<style>
-body {
-	text-align: center;
-}
-
-.a {
-	width: 200px;
-	height: 200px;
-	align-items: center;
-}
-</style>
-
 <link rel="stylesheet" href="resources/css/login/joinMembersInsert.css">
 </head>
 <body>
-	<h3>
-		<img class="a" src="resources/img/login/강릉도원 로고.png" alt="">
-	</h3>
-	<br>
-
-
-	<!-- <form name="join" id="join" action="joinCpy" onsubmit="return jcSubmit()" method="post"> -->
+	<a href="./"><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""><br></a>
 	<form name="join" id="join" action="joinCpy" method="post" onsubmit="return jcSubmit()">
 		<table class="join">
 			<tr>
-				<td>아이디</td>
+				<td>아이디*</td>
 				<td><input type="text" name="cpy_id" id="id" placeholder="8자 이상"></td>
 				<td><input type="button" class="checkId_bt" value="중복 확인" onclick="duplicateCheck();" /></td>
-				<td><span id="check_id" class="check_id">*중복 확인 필수</span></td>
 			</tr>
 			<tr>
-				<td>비밀번호</td>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="check_id" class="check_id"></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>비밀번호*</td>
 				<td><input type="password" name="cpy_pwd" id="pwd1" placeholder="영문,숫자,특수문자를 포함" onkeyup="passwordCheck1();"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
 				<td><span id="check_pwd1" class="check_pwd1"></span></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>비밀번호 확인</td>
+				<td>비밀번호 확인*</td>
 				<td><input type="password" name="pwd2" id="pwd2" placeholder="************" onkeyup="passwordCheck2();"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
 				<td><span id="check_pwd2" class="check_pwd2"></span></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>대표자 성명</td>
+				<td>대표자 성명*</td>
 				<td><input type="text" name="cpy_name" id="cpy_name" placeholder="대표자 성명 입력" onkeyup="cnameCheck();"></td>
-				<td><span id="check_cn" class="check_cn"></span></td>
 			</tr>
 			<tr>
-				<td>사업자 번호</td>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="check_cn" class="check_cn"></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>사업자 번호*</td>
 				<td><input type="text" name="cpy_cpnum" id="cpy_cpnum" oninput="autoHyphen(this)" maxlength="12" placeholder="ex)123-45-78912"></td>
 				<td><input type="button" class="checkCpnum_bt" value="중복 확인" onclick="CpnumCheck();" /></td>
-				<td><span id="check_Cpnum" class="check_Cpnum">*중복 확인 필수</span></td>
 			</tr>
 			<tr>
-				<td>주민등록번호</td>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="check_Cpnum" class="check_Cpnum"></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>주민등록번호*</td>
 				<td>
-					&nbsp<input type="text" name="cpy_resid1" id="cpy_resid1" placeholder="앞자리 6자리 입력" maxlength="6" size="11" onkeyup="CpresidCheck1();">
+					&nbsp<input type="text" name="cpy_resid1" id="cpy_resid1" placeholder="6자리 입력" maxlength="6" size="11" onkeyup="CpresidCheck1();">
 					-&nbsp<input type="password" name="cpy_resid2" id="cpy_resid2" placeholder="1~4" maxlength="1" size="1" onkeyup="CpresidCheck2();">
 				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><span id="check_Cpresid" class="check_Cpresid">*</span></td>
+				<td><hr /></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>핸드폰 번호</td>
+				<td></td>
+				<td><span id="check_Cpresid" class="check_Cpresid"></span></td>
+			</tr>
+			<tr>
+				<td>핸드폰 번호*</td>
 				<td><input type="text" name="cpy_tel" id="cpy_tel" placeholder="010********" maxlength="13" oninput="autoHyphen2(this)" onkeyup="CptelCheck();"></td>
-				<td><span id="check_Cptel" class="check_Cptel">*</span></td>
 			</tr>
 			<tr>
-				<td>이메일</td>
-				<!-- <td><input type="email" name="cpy_email" id="userEmail" onkeyup="email_vc();" placeholder="email@gmail.com"></td>
-				<td><span id="email_vc" class="email_vc">아아</span></td> -->
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="check_Cptel" class="check_Cptel"></span></td>
+			</tr>
+			<tr>
+				<td>이메일*</td>
 				<td><input type="email" name="cpy_email" id="cpy_email" onkeyup="email_vc();" placeholder="email" /></td>
-				<td><span id="email_vc" class="email_vc">메일형식에 맞게 입력</span></td>
-				<td><input type="button" class="email_auth_btn"  id="email_auth_btn" disabled value="메일인증"  /></td>
+				<td><input type="button" class="email_auth_btn"  id="email_auth_btn" disabled value="메일 인증"  /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="email_vc" class="email_vc"></span></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td><input class="email_auth_key" id="email_auth_key" placeholder="인증번호 입력" maxlength="6"></td>
-				<td><span id="email_auth" class="email_auth">확인</span></td>
 			</tr>
 			<tr>
-				<td>사업장 종류</td>
+				<td></td>
+				<td><hr /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span id="email_auth" class="email_auth"></span></td>
+			</tr>
+			<tr>
+				<td>사업장 종류*</td>
 				<td>
 					<select name="cpy_typecode">
 						<option value="1">호텔</option>
@@ -169,13 +223,6 @@ function duplicateCheck() {
 }
 //비밀번호 10자이상이고 영문,숫자,특수문자 포함 판별
 function passwordCheck1(){ //비밀번호 검사 함수
-/* 	var pwd1 = document.getElementById('pwd1').value;
-	var check_rule = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{10,}$"
-	if (pwd1.length > 9) {
-		$("#check_pwd").html("사용 가능한 비밀번호입니다");
-	} else {
-		$("#check_pwd").html("*비밀번호는 10자 이상");
-	} */
 	var pw1 = $("#pwd1").val();
 	var pw2 = $("#pwd2").val();
 	var num = pw1.search(/[0-9]/g);
@@ -213,13 +260,14 @@ function passwordCheck2(){
 //대표자성명 정규식검사
 function cnameCheck(){
 	var cn = $("#cpy_name").val();
+	var ccn = document.getElementById("check_cn");
 	var cnCheck = RegExp(/^[가-힣]{2,6}$/);
 	if(cnCheck.test(cn) === true){
 		$("#check_cn").html("사용가능한 이름입니다.");
-		$("#chech_cn").css('color','green');
+		ccn.style.color = "green";
 	}else{
 		$("#check_cn").html("사용할 수 없는 이름입니다.");
-		$("#chech_cn").css('color','red');
+		ccn.style.color = "red";
 	}
 }
 //사업자번호 오토하이픈
@@ -314,6 +362,7 @@ function email_vc(){
 	button.disabled = true;
 	if(eCheck_rule.test(emailVc) === true){
 		$("#email_vc").html("메일인증을 눌러주세요!");
+		$("#email_vc").css('color','green');
 		button.disabled = false;
 	}else{
 		$("#email_vc").html("");
@@ -321,24 +370,7 @@ function email_vc(){
 	}
 	
 } 
-//이메일 인증번호 유효성검사
-/* function email_vc2(){ 
-	var emailAk = document.getElementById('email_auth_key').value;
-	var eCheck_rule2 = /^([0-9]{6,})+$/;
-	if(eCheck_rule2.test(emailAk) === true){
-		$("#email_auth").html("정규식 통과");
-		$("#email_auth").css('color','green');
-	}else{
-		$("#email_auth").html("숫자 6자리를 입력해주세요!");
-		$("#email_auth").css('color','red');
-	}
-	
-}  */
 
-/* const email_auth_cd = ''; */
-//이메일 발송
-<%-- $(function(){
-}) --%>
 var email_auth_cd = ''; 
 
 $(".email_auth_btn").click(function(){

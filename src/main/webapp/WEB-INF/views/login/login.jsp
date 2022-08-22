@@ -9,50 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-    <style>
-
-        body{
-            text-align: center;
-        }
-        .a{
-            width: 200px;
-            height: 200px;
-        }
-        .b{
-            margin: auto;
-            text-align: center;
-        }
-		#button{
-		    background-color: rgb(0, 145, 255);
-		    border-color: transparent;
-		    border-radius: 3px;
-		    padding-left: 110px;
-		    padding-right: 110px;
-		    padding-top: 5px;
-		    padding-bottom: 5px;
-		    color: white;
-		    font-size: large;
-		    margin-top: 10px;
-		    margin-left: 10px;
-		}
-		.button1,.button2{
-		    background-color: rgb(0, 145, 255);
-		    border-color: transparent;
-		    border-radius: 3px;
-		    padding-left: 24px;
-		    padding-right: 18px;
-		    padding-top: 5px;
-		    padding-bottom: 5px;
-		    color: white;
-		    margin-top: 10px;
-		}
-
-
-    </style>
-    <link rel="stylesheet" href="../resources/css/login.css">
+<link rel="stylesheet" href="resources/css/login/login.css">
 </head>
 <body>
-    <h3><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""></h3>
+    <a href="./"><img class="a" src="resources/img/login/강릉도원 로고.png" alt=""><br></a>
     <form action="loginProc" method="post" onsubmit="return login_check();">
     <table class="b">
         <tr>
