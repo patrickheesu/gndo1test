@@ -60,13 +60,17 @@ public class BoardController {
 		HttpSession session =request.getSession();
 		if (session.getAttribute("mem_num") != null) {
 			
-			int mem_num = (Integer)session.getAttribute("mem_num");
-			UIDao udao = sqlSession.getMapper(UIDao.class);
-			ArrayList<ReviewDto> rvdto = udao.mem_reviews(mem_num);
+			String acc_name=request.getParameter("acc_name");
+			String rt_rmname=request.getParameter("rt_rmname");
+			String rt_num=request.getParameter("rt_num");
+			String pm_num=request.getParameter("pm_num");
+			System.out.println("rt_num :" +rt_num);
+			System.out.println("pm_num :" +pm_num);
 	
-			//아직 쓰지 않은 리뷰 목록 
-			rvdto = udao.have_to_write(mem_num);
-			model.addAttribute("reviewNone", rvdto);
+			model.addAttribute("rt_num",rt_num);
+			model.addAttribute("pm_num",pm_num);
+			model.addAttribute("acc_name",acc_name);
+			model.addAttribute("rt_rmname",rt_rmname);
 		}
 		return "board/reviewInsert";
 	}
@@ -75,21 +79,22 @@ public class BoardController {
 	public String reviewInsert(MultipartHttpServletRequest mtfrequest, Model model, HttpSession session) {
 		System.out.println("리뷰글쓰기");
 		BIDao bidao=sqlSession.getMapper(BIDao.class);
+
 		int mem_num=(Integer)session.getAttribute("mem_num");
-		int rt_num=47;
-		
-		System.out.println("rt_num:"+rt_num);
-		System.out.println("mem_num:"+mem_num);
 		
 		String rv_title=mtfrequest.getParameter("rv_title");
+		String rt_num=mtfrequest.getParameter("rt_num");
 		String rv_content=mtfrequest.getParameter("rv_content");
 		String rv_grand=mtfrequest.getParameter("rv_grand");
+		String pm_num=mtfrequest.getParameter("pm_num");
 		
+		System.out.println("mem_num:"+mem_num);
+		System.out.println("rt_num"+rt_num);
 		System.out.println("rv_title"+rv_title);
 
 		List<MultipartFile> rvi_img= mtfrequest.getFiles("rvi_img");
 		// 파일은 리스트로 받는다
-		bidao.reviewInsert(mem_num, rt_num, rv_title, rv_content,rv_grand);
+		bidao.reviewInsert(mem_num, rt_num, rv_title, rv_content,rv_grand, pm_num);
 		int rv_num=bidao.rvnumselect(mem_num);
 		
 		//루트는 사진이 저장되는 폴더
@@ -110,6 +115,7 @@ public class BoardController {
 	      }
 
 		int reviewcount=bidao.reviewIt(mem_num);
+		
 		System.out.println("왔오? : "+reviewcount);
 
 		model.addAttribute("reviewcount",reviewcount);

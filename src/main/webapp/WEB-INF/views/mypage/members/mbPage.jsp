@@ -65,7 +65,6 @@
          <div class="box bg-1">
            <a href="mbpayment" title="Button fade blue/green" class="button btnFade btnBlueGreen">내 결제내역</a>
            <a href="mbreview" title="Button fade blue/green" class="button btnFade btnBlueGreen">나의 리뷰</a>
-           <a href="#" title="Button fade blue/green" class="button btnFade btnBlueGreen">내 포인트</a>
          </div>
          </div>
          
