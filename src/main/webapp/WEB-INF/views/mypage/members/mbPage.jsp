@@ -70,12 +70,6 @@
          </div>
          
            <div class="clear"></div>
-      
-            <div class="event">
-               <!-- 라운드처리해주기 -->
-                <a href=""><input id="mp_but_sub" type="image" src="resources/img/mypage/user_icon.png" width="490px" height="80px"></a>
-                <a href=""><input id="mp_but_sub" type="image" src="resources/img/mypage/user_icon.png" width="490px" height="80px"></a>
-            </div>
    
          <div class="mypagebut_2">
             <div class="mypagebut_sub">
@@ -87,9 +81,6 @@
                  </div>
               </div>
          </div>
-         
-   <div class="gndo1"><a href="">강릉숙박 정보</a></div>
-
    <div class="clear"></div>
    
    

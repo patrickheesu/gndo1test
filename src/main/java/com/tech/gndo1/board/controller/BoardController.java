@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tech.gndo1.board.dao.BIDao;
 import com.tech.gndo1.review.dto.ReviewDto;
 import com.tech.gndo1.review.dto.Review_imgDto;
+import com.tech.gndo1.user.dao.UIDao;
 
 @Controller
 public class BoardController {
@@ -55,8 +56,18 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/reviewInsert")
-	public String reviewIn() {
-		
+	public String reviewIn(HttpServletRequest request,Model model) {
+		HttpSession session =request.getSession();
+		if (session.getAttribute("mem_num") != null) {
+			
+			int mem_num = (Integer)session.getAttribute("mem_num");
+			UIDao udao = sqlSession.getMapper(UIDao.class);
+			ArrayList<ReviewDto> rvdto = udao.mem_reviews(mem_num);
+	
+			//아직 쓰지 않은 리뷰 목록 
+			rvdto = udao.have_to_write(mem_num);
+			model.addAttribute("reviewNone", rvdto);
+		}
 		return "board/reviewInsert";
 	}
 	

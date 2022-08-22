@@ -32,18 +32,21 @@
 		text-decoration: none;
 		color: #333;
 	}
+	.ttable tr td{
+		margin-left: 20px;
+		padding: 5px;
+	}
 </style>
 <body>
  <table class="ttable">
  		<tr colspan="10"><a href="./"><img class="logo" src="resources/img/tileimg/로고1.png" alt="" width="150" height="150"></a></tr>
         <tr>
-            <td><a href="">예약</a></td>
-            <td><a href="">게시판</a></td>
             <td><a href="review">리뷰</a></td>
+            <td><a href="">공지사항</a></td>
             <td><a href="">Q&A</a></td>
 		<c:choose>
             <c:when test="${mem_num ne null }">      
-                   <div class="login"><a href="mbPage">내정보</a> | <a href="logout">로그아웃.</a></div>
+                   <div class="login"><a href="mbPage">내정보</a> | <a href="logout">로그아웃</a></div>
                 </c:when>
                 <c:when test="${cpy_num ne null }">
                    <div class="login"><a href="cpPage">내정보</a> | <a href="logout">로그아웃</a></div>

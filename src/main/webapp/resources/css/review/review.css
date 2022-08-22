@@ -18,7 +18,7 @@
 	float: right;
 }
 .review_card{
-	margin-bottom: 40px;
+	margin-top: 20px;
 }
 .mb-3{
 	border: none;
@@ -30,8 +30,11 @@ div.card-body{
 a{
 	text-decoration: none;
 }
+.card-title{
+	font-size: 18px;	
+}
 .card-text{
-  width: 200px;
+  width: 400px;
   text-overflow: ellipsis;
   white-space: normal;
   display:-webkit-box;
@@ -46,6 +49,7 @@ a{
 .col_01 img{
 	width: 200px;
 	height: 250px;
+	border-radius:15px;
 }
 .col_01{
 	float:left;
