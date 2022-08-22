@@ -65,7 +65,7 @@ a:hover{
              <div class="needToWrite">
                 <!--a태그 주소는 리뷰쓰기 페이지로 이동 dto.acc.acc_num, dto.rt.rt_num, pay.pm_num model에 붙어있음
                  ?로 다 가져가서 쓰기 controller에서 getParameter 로 받아서 쓸 수 있음 -->
-                <a href="reviewInsert">
+                <a href="reviewInsert?acc_name=${dto.acc.acc_name}&rt_rmname=${dto.rt.rt_rmname}&pm_num=${dto.pay.pm_num}&rt_num=${dto.rt.rt_num}">
                    ${dto.acc.acc_name} / ${dto.rt.rt_rmname} <br />
                    숙박 일자 : ${dto.rs_start } ~ ${dto.rs_end }
                 </a>

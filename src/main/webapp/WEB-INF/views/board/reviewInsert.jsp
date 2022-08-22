@@ -11,6 +11,8 @@
 
 <body>
 <form action="reviewTo" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="rt_num" value="${rt_num }"/>
+	<input type="hidden" name="pm_num" value="${pm_num }"/>
 	<div class="review">
 			<div class="re_hdtitle">
 				<h1># 리뷰작성</h1>
@@ -36,12 +38,10 @@
 				  <label for="1-star" class="star">&#9733;</label>
 				</div>
 			</div>
-         <c:forEach items="${reviewNone}" var="dto">
             <div class="reviewaccname">
                <label for="stay">숙소명</label>
-               <span class="stayinfo">${dto.acc.acc_name} / ${dto.rt.rt_rmname}</span>
+               <span class="stayinfo">${acc_name} / ${rt_rmname}</span>
             </div>
-      	</c:forEach>
 			  <label for="rvcontent" class="rv_content">내용</label>
 			  <textarea class="rvcontent" id="review_content"  name="rv_content"></textarea>
 	

@@ -76,7 +76,7 @@ dots[n].className += " active";
 <div class="clear"></div>
 <div id="wrap">	
 	<div id="search">
-	   <form action="totList" method="post">
+	   <form action="totList?cptype=통합검색&typecode=0" method="post">
 	        <div id="search2">
 	        	<span id="searchinput">
 	        		<input type="text" name="sk" class="form-control" placeholder="어디로 떠나시나요? 지역,숙소명,키워드로 찾아보세요!" aria-label="Example text with two button addons" style="width: 800px; height: 50px;">

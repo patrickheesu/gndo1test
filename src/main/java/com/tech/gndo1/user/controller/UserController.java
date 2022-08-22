@@ -72,9 +72,15 @@ public class UserController {
 			rvdto = udao.have_to_write(mem_num);
 			model.addAttribute("reviewNone", rvdto);
 			
-			
 		}
 		return "mypage/members/mbReview";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

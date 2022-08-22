@@ -77,12 +77,13 @@ WHERE RV.RV_NUM=RVI.RV_NUM AND RV.MEM_NUM=MEM.MEM_NUM AND RT.RT_NUM=RV.RT_NUM AN
 </select>
 
 <insert id="reviewInsert" >
-	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{param1}, #{param2}, SYSDATE, #{param3}, #{param4}, #{param5})
+	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{param1}, #{param2}, SYSDATE, #{param3}, #{param4}, #{param5},#{param6})
 </insert>
 
 <select id="reviewIt" resultType="Integer" >
 	SELECT COUNT(RT_NUM) FROM REVIEW WHERE MEM_NUM=#{param1}
 </select>
+
 <select id="rvnumselect" resultType="Integer">
 	SELECT MAX(RV_NUM) FROM REVIEW WHERE MEM_NUM=#{param1}
 </select>
@@ -113,5 +114,5 @@ WHERE RV.RV_NUM=RVI.RV_NUM AND RV.MEM_NUM=MEM.MEM_NUM AND RT.RT_NUM=RV.RT_NUM AN
 <!-- <select id="reviewgrade" resultType="Integer">
 	SELECT RV_GRADE FROM REVIEW WHERE RV_NUM=#{param1};
 </select> -->	
-	
+
 </mapper>

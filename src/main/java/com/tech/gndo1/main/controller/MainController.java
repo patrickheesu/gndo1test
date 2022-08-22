@@ -92,9 +92,7 @@ public class MainController {
 				model.addAttribute("adto",aidto.size());
 			}
 		}
-		
-		
-	
+
 	return "totList";
 	}
 }
