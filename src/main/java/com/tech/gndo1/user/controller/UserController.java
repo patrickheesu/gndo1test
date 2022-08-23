@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tech.gndo1.cptype.dao.CIDao;
+import com.tech.gndo1.payment.dto.ReserveDto;
 import com.tech.gndo1.review.dto.ReviewDto;
 import com.tech.gndo1.user.dao.UIDao;
 
@@ -76,8 +77,8 @@ public class UserController {
 			model.addAttribute("reviewDone", rvdto);
 			
 			//아직 쓰지 않은 리뷰 목록 select
-			rvdto = udao.have_to_write(mem_num);
-			model.addAttribute("reviewNone", rvdto);
+			ArrayList<ReserveDto> rsdto = udao.have_to_write(mem_num);
+			model.addAttribute("reviewNone", rsdto);
 			
 			
 		}

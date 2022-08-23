@@ -1,0 +1,290 @@
+create table members (
+   mem_num   number default 0,
+   mem_id   varchar2(20),
+   mem_pwd   varchar2(70),
+   mem_nickname   varchar2(40),
+   mem_name   varchar2(20),
+   mem_gender   varchar2(20),
+   mem_birth   date,
+   mem_phonenum   varchar2(20),
+   mem_addr   varchar2(100),
+   mem_email   varchar2(40),
+   mem_createdate date,
+   mem_logkey varchar2(100)
+);
+--select * from members;
+--drop table members purge;
+--alter table members modify mem_pwd varchar2(70);
+--alter table members add mem_logkey varchar2(100);
+--alter table members modify mem_email varchar2(40);
+
+create table payment (
+   pm_num   number default 0,
+   rs_num   number,
+   pm_date   date,
+   pm_type   varchar2(30)
+);
+--drop table payment purge;
+
+create table company (
+   cpy_num   number default 0,
+   cpy_id   varchar2(20),
+   cpy_pwd   varchar2(70),
+   cpy_name   varchar2(20),
+   cpy_cpnum   varchar2(20),
+   cpy_tel   varchar2(20),
+   cpy_resid   varchar2(25),
+   cpy_email   varchar2(40),
+   cpy_typecode   number,
+   cpy_createdate   date,
+   cpy_logkey varchar2(100)
+);
+
+--alter table company drop column cpy_cpyname;
+
+--drop table company purge;
+--select * from company;
+
+--alter table company modify cpy_pwd varchar2(70);
+--alter table company add cpy_logkey varchar2(100);
+
+create table reserve (
+   rs_num   number default 0,
+   mem_num   number,
+   rt_num   number,
+   rs_start   DATE,
+   rs_end   DATE,
+   rs_people   number,
+   rs_name   varchar2(20),
+   rs_pnum  varchar2(20)
+);
+--drop table reserve purge;
+--ALTER TABLE reserve RENAME COLUMN rs_info TO rs_name;
+--alter table reserve add rs_pnum varchar2(20);
+
+
+create table review(
+   rv_num   number default 0,
+   mem_num   number,
+   rt_num   number,
+   rv_date   date,
+   rv_title   varchar2(100),
+   rv_content   varchar2(2000),
+   rv_grade   number,
+   pm_num number
+);
+--alter table review add constraint FK_PAYMENT_REVIEW foreign key(pm_num) references payment(pm_num);
+--alter table review add pm_num number;
+--drop table review purge;
+
+create table pay_cancle (
+   pc_num   number default 0,
+   pm_num   number,
+   pc_amount   number,
+   pc_appamt   number,
+   pc_reason   varchar2(300),
+   pc_date   date
+);
+
+--drop table pay_cancle purge;
+
+create table board (
+   bd_num   number default 0,
+   mem_num   number,
+   bd_type   varchar2(20),
+   bd_title   varchar2(100),
+   bd_content   varchar2(2000),
+   bd_date   date,
+   bd_hit   number,
+   bd_group   number,
+   bd_step   number,
+   bd_indent   number
+);
+
+--drop table board purge;
+
+
+create table board_reply (
+   bdr_num   number default 0,
+   mem_num   number,
+   bd_num   number,
+   bdr_content   varchar2(1000),
+   bdr_date   date,
+   bdr_like   number,
+   bdr_dislike   number
+);
+
+--drop table board purge;
+
+
+create table roomtype (
+   rt_num   number default 0,
+   acc_num   number,
+   rt_rmname   varchar2(50),
+   rt_rmcount   number,
+   rt_rpeople   number,
+   rt_price   number,
+   rt_info   varchar2(1500),
+   rt_in   varchar2(20),
+   rt_out   varchar2(20)
+);
+
+create table accommodation_info (
+   acc_num   number default 0,
+   cpy_num   number,
+   acc_location   varchar2(50),
+   acc_map   varchar2(100),
+   acc_la   varchar2(30),
+   acc_lo   varchar2(30),
+   acc_tel   varchar2(20),
+   acc_info   varchar2(3000),
+   acc_serkeyword   varchar2(80),
+   acc_name varchar2(40),
+   acc_detailmap varchar2(80)
+);
+
+--alter table accommodation_info modify acc_la varchar2(30);
+--alter table accommodation_info modify acc_lo varchar2(30);
+--alter table accommodation_info modify acc_info varchar2(3000);
+--alter table accommodation_info add(acc_name varchar2(40));
+--alter table accommodation_info drop column rv_num;
+--select * from accommodation_info;
+
+
+
+create table accommodation_img (
+   acci_num   number default 0,
+   acc_num   number,
+   acci_img   varchar2(50),
+   acci_afterimg varchar2(100)
+);
+--drop table accommodation_img purge;
+
+create table roomtype_img (
+   rti_num   number default 0,
+   rt_num   number,
+   rti_img   varchar2(50),
+   rti_afterimg varchar2(100)
+);
+--drop table roomtype_img purge;
+
+create table review_img (
+   rvi_num   number default 0,
+   rv_num   number,
+   rvi_img   varchar2(50),
+   rvi_afterimg varchar2(100)
+);
+--drop table review_img purge;
+
+create table board_img (
+   bdi_num   number default 0,
+   bd_num   number,
+   bdi_img   varchar2(50),
+   bdi_afterimg varchar2(100)
+);
+--drop table board_img purge;
+
+create table review_reply (
+   rvr_num   number default 0,
+   rv_num   number,
+   cpy_num   number,
+   rvr_date   date,
+   rvr_coment   varchar2(1000)
+);
+--drop table review_reply purge;
+
+alter table members add constraint PK_MEMBERS primary key (mem_num);
+
+alter table reserve add constraint FK_MEMBERS_RESERVE foreign key(mem_num) references members(mem_num);
+alter table review add constraint FK_MEMBERS_REVIEW foreign key(mem_num) references members(mem_num);
+alter table board_reply add constraint FK_MEMBERS_BOARD_REPLY foreign key(mem_num) references members(mem_num);
+alter table board add constraint FK_MEMBERS_BOARD foreign key(mem_num) references members(mem_num);
+
+
+alter table payment add constraint PK_PAYMENT primary key (pm_num);
+
+alter table pay_cancle add constraint FK_PAYMENT_PAY_CANCLE foreign key(pm_num) references payment(pm_num);
+
+
+alter table company add constraint PK_COMPANY primary key (cpy_num);
+
+alter table accommodation_info add constraint FK_COMPANY_ACCOMMODATION_INFO foreign key(cpy_num) references company(cpy_num);
+alter table review_reply add constraint FK_COMPANY_REVIEW_REPLY foreign key(cpy_num) references company(cpy_num);
+
+
+alter table reserve add constraint PK_RESERVE primary key (rs_num);
+
+alter table payment add constraint FK_RESERVE_PAYMENT foreign key(rs_num) references reserve(rs_num);
+
+
+alter table review add constraint PK_REVIEW primary key (rv_num);
+
+alter table review_reply add constraint FK_REVIEW_REVIEW_REPLY foreign key(rv_num) references review(rv_num);
+alter table review_img add constraint FK_REVIEW_REVIEW_IMG foreign key(rv_num) references review(rv_num);
+
+
+alter table pay_cancle add constraint PK_PAY_CANCLE primary key (pc_num);
+--FK none
+
+
+alter table board add constraint PK_BOARD primary key (bd_num);
+
+alter table board_reply add constraint FK_BOARD_BOARD_REPLY foreign key(bd_num) references board(bd_num);
+alter table board_img add constraint FK_BOARD_BOARD_IMG foreign key(bd_num) references board(bd_num);
+
+
+alter table board_reply add constraint PK_BOARD_REPLY primary key (bdr_num);
+--FK none
+
+
+alter table roomtype add constraint PK_ROOMTYPE primary key (rt_num);
+
+alter table review add constraint FK_ROOMTYPE_REVIEW foreign key(rt_num) references roomtype(rt_num);
+alter table reserve add constraint FK_ROOMTYPE_RESERVE foreign key(rt_num) references roomtype(rt_num);
+alter table roomtype_img add constraint FK_ROOMTYPE_ROOMTYPE_IMG foreign key(rt_num) references roomtype(rt_num);
+
+alter table accommodation_info add constraint PK_ACCOMMODATION_INFO primary key (acc_num);
+
+alter table accommodation_img add constraint FK_ACC_INFO_ACC_IMG foreign key(acc_num) references accommodation_info(acc_num); --FK 줄임
+alter table roomtype add constraint FK_ACCOMMODATION_INFO_ROOMTYPE foreign key(acc_num) references accommodation_info(acc_num);
+
+
+alter table accommodation_img add constraint PK_ACCOMMODATION_IMG primary key (acci_num);
+--FK none
+
+
+alter table roomtype_img add constraint PK_ROOMTYPE_IMG primary key (rti_num);
+--FK none
+
+
+alter table review_img add constraint PK_REVIEW_IMG primary key (rvi_num);
+--FK none
+
+
+alter table board_img add constraint PK_BOARD_IMG primary key (bdi_num);
+--FK none
+
+
+alter table review_reply add constraint PK_REVIEW_REPLY primary key (rvr_num);
+--FK none
+
+
+create sequence members_seq;
+create sequence company_seq;
+create sequence accommodation_info_seq;
+create sequence accommodation_img_seq;
+create sequence roomtype_seq;
+create sequence roomtype_img_seq;
+create sequence board_seq;
+create sequence board_reply_seq;
+create sequence board_img_seq;
+create sequence review_seq;
+create sequence review_reply_seq;
+create sequence review_img_seq;
+create sequence reserve_seq;
+create sequence payment_seq;
+create sequence pay_cancle_seq;
+
+
+
+

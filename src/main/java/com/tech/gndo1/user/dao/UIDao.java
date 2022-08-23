@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.tech.gndo1.cp.dto.CompanyDto;
 import com.tech.gndo1.mb.dto.MembersDto;
+import com.tech.gndo1.payment.dto.ReserveDto;
 import com.tech.gndo1.review.dto.ReviewDto;
 
 public interface UIDao {
@@ -68,5 +69,5 @@ public interface UIDao {
 
 	public ArrayList<ReviewDto> mem_reviews(int mem_num);
 
-	public ArrayList<ReviewDto> have_to_write(int mem_num);
+	public ArrayList<ReserveDto> have_to_write(int mem_num);
 }

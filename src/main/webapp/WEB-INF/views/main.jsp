@@ -136,7 +136,7 @@ dots[n].className += " active";
             			<c:forEach items="${adto }" var="adto">
             				<tr>
 								<div class="main_rclist" style="width: 17rem;">
-									<a href="#">
+									<a href="htDetail?acc_num=${adto.acc_num }">
 					  					<img src="resources/upload/${adto.ai.acci_afterimg}" class="card-img-top" alt="${adto.ai.acci_afterimg}">
 					  					<div class="card-body">
 					  						<h5 class="card-title">${adto.acc_name }</h5>
